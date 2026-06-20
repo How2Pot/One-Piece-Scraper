@@ -2,9 +2,8 @@ name: Refresh One Piece Card Data
 
 on:
   schedule:
-    # Runs once every 2 days at 09:00 UTC. Change to "0 9 * * *" for daily.
     - cron: "0 9 */2 * *"
-  workflow_dispatch: {}  # lets you trigger it manually from the Actions tab
+  workflow_dispatch: {}
 
 permissions:
   contents: write
@@ -28,11 +27,20 @@ jobs:
         run: python scripts/scrape_cards.py
         continue-on-error: true
 
+      - name: List data folder (debug)
+        run: |
+          echo "Contents of data/ after scraper run:"
+          ls -la data/ || echo "data/ directory does not exist"
+          echo "---"
+          echo "Git status:"
+          git status
+
       - name: Commit updated data (and debug dump if scrape failed)
         run: |
           git config user.name "github-actions[bot]"
           git config user.email "github-actions[bot]@users.noreply.github.com"
-          git add data/cards.json data/_debug_raw_page.html 2>/dev/null || true
+          git add -A data/
+          git status
           git diff --staged --quiet || git commit -m "Auto-refresh card data $(date -u +%Y-%m-%d)"
           git push
 
