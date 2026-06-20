@@ -43,6 +43,34 @@ HEADERS = {
 
 DEBUG_DUMP_PATH = os.path.join(os.path.dirname(__file__), "..", "data", "_debug_raw_page.html")
 
+# ---- Set rotation groups -------------------------------------------------
+#
+# tcgapi.dev Starter tier allows 2,500 requests/day. The full One Piece
+# catalog (~2,885 cards across all sets) doesn't comfortably fit in a
+# single day's budget alongside retries, so the 21 real booster-type sets
+# (OP, EB, PRB - excludes Starter Decks and single promos) are split into
+# two groups that alternate by day. Each run only prices ONE group,
+# keeping any single day's usage well under the daily cap.
+#
+# Group A: the original 8 OP sets (OP-01 - OP-08)
+# Group B: current/standard-format OP sets (OP-09 - OP-16) plus all
+#          Extra Booster (EB) and Premium Booster (PRB) sets - these are
+#          the sets most likely to be actively opened right now.
+
+GROUP_A = ["OP-01", "OP-02", "OP-03", "OP-04", "OP-05", "OP-06", "OP-07", "OP-08"]
+GROUP_B = [
+    "OP-09", "OP-10", "OP-11", "OP-12", "OP-13", "OP14-EB04", "OP15-EB04", "OP-16",
+    "EB-01", "EB-02", "EB-03",
+    "PRB-01", "PRB-02",
+]
+
+# Which group runs today: alternates based on the day of the year, so it
+# flips automatically every run without needing external state.
+import datetime
+_day_of_year = datetime.datetime.utcnow().timetuple().tm_yday
+ACTIVE_GROUP = GROUP_A if _day_of_year % 2 == 0 else GROUP_B
+ACTIVE_GROUP_NAME = "A (OP-01 to OP-08)" if _day_of_year % 2 == 0 else "B (OP-09 to OP-16 + EB/PRB)"
+
 
 def fetch(url: str) -> str:
     req = urllib.request.Request(url, headers=HEADERS)
@@ -128,10 +156,6 @@ def discover_series_ids() -> dict:
     # Real structure (verified against live page source):
     #   <option value="569116" selected>BOOSTER PACK ... [OP-16]</option>
     #   <option value="569101" >BOOSTER PACK ... [OP-01]</option>
-    # Two-step: grab each <option> block, then pull the bracketed set code
-    # from its label. The label text contains literal HTML-entity-encoded
-    # markup (e.g. &lt;br ...&gt;), so we search broadly rather than
-    # anchoring tightly to the text right after '>'.
     option_pattern = re.compile(
         r'<option\s+value="(\d+)"[^>]*>(.*?)</option>',
         re.IGNORECASE | re.DOTALL,
@@ -167,10 +191,18 @@ def scrape_official_cards() -> list:
             all_cards[c["id"]] = c
         return list(all_cards.values())
 
-    # Only scrape OP-xx and EB-xx booster sets (skip starter decks, promos)
-    relevant = {k: v for k, v in series_map.items() if re.match(r'^(OP|EB)-?\d{2}', k)}
+    # Only scrape sets in today's active rotation group (see GROUP_A/GROUP_B
+    # above). This keeps each run's tcgapi.dev usage well under the daily
+    # request cap instead of trying to price the entire ~2,885-card catalog
+    # in one run.
+    print(f"Today's active group: {ACTIVE_GROUP_NAME}", file=sys.stderr)
+    relevant = {k: v for k, v in series_map.items() if k in ACTIVE_GROUP}
 
-    print(f"Scraping {len(relevant)} booster sets...", file=sys.stderr)
+    missing = [s for s in ACTIVE_GROUP if s not in series_map]
+    if missing:
+        print(f"  WARN: these sets in the active group were not found on the site: {missing}", file=sys.stderr)
+
+    print(f"Scraping {len(relevant)} of {len(ACTIVE_GROUP)} sets in active group...", file=sys.stderr)
     for set_id, series in relevant.items():
         url = f"{CARDLIST_URL}?series={series}"
         print(f"  Fetching {set_id} ({url})", file=sys.stderr)
@@ -194,9 +226,10 @@ def scrape_official_cards() -> list:
 
 # ---- TCGapi.dev pricing -------------------------------------------------
 
-def fetch_price(card_name: str, card_number: str) -> dict:
+def fetch_price(card_name: str, card_number: str, retries: int = 2) -> dict:
     """Query tcgapi.dev for a card's market price. Returns dict with
-    market_price and tcg_image_url (fallback image), or empty dict."""
+    market_price and tcg_image_url (fallback image), or empty dict.
+    Retries once on 429 with a backoff pause."""
     if not TCGAPI_KEY:
         return {}
 
@@ -208,11 +241,23 @@ def fetch_price(card_name: str, card_number: str) -> dict:
     url = f"{TCGAPI_BASE}/search?{params}"
     req = urllib.request.Request(url, headers={**HEADERS, "X-API-Key": TCGAPI_KEY})
 
-    try:
-        with urllib.request.urlopen(req, timeout=20) as resp:
-            data = json.loads(resp.read().decode("utf-8"))
-    except Exception as e:
-        print(f"    WARN: price lookup failed for {card_name}: {e}", file=sys.stderr)
+    for attempt in range(retries + 1):
+        try:
+            with urllib.request.urlopen(req, timeout=20) as resp:
+                data = json.loads(resp.read().decode("utf-8"))
+            break
+        except urllib.error.HTTPError as e:
+            if e.code == 429 and attempt < retries:
+                wait = 5 * (attempt + 1)
+                print(f"    WARN: 429 rate limited on '{card_name}', waiting {wait}s before retry...", file=sys.stderr)
+                time.sleep(wait)
+                continue
+            print(f"    WARN: price lookup failed for {card_name}: HTTP {e.code}", file=sys.stderr)
+            return {}
+        except Exception as e:
+            print(f"    WARN: price lookup failed for {card_name}: {e}", file=sys.stderr)
+            return {}
+    else:
         return {}
 
     results = data.get("data", [])
@@ -245,12 +290,22 @@ def enrich_with_prices(cards: list) -> list:
 
         if (i + 1) % 25 == 0:
             print(f"  Priced {i + 1}/{len(cards)}", file=sys.stderr)
-        time.sleep(0.3)  # gentle rate limiting
+        time.sleep(0.5)  # gentle rate limiting - tuned to avoid 429s on Starter tier
 
     return cards
 
 
 # ---- Main ---------------------------------------------------------------
+
+def load_existing_output() -> dict:
+    if os.path.exists(OUTPUT_PATH):
+        try:
+            with open(OUTPUT_PATH, "r", encoding="utf-8") as f:
+                return json.load(f)
+        except Exception as e:
+            print(f"WARN: could not read existing cards.json ({e}), starting fresh.", file=sys.stderr)
+    return {"generated_at": None, "card_count": 0, "sets": [], "cards": []}
+
 
 def main():
     cards = scrape_official_cards()
@@ -263,18 +318,28 @@ def main():
 
     cards = enrich_with_prices(cards)
 
+    # Merge with whatever's already in cards.json so the OTHER rotation
+    # group's data (priced on a different day) isn't wiped out.
+    existing = load_existing_output()
+    existing_cards = {c["id"]: c for c in existing.get("cards", [])}
+    for c in cards:
+        existing_cards[c["id"]] = c  # new data replaces stale entries for this group's cards
+
+    merged_cards = list(existing_cards.values())
+
     output = {
         "generated_at": time.strftime("%Y-%m-%dT%H:%M:%SZ", time.gmtime()),
-        "card_count": len(cards),
-        "sets": sorted(set(c["set_id"] for c in cards)),
-        "cards": cards,
+        "card_count": len(merged_cards),
+        "sets": sorted(set(c["set_id"] for c in merged_cards)),
+        "last_group_refreshed": ACTIVE_GROUP_NAME,
+        "cards": merged_cards,
     }
 
     os.makedirs(os.path.dirname(OUTPUT_PATH), exist_ok=True)
     with open(OUTPUT_PATH, "w", encoding="utf-8") as f:
         json.dump(output, f, indent=2, ensure_ascii=False)
 
-    print(f"Wrote {len(cards)} cards to {OUTPUT_PATH}", file=sys.stderr)
+    print(f"Wrote {len(merged_cards)} total cards ({len(cards)} freshly updated) to {OUTPUT_PATH}", file=sys.stderr)
 
 
 if __name__ == "__main__":
