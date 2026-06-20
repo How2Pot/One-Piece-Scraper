@@ -34,33 +34,14 @@ TCGAPI_KEY = os.environ.get("TCGAPI_KEY", "")  # set as a GitHub Actions secret
 
 OUTPUT_PATH = os.path.join(os.path.dirname(__file__), "..", "data", "cards.json")
 
-# Known set series IDs on the official site (?series=XXXXXX).
-# Update this dict as new sets release — the site adds a new series id
-# per set. If a set is missing, the scraper will still pick up "ALL".
-SERIES_IDS = {
-    "OP-01": "569101", "OP-02": "569102", "OP-03": "569103", "OP-04": "569104",
-    "OP-05": "569105", "OP-06": "569106", "OP-07": "569107", "OP-08": "569108",
-    "OP-09": "569109", "OP-10": "569110", "OP-11": "569111", "OP-12": "569112",
-    "OP-13": "569113",
-    "EB-01": "569201", "EB-02": "569202",
+REQUEST_DELAY = 0.8  # be polite between requests
+HEADERS = {
+    "User-Agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 "
+                  "(KHTML, like Gecko) Chrome/124.0.0.0 Safari/537.36",
+    "Accept-Language": "en-US,en;q=0.9",
 }
 
-REQUEST_DELAY = 1.0  # be polite between requests
-HEADERS = {"User-Agent": "Mozilla/5.0 (compatible; OPTCGTrackerBot/1.0)"}
-
-
-# ---- Official site scraping -------------------------------------------
-
-class CardListParser(HTMLParser):
-    """Minimal HTML parser pulling card blocks from the official cardlist page.
-
-    The page structure (as of writing) repeats blocks like:
-      <div class="resultCol"> ... img src="..." ... <span class="cardName">NAME</span>
-      <div class="infoCol"><span>OP01-001</span><span>L</span><span>LEADER</span></div>
-    Bandai may change markup over time; this parser is intentionally
-    forgiving and falls back to regex extraction if needed.
-    """
-    pass
+DEBUG_DUMP_PATH = os.path.join(os.path.dirname(__file__), "..", "data", "_debug_raw_page.html")
 
 
 def fetch(url: str) -> str:
@@ -69,28 +50,59 @@ def fetch(url: str) -> str:
         return resp.read().decode("utf-8", errors="replace")
 
 
+# ---- Card block extraction ---------------------------------------------
+#
+# The official site renders each card as a <dl class="modalCol"> block
+# (verified against live page source). The reliable anchor is the card
+# number line, which always appears as plain text in the form:
+#     OP01-001 | L | LEADER
+# immediately followed by the card name. Images use data-src for lazy
+# loading, with the real image filename matching the card ID, e.g.
+#     /images/cardlist/card/OP01-001.png
+# We extract by finding each "ID | RARITY | TYPE" anchor, then look
+# backwards/forwards in a bounded window for the nearest name and image.
+
+CARD_ANCHOR = re.compile(
+    r'([A-Z]{1,4}\d{2,3}(?:-EB\d{2})?-\d{3}(?:_p\d+)?)\s*\|\s*([A-Z]{1,4})\s*\|\s*(LEADER|CHARACTER|STAGE|EVENT)',
+)
+
+IMG_SRC = re.compile(r'(?:data-src|src)="([^"]*?/cardlist/card/[^"]+\.(?:png|jpg|gif))"')
+
+
 def extract_cards_from_html(html: str, set_label: str) -> list:
-    """Extract card entries using regex — more robust than full HTML
-    parsing against a site that may change its DOM structure slightly."""
     cards = []
+    anchors = list(CARD_ANCHOR.finditer(html))
 
-    # Each card "dl" block roughly contains:
-    #   data-src="...IMAGE.png" ... <div class="cardName">NAME</div>
-    #   ...<div class="getCardNo">OP01-001 | L | LEADER</div>...
-    # We scan for the number/rarity/category line and the nearest name + image.
-    block_pattern = re.compile(
-        r'data-src="([^"]+\.(?:png|jpg))".*?'
-        r'class="cardName">([^<]+)<.*?'
-        r'class="getCardNo">\s*([A-Z]{1,4}\d{2}(?:-EB\d{2})?-\d{3}(?:_p\d+)?)\s*\|\s*([A-Z]{1,3})\s*\|\s*([A-Z\s]+?)\s*<',
-        re.DOTALL,
-    )
+    for i, m in enumerate(anchors):
+        card_id, rarity, category = m.groups()
+        start = m.end()
+        # Look at the text right after the anchor for the card name —
+        # it's the next non-empty line of plain text before the next tag.
+        window_end = anchors[i + 1].start() if i + 1 < len(anchors) else min(len(html), start + 2000)
+        window = html[start:window_end]
 
-    for m in block_pattern.finditer(html):
-        img_path, name, card_id, rarity, category = m.groups()
-        img_url = img_path if img_path.startswith("http") else f"{OFFICIAL_BASE}{img_path}"
+        # Card name: first run of text after a '>' that isn't whitespace/markup
+        name_match = re.search(r'>\s*([A-Z][A-Za-z0-9\.\'\-,!? ]{1,60}?)\s*[\r\n<]', window)
+        name = name_match.group(1).strip() if name_match else None
+
+        # Image: look in a window around the anchor (images often precede the text)
+        local_start = max(0, m.start() - 600)
+        local_window = html[local_start:window_end]
+        img_match = IMG_SRC.search(local_window)
+        img_url = None
+        if img_match:
+            path = img_match.group(1)
+            img_url = path if path.startswith("http") else f"{OFFICIAL_BASE}{path}"
+        if not img_url or "dummy.gif" in img_url:
+            # Fall back to constructing the canonical image URL from the card ID
+            img_url = f"{OFFICIAL_BASE}/images/cardlist/card/{card_id}.png"
+
+        if not name:
+            continue
+
         cards.append({
             "id": card_id.strip(),
-            "name": name.strip(),
+            "name": name,
             "rarity": rarity.strip(),
             "category": category.strip().title(),
             "set_label": set_label,
@@ -100,11 +112,57 @@ def extract_cards_from_html(html: str, set_label: str) -> list:
     return cards
 
 
+def discover_series_ids() -> dict:
+    """Parse the cardlist page's set-selector to find real series IDs,
+    instead of relying on a hardcoded (and possibly wrong) mapping."""
+    html = fetch(CARDLIST_URL)
+
+    # Save raw HTML for debugging if extraction ever yields nothing —
+    # this gets committed so we can inspect actual site structure.
+    try:
+        os.makedirs(os.path.dirname(DEBUG_DUMP_PATH), exist_ok=True)
+        with open(DEBUG_DUMP_PATH, "w", encoding="utf-8") as f:
+            f.write(html[:50000])  # cap size
+    except Exception:
+        pass
+
+    # Set links look like: <li data-href="?series=556101">BOOSTER PACK ... [OP-01]</li>
+    # or similar data-series attributes. Try a couple of known patterns.
+    pattern = re.compile(
+        r'data-(?:href|series)="\??series=(\d+)"[^>]*>\s*(?:<[^>]+>\s*)*([^<]*\[([A-Z]{2,4}-?\d{0,2}(?:-EB\d{2})?)\])',
+        re.IGNORECASE,
+    )
+    found = {}
+    for m in pattern.finditer(html):
+        series_num, _label, set_code = m.groups()
+        set_code = set_code.strip()
+        if set_code and set_code not in found:
+            found[set_code] = series_num
+
+    print(f"Discovered {len(found)} series IDs from set selector: {found}", file=sys.stderr)
+    return found
+
+
 def scrape_official_cards() -> list:
     all_cards = {}
-    print(f"Scraping official card list ({len(SERIES_IDS)} known sets)...", file=sys.stderr)
 
-    for set_id, series in SERIES_IDS.items():
+    series_map = discover_series_ids()
+
+    if not series_map:
+        print("WARN: could not discover series IDs from selector — falling back to default 'ALL' page only.", file=sys.stderr)
+        html = fetch(CARDLIST_URL)
+        cards = extract_cards_from_html(html, "ALL")
+        print(f"  Found {len(cards)} cards on default page", file=sys.stderr)
+        for c in cards:
+            c["set_id"] = c["id"][:4].rstrip("-")
+            all_cards[c["id"]] = c
+        return list(all_cards.values())
+
+    # Only scrape OP-xx and EB-xx booster sets (skip starter decks, promos)
+    relevant = {k: v for k, v in series_map.items() if re.match(r'^(OP|EB)-?\d{2}', k)}
+
+    print(f"Scraping {len(relevant)} booster sets...", file=sys.stderr)
+    for set_id, series in relevant.items():
         url = f"{CARDLIST_URL}?series={series}"
         print(f"  Fetching {set_id} ({url})", file=sys.stderr)
         try:
@@ -189,7 +247,9 @@ def main():
     cards = scrape_official_cards()
 
     if not cards:
-        print("ERROR: No cards scraped. Site structure may have changed. Aborting without overwriting existing data.", file=sys.stderr)
+        print("ERROR: No cards scraped. Site structure may have changed.", file=sys.stderr)
+        print(f"A raw HTML sample was saved to {DEBUG_DUMP_PATH} — check it into the repo logs to diagnose.", file=sys.stderr)
+        print("Aborting without overwriting existing card data.", file=sys.stderr)
         sys.exit(1)
 
     cards = enrich_with_prices(cards)
