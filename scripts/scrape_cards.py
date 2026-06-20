@@ -54,52 +54,52 @@ def fetch(url: str) -> str:
 
 # ---- Card block extraction ---------------------------------------------
 #
-# The official site renders each card as a <dl class="modalCol"> block
-# (verified against live page source). The reliable anchor is the card
-# number line, which always appears as plain text in the form:
-#     OP01-001 | L | LEADER
-# immediately followed by the card name. Images use data-src for lazy
-# loading, with the real image filename matching the card ID, e.g.
-#     /images/cardlist/card/OP01-001.png
-# We extract by finding each "ID | RARITY | TYPE" anchor, then look
-# backwards/forwards in a bounded window for the nearest name and image.
+# Verified against live page source. Each card is a <dl class="modalCol"
+# id="OP16-001"> block containing:
+#
+#   <div class="infoCol">
+#     <span>OP16-001</span> | <span>L</span> | <span>LEADER</span>
+#   </div>
+#   <div class="cardName">Portgas.D.Ace</div>
+#
+# Images are lazy-loaded via data-src on a preceding <a class="modalOpen">:
+#   <a data-src="#OP16-001"><img data-src="../images/cardlist/card/OP16-001.png?v" alt="..."></a>
+#
+# Parallel/alternate-art variants share the base card ID with a _pN suffix
+# (e.g. OP16-001_p1) and appear as their own complete <dl> block.
 
-CARD_ANCHOR = re.compile(
-    r'([A-Z]{1,4}\d{2,3}(?:-EB\d{2})?-\d{3}(?:_p\d+)?)\s*\|\s*([A-Z]{1,4})\s*\|\s*(LEADER|CHARACTER|STAGE|EVENT)',
+CARD_BLOCK = re.compile(
+    r'<dl class="modalCol" id="([^"]+)">.*?'
+    r'<div class="infoCol">\s*'
+    r'<span>([^<]+)</span>\s*\|\s*<span>([^<]+)</span>\s*\|\s*<span>([^<]+)</span>\s*'
+    r'.*?<div class="cardName">([^<]+)</div>',
+    re.DOTALL,
 )
 
-IMG_SRC = re.compile(r'(?:data-src|src)="([^"]*?/cardlist/card/[^"]+\.(?:png|jpg|gif))"')
+
+def make_img_pattern(card_id: str):
+    escaped = re.escape(card_id)
+    return re.compile(rf'data-src="([^"]*?/card/{escaped}\.png[^"]*)"')
 
 
 def extract_cards_from_html(html: str, set_label: str) -> list:
     cards = []
-    anchors = list(CARD_ANCHOR.finditer(html))
 
-    for i, m in enumerate(anchors):
-        card_id, rarity, category = m.groups()
-        start = m.end()
-        window_end = anchors[i + 1].start() if i + 1 < len(anchors) else min(len(html), start + 2000)
-        window = html[start:window_end]
+    for m in CARD_BLOCK.finditer(html):
+        dl_id, card_no, rarity, category, name = m.groups()
 
-        name_match = re.search(r'>\s*([A-Z][A-Za-z0-9\.\'\-,!? ]{1,60}?)\s*[\r\n<]', window)
-        name = name_match.group(1).strip() if name_match else None
-
-        local_start = max(0, m.start() - 600)
-        local_window = html[local_start:window_end]
-        img_match = IMG_SRC.search(local_window)
-        img_url = None
+        img_pattern = make_img_pattern(card_no.strip())
+        img_match = img_pattern.search(html)
         if img_match:
             path = img_match.group(1)
-            img_url = path if path.startswith("http") else f"{OFFICIAL_BASE}{path}"
-        if not img_url or "dummy.gif" in img_url:
-            img_url = f"{OFFICIAL_BASE}/images/cardlist/card/{card_id}.png"
-
-        if not name:
-            continue
+            img_url = path if path.startswith("http") else f"{OFFICIAL_BASE}/{path.lstrip('.').lstrip('/')}"
+        else:
+            img_url = f"{OFFICIAL_BASE}/images/cardlist/card/{card_no.strip()}.png"
 
         cards.append({
-            "id": card_id.strip(),
-            "name": name,
+            "id": dl_id.strip(),
+            "card_number": card_no.strip(),
+            "name": name.strip(),
             "rarity": rarity.strip(),
             "category": category.strip().title(),
             "set_label": set_label,
@@ -119,144 +119,4 @@ def discover_series_ids() -> dict:
         return {}
 
     os.makedirs(os.path.dirname(DEBUG_DUMP_PATH), exist_ok=True)
-    with open(DEBUG_DUMP_PATH, "w", encoding="utf-8") as f:
-        f.write(html[:50000])
-    print(f"  Wrote debug dump to {DEBUG_DUMP_PATH} ({min(len(html),50000)} bytes)", file=sys.stderr)
-
-    pattern = re.compile(
-        r'data-(?:href|series)="\??series=(\d+)"[^>]*>\s*(?:<[^>]+>\s*)*([^<]*\[([A-Z]{2,4}-?\d{0,2}(?:-EB\d{2})?)\])',
-        re.IGNORECASE,
-    )
-    found = {}
-    for m in pattern.finditer(html):
-        series_num, _label, set_code = m.groups()
-        set_code = set_code.strip()
-        if set_code and set_code not in found:
-            found[set_code] = series_num
-
-    print(f"Discovered {len(found)} series IDs from set selector: {found}", file=sys.stderr)
-    return found
-
-
-def scrape_official_cards() -> list:
-    all_cards = {}
-
-    series_map = discover_series_ids()
-
-    if not series_map:
-        print("WARN: could not discover series IDs from selector — falling back to default 'ALL' page only.", file=sys.stderr)
-        html = fetch(CARDLIST_URL)
-        cards = extract_cards_from_html(html, "ALL")
-        print(f"  Found {len(cards)} cards on default page", file=sys.stderr)
-        for c in cards:
-            c["set_id"] = c["id"][:4].rstrip("-")
-            all_cards[c["id"]] = c
-        return list(all_cards.values())
-
-    relevant = {k: v for k, v in series_map.items() if re.match(r'^(OP|EB)-?\d{2}', k)}
-
-    print(f"Scraping {len(relevant)} booster sets...", file=sys.stderr)
-    for set_id, series in relevant.items():
-        url = f"{CARDLIST_URL}?series={series}"
-        print(f"  Fetching {set_id} ({url})", file=sys.stderr)
-        try:
-            html = fetch(url)
-        except Exception as e:
-            print(f"    WARN: failed to fetch {set_id}: {e}", file=sys.stderr)
-            continue
-
-        cards = extract_cards_from_html(html, set_id)
-        print(f"    Found {len(cards)} cards", file=sys.stderr)
-
-        for c in cards:
-            c["set_id"] = set_id
-            all_cards[c["id"]] = c
-
-        time.sleep(REQUEST_DELAY)
-
-    return list(all_cards.values())
-
-
-# ---- TCGapi.dev pricing -------------------------------------------------
-
-def fetch_price(card_name: str, card_number: str) -> dict:
-    if not TCGAPI_KEY:
-        return {}
-
-    params = urllib.parse.urlencode({
-        "q": card_name,
-        "game": "one-piece",
-        "per_page": "10",
-    })
-    url = f"{TCGAPI_BASE}/search?{params}"
-    req = urllib.request.Request(url, headers={**HEADERS, "X-API-Key": TCGAPI_KEY})
-
-    try:
-        with urllib.request.urlopen(req, timeout=20) as resp:
-            data = json.loads(resp.read().decode("utf-8"))
-    except Exception as e:
-        print(f"    WARN: price lookup failed for {card_name}: {e}", file=sys.stderr)
-        return {}
-
-    results = data.get("data", [])
-    if not results:
-        return {}
-
-    for r in results:
-        if card_number and card_number in (r.get("number") or ""):
-            return {"market_price": r.get("market_price"), "tcgapi_image_url": r.get("image_url")}
-
-    best = results[0]
-    return {"market_price": best.get("market_price"), "tcgapi_image_url": best.get("image_url")}
-
-
-def enrich_with_prices(cards: list) -> list:
-    if not TCGAPI_KEY:
-        print("No TCGAPI_KEY set — skipping price enrichment. Cards will have null prices.", file=sys.stderr)
-        for c in cards:
-            c["market_price"] = None
-        return cards
-
-    print(f"Fetching prices for {len(cards)} cards via tcgapi.dev...", file=sys.stderr)
-    for i, c in enumerate(cards):
-        price_info = fetch_price(c["name"], c["id"])
-        c["market_price"] = price_info.get("market_price")
-        if not c.get("image_url") and price_info.get("tcgapi_image_url"):
-            c["image_url"] = price_info["tcgapi_image_url"]
-
-        if (i + 1) % 25 == 0:
-            print(f"  Priced {i + 1}/{len(cards)}", file=sys.stderr)
-        time.sleep(0.3)
-
-    return cards
-
-
-# ---- Main ---------------------------------------------------------------
-
-def main():
-    cards = scrape_official_cards()
-
-    if not cards:
-        print("ERROR: No cards scraped. Site structure may have changed.", file=sys.stderr)
-        print(f"A raw HTML sample was saved to {DEBUG_DUMP_PATH} — check it into the repo logs to diagnose.", file=sys.stderr)
-        print("Aborting without overwriting existing card data.", file=sys.stderr)
-        sys.exit(1)
-
-    cards = enrich_with_prices(cards)
-
-    output = {
-        "generated_at": time.strftime("%Y-%m-%dT%H:%M:%SZ", time.gmtime()),
-        "card_count": len(cards),
-        "sets": sorted(set(c["set_id"] for c in cards)),
-        "cards": cards,
-    }
-
-    os.makedirs(os.path.dirname(OUTPUT_PATH), exist_ok=True)
-    with open(OUTPUT_PATH, "w", encoding="utf-8") as f:
-        json.dump(output, f, indent=2, ensure_ascii=False)
-
-    print(f"Wrote {len(cards)} cards to {OUTPUT_PATH}", file=sys.stderr)
-
-
-if __name__ == "__main__":
-    main()
+    with open(DEBUG_DUMP_PATH,
