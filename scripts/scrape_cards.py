@@ -272,14 +272,32 @@ def scrape_official_cards() -> list:
     return list(all_cards.values())
 
 
-def fetch_price(card_name: str, card_number: str, retries: int = 2) -> dict:
+def fetch_price(card_name: str, unique_id: str, card_number: str, retries: int = 2) -> dict:
+    """unique_id is the scraped card's own id (e.g. 'OP01-002' for the
+    base print, 'OP01-002_p1' for a parallel/alt-art). tcgapi.dev doesn't
+    use the same _p1 convention - instead it returns separate results
+    with a 'printing' field of 'Normal' or 'Foil' for the same card
+    number. A parallel/alt-art card on the official site corresponds to
+    tcgapi.dev's 'Foil' printing; the base card corresponds to 'Normal'.
+
+    Confirmed via real lookups: OP01-002 Normal = $4.44, OP01-002 Foil =
+    $436.19 - picking the wrong one isn't a small error, it's off by
+    nearly 100x. The previous version of this function just returned
+    whichever result's 'number' matched first, with no regard for
+    printing, which is why parallel cards were sometimes priced as if
+    they were the cheap base version (or vice versa)."""
     if not TCGAPI_KEY:
         return {}
+
+    is_parallel = "_p" in unique_id
+    wanted_printing = "Foil" if is_parallel else "Normal"
 
     params = urllib.parse.urlencode({
         "q": card_name,
         "game": "one-piece",
-        "per_page": "10",
+        "per_page": "30",  # bumped from 10 - Normal/Foil pairs for the
+                            # right card may not both appear in a smaller
+                            # page, especially for common names
     })
     url = f"{TCGAPI_BASE}/search?{params}"
     req = urllib.request.Request(url, headers={**HEADERS, "X-API-Key": TCGAPI_KEY})
@@ -316,12 +334,28 @@ def fetch_price(card_name: str, card_number: str, retries: int = 2) -> dict:
             "tcgplayer_url": f"https://www.tcgplayer.com/product/{tcgplayer_id}" if tcgplayer_id else None,
         }
 
-    for r in results:
-        if card_number and card_number in (r.get("number") or ""):
+    # First pass: match on BOTH card number AND the correct printing
+    # (Normal for base cards, Foil for parallels/alt-arts). This is the
+    # precise match.
+    number_matches = [r for r in results if card_number and card_number in (r.get("number") or "")]
+    for r in number_matches:
+        if (r.get("printing") or "").strip().lower() == wanted_printing.lower():
             return build_result(r)
 
-    best = results[0]
-    return build_result(best)
+    # Second pass: if no printing-specific match was found (e.g. tcgapi.dev
+    # genuinely only has one printing for this card), fall back to any
+    # number match rather than returning nothing - better to show some
+    # price than none, but this is logged so it's visible when it happens.
+    if number_matches:
+        print(f"    WARN: no '{wanted_printing}' printing found for {unique_id} "
+              f"({card_number}) among {len(number_matches)} number match(es) - "
+              f"using first available as fallback", file=sys.stderr)
+        return build_result(number_matches[0])
+
+    # Last resort: no number match at all, use the top overall search hit.
+    print(f"    WARN: no number match for {unique_id} ({card_number}) at all - "
+          f"using top search result as last-resort fallback", file=sys.stderr)
+    return build_result(results[0])
 
 
 def enrich_with_prices(cards: list, save_every: int = 25) -> list:
@@ -335,7 +369,7 @@ def enrich_with_prices(cards: list, save_every: int = 25) -> list:
 
     print(f"Fetching prices for {len(cards)} cards via tcgapi.dev...", file=sys.stderr)
     for i, c in enumerate(cards):
-        price_info = fetch_price(c["name"], c["id"])
+        price_info = fetch_price(c["name"], c["id"], c["card_number"])
         c["market_price"] = price_info.get("market_price")
         c["tcgplayer_url"] = price_info.get("tcgplayer_url")
         # image_url is already set to a local repo path by download_all_images;
