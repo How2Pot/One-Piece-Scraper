@@ -1,5 +1,5 @@
 {
-  "generated_at": "2026-06-21T18:57:45Z",
+  "generated_at": "2026-06-21T18:58:38Z",
   "card_count": 1218,
   "sets": [
     "OP-01",
@@ -13221,7 +13221,9 @@
       "category": "Event",
       "set_label": "OP-01",
       "set_id": "OP-01",
-      "image_url": "data/images/OP01-029.png"
+      "image_url": "data/images/OP01-029.png",
+      "market_price": null,
+      "tcgplayer_url": null
     },
     {
       "id": "OP01-030",
@@ -13231,7 +13233,9 @@
       "category": "Event",
       "set_label": "OP-01",
       "set_id": "OP-01",
-      "image_url": "data/images/OP01-030.png"
+      "image_url": "data/images/OP01-030.png",
+      "market_price": null,
+      "tcgplayer_url": null
     },
     {
       "id": "OP01-031",
@@ -13241,7 +13245,9 @@
       "category": "Leader",
       "set_label": "OP-01",
       "set_id": "OP-01",
-      "image_url": "data/images/OP01-031.png"
+      "image_url": "data/images/OP01-031.png",
+      "market_price": 0.28,
+      "tcgplayer_url": "https://www.tcgplayer.com/product/454551"
     },
     {
       "id": "OP01-031_p1",
@@ -13251,7 +13257,9 @@
       "category": "Leader",
       "set_label": "OP-01",
       "set_id": "OP-01",
-      "image_url": "data/images/OP01-031_p1.png"
+      "image_url": "data/images/OP01-031_p1.png",
+      "market_price": 0.94,
+      "tcgplayer_url": "https://www.tcgplayer.com/product/503654"
     },
     {
       "id": "OP01-032",
@@ -13261,7 +13269,9 @@
       "category": "Character",
       "set_label": "OP-01",
       "set_id": "OP-01",
-      "image_url": "data/images/OP01-032.png"
+      "image_url": "data/images/OP01-032.png",
+      "market_price": 0.08,
+      "tcgplayer_url": "https://www.tcgplayer.com/product/454553"
     },
     {
       "id": "OP01-033",
@@ -13271,7 +13281,9 @@
       "category": "Character",
       "set_label": "OP-01",
       "set_id": "OP-01",
-      "image_url": "data/images/OP01-033.png"
+      "image_url": "data/images/OP01-033.png",
+      "market_price": 0.25,
+      "tcgplayer_url": "https://www.tcgplayer.com/product/454554"
     },
     {
       "id": "OP01-034",
@@ -13281,7 +13293,9 @@
       "category": "Character",
       "set_label": "OP-01",
       "set_id": "OP-01",
-      "image_url": "data/images/OP01-034.png"
+      "image_url": "data/images/OP01-034.png",
+      "market_price": 0.05,
+      "tcgplayer_url": "https://www.tcgplayer.com/product/454555"
     },
     {
       "id": "OP01-034_p1",
@@ -13291,7 +13305,9 @@
       "category": "Character",
       "set_label": "OP-01",
       "set_id": "OP-01",
-      "image_url": "data/images/OP01-034_p1.png"
+      "image_url": "data/images/OP01-034_p1.png",
+      "market_price": 0.51,
+      "tcgplayer_url": "https://www.tcgplayer.com/product/649286"
     },
     {
       "id": "OP01-035",
@@ -13301,7 +13317,9 @@
       "category": "Character",
       "set_label": "OP-01",
       "set_id": "OP-01",
-      "image_url": "data/images/OP01-035.png"
+      "image_url": "data/images/OP01-035.png",
+      "market_price": 0.24,
+      "tcgplayer_url": "https://www.tcgplayer.com/product/454556"
     },
     {
       "id": "OP01-036",
@@ -13311,7 +13329,9 @@
       "category": "Character",
       "set_label": "OP-01",
       "set_id": "OP-01",
-      "image_url": "data/images/OP01-036.png"
+      "image_url": "data/images/OP01-036.png",
+      "market_price": 0.08,
+      "tcgplayer_url": "https://www.tcgplayer.com/product/454558"
     },
     {
       "id": "OP01-037",
@@ -13321,7 +13341,9 @@
       "category": "Character",
       "set_label": "OP-01",
       "set_id": "OP-01",
-      "image_url": "data/images/OP01-037.png"
+      "image_url": "data/images/OP01-037.png",
+      "market_price": 0.06,
+      "tcgplayer_url": "https://www.tcgplayer.com/product/454560"
     },
     {
       "id": "OP01-038",
@@ -13331,7 +13353,9 @@
       "category": "Character",
       "set_label": "OP-01",
       "set_id": "OP-01",
-      "image_url": "data/images/OP01-038.png"
+      "image_url": "data/images/OP01-038.png",
+      "market_price": 0.04,
+      "tcgplayer_url": "https://www.tcgplayer.com/product/454562"
     },
     {
       "id": "OP01-039",
@@ -13341,7 +13365,9 @@
       "category": "Character",
       "set_label": "OP-01",
       "set_id": "OP-01",
-      "image_url": "data/images/OP01-039.png"
+      "image_url": "data/images/OP01-039.png",
+      "market_price": 0.16,
+      "tcgplayer_url": "https://www.tcgplayer.com/product/454563"
     },
     {
       "id": "OP01-040",
@@ -13351,7 +13377,9 @@
       "category": "Character",
       "set_label": "OP-01",
       "set_id": "OP-01",
-      "image_url": "data/images/OP01-040.png"
+      "image_url": "data/images/OP01-040.png",
+      "market_price": null,
+      "tcgplayer_url": null
     },
     {
       "id": "OP01-040_p1",
@@ -13361,7 +13389,9 @@
       "category": "Character",
       "set_label": "OP-01",
       "set_id": "OP-01",
-      "image_url": "data/images/OP01-040_p1.png"
+      "image_url": "data/images/OP01-040_p1.png",
+      "market_price": null,
+      "tcgplayer_url": null
     },
     {
       "id": "OP01-041",
@@ -13371,7 +13401,9 @@
       "category": "Character",
       "set_label": "OP-01",
       "set_id": "OP-01",
-      "image_url": "data/images/OP01-041.png"
+      "image_url": "data/images/OP01-041.png",
+      "market_price": 0.22,
+      "tcgplayer_url": "https://www.tcgplayer.com/product/454565"
     },
     {
       "id": "OP01-042",
@@ -13381,7 +13413,9 @@
       "category": "Character",
       "set_label": "OP-01",
       "set_id": "OP-01",
-      "image_url": "data/images/OP01-042.png"
+      "image_url": "data/images/OP01-042.png",
+      "market_price": 0.1,
+      "tcgplayer_url": "https://www.tcgplayer.com/product/454566"
     },
     {
       "id": "OP01-043",
@@ -13391,7 +13425,9 @@
       "category": "Character",
       "set_label": "OP-01",
       "set_id": "OP-01",
-      "image_url": "data/images/OP01-043.png"
+      "image_url": "data/images/OP01-043.png",
+      "market_price": 0.05,
+      "tcgplayer_url": "https://www.tcgplayer.com/product/454567"
     },
     {
       "id": "OP01-044",
@@ -13401,7 +13437,9 @@
       "category": "Character",
       "set_label": "OP-01",
       "set_id": "OP-01",
-      "image_url": "data/images/OP01-044.png"
+      "image_url": "data/images/OP01-044.png",
+      "market_price": 0.09,
+      "tcgplayer_url": "https://www.tcgplayer.com/product/454568"
     },
     {
       "id": "OP01-045",
@@ -13411,7 +13449,9 @@
       "category": "Character",
       "set_label": "OP-01",
       "set_id": "OP-01",
-      "image_url": "data/images/OP01-045.png"
+      "image_url": "data/images/OP01-045.png",
+      "market_price": 0.05,
+      "tcgplayer_url": "https://www.tcgplayer.com/product/454569"
     },
     {
       "id": "OP01-046",
@@ -13421,7 +13461,9 @@
       "category": "Character",
       "set_label": "OP-01",
       "set_id": "OP-01",
-      "image_url": "data/images/OP01-046.png"
+      "image_url": "data/images/OP01-046.png",
+      "market_price": 0.25,
+      "tcgplayer_url": "https://www.tcgplayer.com/product/454570"
     },
     {
       "id": "OP01-047",
@@ -13431,7 +13473,9 @@
       "category": "Character",
       "set_label": "OP-01",
       "set_id": "OP-01",
-      "image_url": "data/images/OP01-047.png"
+      "image_url": "data/images/OP01-047.png",
+      "market_price": 2.88,
+      "tcgplayer_url": "https://www.tcgplayer.com/product/288257"
     },
     {
       "id": "OP01-047_p1",
@@ -13441,7 +13485,9 @@
       "category": "Character",
       "set_label": "OP-01",
       "set_id": "OP-01",
-      "image_url": "data/images/OP01-047_p1.png"
+      "image_url": "data/images/OP01-047_p1.png",
+      "market_price": 2.88,
+      "tcgplayer_url": "https://www.tcgplayer.com/product/288257"
     },
     {
       "id": "OP01-048",
@@ -13451,7 +13497,9 @@
       "category": "Character",
       "set_label": "OP-01",
       "set_id": "OP-01",
-      "image_url": "data/images/OP01-048.png"
+      "image_url": "data/images/OP01-048.png",
+      "market_price": 0.06,
+      "tcgplayer_url": "https://www.tcgplayer.com/product/454572"
     },
     {
       "id": "OP01-048_p1",
@@ -13461,7 +13509,9 @@
       "category": "Character",
       "set_label": "OP-01",
       "set_id": "OP-01",
-      "image_url": "data/images/OP01-048_p1.png"
+      "image_url": "data/images/OP01-048_p1.png",
+      "market_price": 0.57,
+      "tcgplayer_url": "https://www.tcgplayer.com/product/649306"
     },
     {
       "id": "OP01-049",
