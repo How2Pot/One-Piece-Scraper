@@ -1,0 +1,36 @@
+name: TEST - Image Download Only (OP-01)
+
+on:
+  workflow_dispatch: {}
+  # Intentionally NO schedule trigger - this is a one-time manual test,
+  # not part of the regular daily rotation. It will never run on its own.
+
+permissions:
+  contents: write
+
+jobs:
+  test-images:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout repo
+        uses: actions/checkout@v4
+
+      - name: Set up Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+
+      - name: Configure git identity
+        run: |
+          git config user.name "github-actions[bot]"
+          git config user.email "github-actions[bot]@users.noreply.github.com"
+
+      - name: Run image-only test (OP-01, no tcgapi.dev calls)
+        run: python scripts/image_test_only.py
+
+      - name: Commit any downloaded test images
+        run: |
+          git add -A data/images/ data/_image_test_results.json data/_debug_raw_page.html 2>/dev/null || true
+          git status
+          git diff --staged --quiet || git commit -m "Image download test (OP-01 only, no price quota used)"
+          git push
