@@ -19,6 +19,7 @@ Run on a schedule via GitHub Actions (see .github/workflows/refresh.yml).
 import json
 import os
 import re
+import subprocess
 import sys
 import time
 import urllib.request
@@ -33,6 +34,11 @@ TCGAPI_BASE = "https://api.tcgapi.dev/v1"
 TCGAPI_KEY = os.environ.get("TCGAPI_KEY", "")  # set as a GitHub Actions secret
 
 OUTPUT_PATH = os.path.join(os.path.dirname(__file__), "..", "data", "cards.json")
+IMAGES_DIR = os.path.join(os.path.dirname(__file__), "..", "data", "images")
+# Public path the app will use, relative to wherever index.html is served
+# from (repo root, per the GitHub Pages setup). This stays the same
+# regardless of OS path separators used internally.
+IMAGES_PUBLIC_PREFIX = "data/images"
 
 REQUEST_DELAY = 0.8  # be polite between requests
 HEADERS = {
@@ -43,20 +49,6 @@ HEADERS = {
 
 DEBUG_DUMP_PATH = os.path.join(os.path.dirname(__file__), "..", "data", "_debug_raw_page.html")
 
-# ---- Set rotation groups -------------------------------------------------
-#
-# tcgapi.dev Starter tier allows 2,500 requests/day. The full One Piece
-# catalog (~2,885 cards across all sets) doesn't comfortably fit in a
-# single day's budget alongside retries, so the 21 real booster-type sets
-# (OP, EB, PRB - excludes Starter Decks and single promos) are split into
-# two groups that alternate by day. Each run only prices ONE group,
-# keeping any single day's usage well under the daily cap.
-#
-# Group A: the original 8 OP sets (OP-01 - OP-08)
-# Group B: current/standard-format OP sets (OP-09 - OP-16) plus all
-#          Extra Booster (EB) and Premium Booster (PRB) sets - these are
-#          the sets most likely to be actively opened right now.
-
 GROUP_A = ["OP-01", "OP-02", "OP-03", "OP-04", "OP-05", "OP-06", "OP-07", "OP-08"]
 GROUP_B = [
     "OP-09", "OP-10", "OP-11", "OP-12", "OP-13", "OP14-EB04", "OP15-EB04", "OP-16",
@@ -64,8 +56,6 @@ GROUP_B = [
     "PRB-01", "PRB-02",
 ]
 
-# Which group runs today: alternates based on the day of the year, so it
-# flips automatically every run without needing external state.
 import datetime
 _day_of_year = datetime.datetime.utcnow().timetuple().tm_yday
 ACTIVE_GROUP = GROUP_A if _day_of_year % 2 == 0 else GROUP_B
@@ -80,22 +70,6 @@ def fetch(url: str) -> str:
         return body
 
 
-# ---- Card block extraction ---------------------------------------------
-#
-# Verified against live page source. Each card is a <dl class="modalCol"
-# id="OP16-001"> block containing:
-#
-#   <div class="infoCol">
-#     <span>OP16-001</span> | <span>L</span> | <span>LEADER</span>
-#   </div>
-#   <div class="cardName">Portgas.D.Ace</div>
-#
-# Images are lazy-loaded via data-src on a preceding <a class="modalOpen">:
-#   <a data-src="#OP16-001"><img data-src="../images/cardlist/card/OP16-001.png?v" alt="..."></a>
-#
-# Parallel/alternate-art variants share the base card ID with a _pN suffix
-# (e.g. OP16-001_p1) and appear as their own complete <dl> block.
-
 CARD_BLOCK = re.compile(
     r'<dl class="modalCol" id="([^"]+)">.*?'
     r'<div class="infoCol">\s*'
@@ -105,57 +79,136 @@ CARD_BLOCK = re.compile(
 )
 
 
-def make_img_pattern(card_id: str):
-    escaped = re.escape(card_id)
+def make_img_pattern(unique_id: str):
+    """Match the image data-src for a SPECIFIC card variant, using its
+    unique id (e.g. 'OP01-001' or 'OP01-001_p1'), not just the shared
+    card_number. Using card_number alone would match BOTH the base card
+    and any parallel/alt-art variant's image tag, since 'OP01-001' is a
+    substring of 'OP01-001_p1' too - this caused base and parallel
+    versions to incorrectly download/link to the same image file."""
+    escaped = re.escape(unique_id)
+    # Anchor with a non-word-char boundary after the id so 'OP01-001'
+    # doesn't accidentally match inside 'OP01-001_p1's filename.
     return re.compile(rf'data-src="([^"]*?/card/{escaped}\.png[^"]*)"')
+
+
+def local_image_path(unique_id: str) -> str:
+    """Path is keyed on the unique card id (includes _p1/_p2 suffix for
+    parallels), NOT the shared card_number - otherwise every variant of
+    a card collapses onto the same image file."""
+    safe_id = re.sub(r'[^A-Za-z0-9_\-]', '_', unique_id)
+    return os.path.join(IMAGES_DIR, f"{safe_id}.png")
+
+
+def download_image(unique_id: str, remote_url: str) -> str:
+    """Download a card variant's image into the repo if not already
+    present, keyed by its unique id (so base and parallel versions of
+    the same card_number get separate files). Bandai's site blocks
+    hotlinked <img> requests from other origins (confirmed: works fine
+    fetched server-side here, but rejects browser requests from any page
+    that isn't en.onepiece-cardgame.com itself). Storing a local copy in
+    the repo sidesteps that permanently - the app then loads images from
+    its own GitHub Pages origin, never from Bandai's CDN directly.
+
+    Returns the PUBLIC relative path to use in cards.json (e.g.
+    "data/images/OP01-001_p1.png"), regardless of whether this run
+    actually downloaded it or it already existed from a previous run."""
+    local_path = local_image_path(unique_id)
+    public_path = f"{IMAGES_PUBLIC_PREFIX}/{os.path.basename(local_path)}"
+
+    if os.path.exists(local_path) and os.path.getsize(local_path) > 0:
+        return public_path  # already have it, skip re-downloading
+
+    os.makedirs(IMAGES_DIR, exist_ok=True)
+    req = urllib.request.Request(remote_url, headers=HEADERS)
+    try:
+        with urllib.request.urlopen(req, timeout=20) as resp:
+            data = resp.read()
+        if not data:
+            print(f"    WARN: empty image response for {unique_id}", file=sys.stderr)
+            return public_path
+        with open(local_path, "wb") as f:
+            f.write(data)
+        return public_path
+    except Exception as e:
+        print(f"    WARN: image download failed for {unique_id} ({remote_url}): {e}", file=sys.stderr)
+        return public_path
 
 
 def extract_cards_from_html(html: str, set_label: str) -> list:
     cards = []
-
     for m in CARD_BLOCK.finditer(html):
         dl_id, card_no, rarity, category, name = m.groups()
-
-        img_pattern = make_img_pattern(card_no.strip())
+        unique_id = dl_id.strip()  # e.g. "OP01-001" or "OP01-001_p1" - unique per variant
+        img_pattern = make_img_pattern(unique_id)
         img_match = img_pattern.search(html)
         if img_match:
             path = img_match.group(1)
-            img_url = path if path.startswith("http") else f"{OFFICIAL_BASE}/{path.lstrip('.').lstrip('/')}"
+            remote_img_url = path if path.startswith("http") else f"{OFFICIAL_BASE}/{path.lstrip('.').lstrip('/')}"
         else:
-            img_url = f"{OFFICIAL_BASE}/images/cardlist/card/{card_no.strip()}.png"
-
+            # Fallback: construct the expected URL directly from the unique id,
+            # not the shared card_number, so parallels still get their own path
+            # even if the regex match fails for some reason.
+            remote_img_url = f"{OFFICIAL_BASE}/images/cardlist/card/{unique_id}.png"
         cards.append({
-            "id": dl_id.strip(),
+            "id": unique_id,
             "card_number": card_no.strip(),
             "name": name.strip(),
             "rarity": rarity.strip(),
             "category": category.strip().title(),
             "set_label": set_label,
-            "image_url": img_url,
+            "_remote_image_url": remote_img_url,  # internal only; resolved to local path before saving
         })
+    return cards
 
+
+def download_all_images(cards: list) -> list:
+    """Second pass: download each card variant's image into the repo
+    (skipping ones already saved from a previous run), then replace the
+    remote Bandai URL with the local public path the app should use.
+    Keyed by c['id'] (unique per variant, e.g. 'OP01-001_p1'), NOT
+    c['card_number'] (shared across all variants of a card) - using the
+    shared number was the bug that caused parallels/alt-arts to silently
+    overwrite the base card's image file."""
+    print(f"Downloading images for {len(cards)} cards (skipping any already saved)...", file=sys.stderr)
+    downloaded = 0
+    skipped = 0
+    for i, c in enumerate(cards):
+        remote_url = c.pop("_remote_image_url", None)
+        if not remote_url:
+            c["image_url"] = None
+            continue
+
+        local_path = local_image_path(c["id"])
+        already_had_it = os.path.exists(local_path) and os.path.getsize(local_path) > 0
+
+        c["image_url"] = download_image(c["id"], remote_url)
+
+        if already_had_it:
+            skipped += 1
+        else:
+            downloaded += 1
+            time.sleep(0.3)  # only pace actual new downloads, not the (instant) skip path
+
+        if (i + 1) % 50 == 0:
+            print(f"  Images: {i + 1}/{len(cards)} processed ({downloaded} downloaded, {skipped} already cached)", file=sys.stderr)
+
+    print(f"Image pass complete: {downloaded} newly downloaded, {skipped} already cached", file=sys.stderr)
     return cards
 
 
 def discover_series_ids() -> dict:
-    """Parse the cardlist page's set-selector to find real series IDs,
-    instead of relying on a hardcoded (and possibly wrong) mapping."""
     try:
         html = fetch(CARDLIST_URL)
     except Exception as e:
         print(f"ERROR: failed to fetch cardlist page at all: {type(e).__name__}: {e}", file=sys.stderr)
         return {}
 
-    # Save raw HTML for debugging if extraction ever yields nothing -
-    # this gets committed so we can inspect actual site structure.
     os.makedirs(os.path.dirname(DEBUG_DUMP_PATH), exist_ok=True)
     with open(DEBUG_DUMP_PATH, "w", encoding="utf-8") as f:
-        f.write(html[:50000])  # cap size
+        f.write(html[:50000])
     print(f"  Wrote debug dump to {DEBUG_DUMP_PATH} ({min(len(html),50000)} bytes)", file=sys.stderr)
 
-    # Real structure (verified against live page source):
-    #   <option value="569116" selected>BOOSTER PACK ... [OP-16]</option>
-    #   <option value="569101" >BOOSTER PACK ... [OP-01]</option>
     option_pattern = re.compile(
         r'<option\s+value="(\d+)"[^>]*>(.*?)</option>',
         re.IGNORECASE | re.DOTALL,
@@ -178,7 +231,6 @@ def discover_series_ids() -> dict:
 
 def scrape_official_cards() -> list:
     all_cards = {}
-
     series_map = discover_series_ids()
 
     if not series_map:
@@ -191,10 +243,6 @@ def scrape_official_cards() -> list:
             all_cards[c["id"]] = c
         return list(all_cards.values())
 
-    # Only scrape sets in today's active rotation group (see GROUP_A/GROUP_B
-    # above). This keeps each run's tcgapi.dev usage well under the daily
-    # request cap instead of trying to price the entire ~2,885-card catalog
-    # in one run.
     print(f"Today's active group: {ACTIVE_GROUP_NAME}", file=sys.stderr)
     relevant = {k: v for k, v in series_map.items() if k in ACTIVE_GROUP}
 
@@ -217,19 +265,14 @@ def scrape_official_cards() -> list:
 
         for c in cards:
             c["set_id"] = set_id
-            all_cards[c["id"]] = c  # dedupe by card id
+            all_cards[c["id"]] = c
 
         time.sleep(REQUEST_DELAY)
 
     return list(all_cards.values())
 
 
-# ---- TCGapi.dev pricing -------------------------------------------------
-
 def fetch_price(card_name: str, card_number: str, retries: int = 2) -> dict:
-    """Query tcgapi.dev for a card's market price. Returns dict with
-    market_price and tcg_image_url (fallback image), or empty dict.
-    Retries once on 429 with a backoff pause."""
     if not TCGAPI_KEY:
         return {}
 
@@ -264,38 +307,56 @@ def fetch_price(card_name: str, card_number: str, retries: int = 2) -> dict:
     if not results:
         return {}
 
-    # Try to match by card number first (most precise), else take first result
+    def build_result(r):
+        tcgplayer_id = r.get("tcgplayer_id")
+        return {
+            "market_price": r.get("market_price"),
+            "tcgapi_image_url": r.get("image_url"),
+            "tcgplayer_id": tcgplayer_id,
+            "tcgplayer_url": f"https://www.tcgplayer.com/product/{tcgplayer_id}" if tcgplayer_id else None,
+        }
+
     for r in results:
         if card_number and card_number in (r.get("number") or ""):
-            return {"market_price": r.get("market_price"), "tcgapi_image_url": r.get("image_url")}
+            return build_result(r)
 
     best = results[0]
-    return {"market_price": best.get("market_price"), "tcgapi_image_url": best.get("image_url")}
+    return build_result(best)
 
 
-def enrich_with_prices(cards: list) -> list:
+def enrich_with_prices(cards: list, save_every: int = 25) -> list:
     if not TCGAPI_KEY:
         print("No TCGAPI_KEY set - skipping price enrichment. Cards will have null prices.", file=sys.stderr)
         for c in cards:
             c["market_price"] = None
+            c["tcgplayer_url"] = None
+        save_progress(cards)
         return cards
 
     print(f"Fetching prices for {len(cards)} cards via tcgapi.dev...", file=sys.stderr)
     for i, c in enumerate(cards):
         price_info = fetch_price(c["name"], c["id"])
         c["market_price"] = price_info.get("market_price")
-        # Keep official image as primary; store tcgapi image as fallback only
-        if not c.get("image_url") and price_info.get("tcgapi_image_url"):
-            c["image_url"] = price_info["tcgapi_image_url"]
+        c["tcgplayer_url"] = price_info.get("tcgplayer_url")
+        # image_url is already set to a local repo path by download_all_images;
+        # we no longer fall back to tcgapi's image URL since it's hosted on
+        # the same kind of CDN and would hit the same hotlink restrictions.
 
-        if (i + 1) % 25 == 0:
+        if (i + 1) % save_every == 0:
             print(f"  Priced {i + 1}/{len(cards)}", file=sys.stderr)
-        time.sleep(0.5)  # gentle rate limiting - tuned to avoid 429s on Starter tier
+            # Commit progress so far. GitHub Actions only gives a cancelled
+            # job about 10 seconds before a hard kill, and that signal often
+            # never reaches this process at all - so writing+pushing
+            # periodically (not just once at the very end) is the only
+            # reliable way to avoid losing a long run's work if it gets
+            # cancelled or the runner is stopped partway through.
+            save_progress(cards[:i + 1])
+        time.sleep(0.5)
 
+    # Final save covers any remainder not caught by the save_every checkpoint
+    save_progress(cards)
     return cards
 
-
-# ---- Main ---------------------------------------------------------------
 
 def load_existing_output() -> dict:
     if os.path.exists(OUTPUT_PATH):
@@ -307,23 +368,19 @@ def load_existing_output() -> dict:
     return {"generated_at": None, "card_count": 0, "sets": [], "cards": []}
 
 
-def main():
-    cards = scrape_official_cards()
+def save_progress(priced_cards: list) -> None:
+    """Merge freshly-priced cards into the existing cards.json, write it,
+    and commit+push immediately. Called periodically during pricing (not
+    just once at the end) so a cancelled run or exhausted API quota never
+    loses completed work - only cards not yet reached this run keep
+    whatever price they had before."""
+    if not priced_cards:
+        return
 
-    if not cards:
-        print("ERROR: No cards scraped. Site structure may have changed.", file=sys.stderr)
-        print(f"A raw HTML sample was saved to {DEBUG_DUMP_PATH} - check it into the repo logs to diagnose.", file=sys.stderr)
-        print("Aborting without overwriting existing card data.", file=sys.stderr)
-        sys.exit(1)
-
-    cards = enrich_with_prices(cards)
-
-    # Merge with whatever's already in cards.json so the OTHER rotation
-    # group's data (priced on a different day) isn't wiped out.
     existing = load_existing_output()
     existing_cards = {c["id"]: c for c in existing.get("cards", [])}
-    for c in cards:
-        existing_cards[c["id"]] = c  # new data replaces stale entries for this group's cards
+    for c in priced_cards:
+        existing_cards[c["id"]] = c
 
     merged_cards = list(existing_cards.values())
 
@@ -339,7 +396,46 @@ def main():
     with open(OUTPUT_PATH, "w", encoding="utf-8") as f:
         json.dump(output, f, indent=2, ensure_ascii=False)
 
-    print(f"Wrote {len(merged_cards)} total cards ({len(cards)} freshly updated) to {OUTPUT_PATH}", file=sys.stderr)
+    _git_commit_and_push()
+
+
+def _git_commit_and_push() -> None:
+    """Commit and push data/cards.json (and any new images) if there are
+    changes. Silently no-ops if there's nothing new to commit, or if git
+    isn't configured (e.g. running locally outside CI)."""
+    try:
+        subprocess.run(["git", "add", "-A", "data/"], check=True, capture_output=True)
+        diff = subprocess.run(["git", "diff", "--staged", "--quiet"], capture_output=True)
+        if diff.returncode == 0:
+            return  # nothing changed since last commit
+        subprocess.run(
+            ["git", "commit", "-m", f"Incremental update ({time.strftime('%Y-%m-%d %H:%M UTC')})"],
+            check=True, capture_output=True,
+        )
+        subprocess.run(["git", "push"], check=True, capture_output=True)
+        print("  [checkpoint committed and pushed]", file=sys.stderr)
+    except Exception as e:
+        print(f"  WARN: checkpoint commit/push failed (continuing anyway): {e}", file=sys.stderr)
+
+
+def main():
+    cards = scrape_official_cards()
+
+    if not cards:
+        print("ERROR: No cards scraped. Site structure may have changed.", file=sys.stderr)
+        print(f"A raw HTML sample was saved to {DEBUG_DUMP_PATH} - check it into the repo logs to diagnose.", file=sys.stderr)
+        print("Aborting without overwriting existing card data.", file=sys.stderr)
+        sys.exit(1)
+
+    cards = download_all_images(cards)
+    # Commit downloaded images right away too, before pricing starts -
+    # images can take a while on a fresh/empty data/images/ folder, and
+    # this ensures they're saved even if pricing gets interrupted next.
+    save_progress(cards)
+
+    cards = enrich_with_prices(cards)
+
+    print(f"Done. {len(cards)} cards from this run's group were priced and saved incrementally to {OUTPUT_PATH}", file=sys.stderr)
 
 
 if __name__ == "__main__":
