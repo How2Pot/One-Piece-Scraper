@@ -434,7 +434,7 @@ function renderPulls() {
   list.innerHTML = state.pulls.map(p => `
     <div class="pull-item ${p.isHit ? "hit" : ""}">
       <img class="pull-thumb" src="${p.imageUrl}" alt="${p.name}" onerror="this.style.opacity='0.15'" />
-      <span class="pull-name" title="${p.name}">${p.name}</span>
+      <span class="pull-name" title="${p.name} (${p.cardNumber || ''})">${p.name}${p.cardNumber ? ` <span style="color:var(--text-tertiary);font-weight:400">(${p.cardNumber})</span>` : ''}</span>
       <span class="badge ${p.rarity}">${p.rarity || "?"}</span>
       <span class="pull-price">${p.price != null ? "$" + p.price.toFixed(2) : "N/A"}</span>
       <button class="remove-btn" onclick="removePull(${p.id})" aria-label="Remove">&times;</button>
@@ -458,7 +458,7 @@ function goPhase3() {
   document.getElementById("res-list").innerHTML = state.pulls.map(p => `
     <div class="res-pull">
       <img class="pull-thumb" src="${p.imageUrl}" alt="${p.name}" onerror="this.style.opacity='0.15'" />
-      <span class="res-name">${p.name}</span>
+      <span class="res-name">${p.name}${p.cardNumber ? ` <span style="color:var(--text-tertiary);font-weight:400">(${p.cardNumber})</span>` : ''}</span>
       <span class="badge ${p.rarity}">${p.rarity || "?"}</span>
       <span class="pull-price">${p.price != null ? "$" + p.price.toFixed(2) : "N/A"}</span>
     </div>`).join("");
