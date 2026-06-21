@@ -36,7 +36,7 @@ def main():
     params = urllib.parse.urlencode({
         "q": "Roronoa Zoro",
         "game": "one-piece",
-        "per_page": "3",
+        "per_page": "20",
     })
     url = f"{TCGAPI_BASE}/search?{params}"
     req = urllib.request.Request(url, headers={**HEADERS, "X-API-Key": TCGAPI_KEY})
@@ -58,6 +58,14 @@ def main():
             print(f"  {key}: {val!r}", file=sys.stderr)
     else:
         print("  No results returned.", file=sys.stderr)
+
+    print("\n=== ALL RESULTS WHOSE 'number' CONTAINS 'OP01-001' ===", file=sys.stderr)
+    matches = [r for r in results if "OP01-001" in (r.get("number") or "")]
+    if not matches:
+        print("  NONE FOUND in this page of results.", file=sys.stderr)
+    for r in matches:
+        print(f"  number={r.get('number')!r} printing={r.get('printing')!r} rarity={r.get('rarity')!r} "
+              f"market_price={r.get('market_price')!r} set_name={r.get('set_name')!r} tcgplayer_id={r.get('tcgplayer_id')!r}", file=sys.stderr)
 
 
 if __name__ == "__main__":
