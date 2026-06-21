@@ -24,6 +24,14 @@ jobs:
         with:
           python-version: "3.12"
 
+      - name: Configure git identity
+        # Must happen BEFORE the scraper runs - scrape_cards.py now commits
+        # and pushes progress every 25 cards (not just once at the end), so
+        # git needs a configured identity before that script ever runs.
+        run: |
+          git config user.name "github-actions[bot]"
+          git config user.email "github-actions[bot]@users.noreply.github.com"
+
       - name: Run scraper
         id: scrape
         env:
@@ -39,10 +47,11 @@ jobs:
           echo "Git status:"
           git status
 
-      - name: Commit updated data (and debug dump if scrape failed)
+      - name: Final commit of any remaining changes
+        # Safety net in case the script's own incremental commits didn't
+        # catch everything (e.g. it crashed between a price update and its
+        # next scheduled checkpoint).
         run: |
-          git config user.name "github-actions[bot]"
-          git config user.email "github-actions[bot]@users.noreply.github.com"
           git add -A data/
           git status
           git diff --staged --quiet || git commit -m "Auto-refresh card data $(date -u +%Y-%m-%d)"
@@ -51,5 +60,5 @@ jobs:
       - name: Fail job if scrape failed
         if: steps.scrape.outcome == 'failure'
         run: |
-          echo "Scraper failed — see logs above and data/_debug_raw_page.html in the repo for diagnosis."
+          echo "Scraper failed - see logs above and data/_debug_raw_page.html in the repo for diagnosis."
           exit 1
