@@ -34,9 +34,9 @@ def main():
         sys.exit(1)
 
     params = urllib.parse.urlencode({
-        "q": "Roronoa Zoro",
+        "q": "Trafalgar Law",
         "game": "one-piece",
-        "per_page": "20",
+        "per_page": "30",
     })
     url = f"{TCGAPI_BASE}/search?{params}"
     req = urllib.request.Request(url, headers={**HEADERS, "X-API-Key": TCGAPI_KEY})
@@ -59,8 +59,8 @@ def main():
     else:
         print("  No results returned.", file=sys.stderr)
 
-    print("\n=== ALL RESULTS WHOSE 'number' CONTAINS 'OP01-001' ===", file=sys.stderr)
-    matches = [r for r in results if "OP01-001" in (r.get("number") or "")]
+    print("\n=== ALL RESULTS WHOSE 'number' CONTAINS 'OP01-002' ===", file=sys.stderr)
+    matches = [r for r in results if "OP01-002" in (r.get("number") or "")]
     if not matches:
         print("  NONE FOUND in this page of results.", file=sys.stderr)
     for r in matches:
