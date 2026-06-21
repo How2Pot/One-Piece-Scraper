@@ -1,0 +1,26 @@
+name: TEST - Single Card Price Fix
+
+on:
+  workflow_dispatch: {}
+
+permissions:
+  contents: write
+
+jobs:
+  test:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+      - run: |
+          git config user.name "github-actions[bot]"
+          git config user.email "github-actions[bot]@users.noreply.github.com"
+      - env:
+          TCGAPI_KEY: ${{ secrets.TCGAPI_KEY }}
+        run: python scripts/test_single_card_price.py
+      - run: |
+          git add data/cards.json
+          git diff --staged --quiet || git commit -m "Test: single card price fix verification"
+          git push
