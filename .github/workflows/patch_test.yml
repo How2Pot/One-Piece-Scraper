@@ -1,4 +1,4 @@
-name: TEST - Patch OP-01 Image URLs
+name: TEST - Clear Images Folder
 
 on:
   workflow_dispatch: {}
@@ -7,18 +7,13 @@ permissions:
   contents: write
 
 jobs:
-  patch:
+  clear:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v4
-      - uses: actions/setup-python@v5
-        with:
-          python-version: "3.12"
       - run: |
           git config user.name "github-actions[bot]"
           git config user.email "github-actions[bot]@users.noreply.github.com"
-      - run: python scripts/patch_op01_images.py
-      - run: |
-          git add data/cards.json
-          git diff --staged --quiet || git commit -m "One-off: patch OP-01 image URLs to local files"
+          git rm -rf data/images/ || true
+          git commit -m "Clear images folder for fresh rebuild" || true
           git push
