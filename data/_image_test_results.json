@@ -1,0 +1,781 @@
+{
+  "tested_sets": [
+    "OP-01"
+  ],
+  "total_cards": 154,
+  "downloaded": 121,
+  "skipped_cached": 33,
+  "failed": 0,
+  "details": [
+    {
+      "card_number": "OP01-001",
+      "name": "Roronoa Zoro",
+      "status": "downloaded"
+    },
+    {
+      "card_number": "OP01-001",
+      "name": "Roronoa Zoro",
+      "status": "skipped_cached"
+    },
+    {
+      "card_number": "OP01-002",
+      "name": "Trafalgar Law",
+      "status": "downloaded"
+    },
+    {
+      "card_number": "OP01-002",
+      "name": "Trafalgar Law",
+      "status": "skipped_cached"
+    },
+    {
+      "card_number": "OP01-003",
+      "name": "Monkey.D.Luffy",
+      "status": "downloaded"
+    },
+    {
+      "card_number": "OP01-003",
+      "name": "Monkey.D.Luffy",
+      "status": "skipped_cached"
+    },
+    {
+      "card_number": "OP01-004",
+      "name": "Usopp",
+      "status": "downloaded"
+    },
+    {
+      "card_number": "OP01-005",
+      "name": "Uta",
+      "status": "downloaded"
+    },
+    {
+      "card_number": "OP01-006",
+      "name": "Otama",
+      "status": "downloaded"
+    },
+    {
+      "card_number": "OP01-007",
+      "name": "Caribou",
+      "status": "downloaded"
+    },
+    {
+      "card_number": "OP01-008",
+      "name": "Cavendish",
+      "status": "downloaded"
+    },
+    {
+      "card_number": "OP01-008",
+      "name": "Cavendish",
+      "status": "skipped_cached"
+    },
+    {
+      "card_number": "OP01-009",
+      "name": "Carrot",
+      "status": "downloaded"
+    },
+    {
+      "card_number": "OP01-010",
+      "name": "Komachiyo",
+      "status": "downloaded"
+    },
+    {
+      "card_number": "OP01-011",
+      "name": "Gordon",
+      "status": "downloaded"
+    },
+    {
+      "card_number": "OP01-012",
+      "name": "Sai",
+      "status": "downloaded"
+    },
+    {
+      "card_number": "OP01-013",
+      "name": "Sanji",
+      "status": "downloaded"
+    },
+    {
+      "card_number": "OP01-013",
+      "name": "Sanji",
+      "status": "skipped_cached"
+    },
+    {
+      "card_number": "OP01-014",
+      "name": "Jinbe",
+      "status": "downloaded"
+    },
+    {
+      "card_number": "OP01-015",
+      "name": "Tony Tony.Chopper",
+      "status": "downloaded"
+    },
+    {
+      "card_number": "OP01-016",
+      "name": "Nami",
+      "status": "downloaded"
+    },
+    {
+      "card_number": "OP01-016",
+      "name": "Nami",
+      "status": "skipped_cached"
+    },
+    {
+      "card_number": "OP01-017",
+      "name": "Nico Robin",
+      "status": "downloaded"
+    },
+    {
+      "card_number": "OP01-018",
+      "name": "Hajrudin",
+      "status": "downloaded"
+    },
+    {
+      "card_number": "OP01-019",
+      "name": "Bartolomeo",
+      "status": "downloaded"
+    },
+    {
+      "card_number": "OP01-020",
+      "name": "Hyogoro",
+      "status": "downloaded"
+    },
+    {
+      "card_number": "OP01-021",
+      "name": "Franky",
+      "status": "downloaded"
+    },
+    {
+      "card_number": "OP01-022",
+      "name": "Brook",
+      "status": "downloaded"
+    },
+    {
+      "card_number": "OP01-023",
+      "name": "Marco",
+      "status": "downloaded"
+    },
+    {
+      "card_number": "OP01-024",
+      "name": "Monkey.D.Luffy",
+      "status": "downloaded"
+    },
+    {
+      "card_number": "OP01-024",
+      "name": "Monkey.D.Luffy",
+      "status": "skipped_cached"
+    },
+    {
+      "card_number": "OP01-025",
+      "name": "Roronoa Zoro",
+      "status": "downloaded"
+    },
+    {
+      "card_number": "OP01-025",
+      "name": "Roronoa Zoro",
+      "status": "skipped_cached"
+    },
+    {
+      "card_number": "OP01-026",
+      "name": "Gum-Gum Fire-Fist Pistol Red Hawk",
+      "status": "downloaded"
+    },
+    {
+      "card_number": "OP01-027",
+      "name": "Round Table",
+      "status": "downloaded"
+    },
+    {
+      "card_number": "OP01-028",
+      "name": "Green Star Rafflesia",
+      "status": "downloaded"
+    },
+    {
+      "card_number": "OP01-029",
+      "name": "Radical Beam!!",
+      "status": "downloaded"
+    },
+    {
+      "card_number": "OP01-030",
+      "name": "In Two Years!! At the Sabaody Archipelago!!",
+      "status": "downloaded"
+    },
+    {
+      "card_number": "OP01-031",
+      "name": "Kouzuki Oden",
+      "status": "downloaded"
+    },
+    {
+      "card_number": "OP01-031",
+      "name": "Kouzuki Oden",
+      "status": "skipped_cached"
+    },
+    {
+      "card_number": "OP01-032",
+      "name": "Ashura Doji",
+      "status": "downloaded"
+    },
+    {
+      "card_number": "OP01-033",
+      "name": "Izo",
+      "status": "downloaded"
+    },
+    {
+      "card_number": "OP01-034",
+      "name": "Inuarashi",
+      "status": "downloaded"
+    },
+    {
+      "card_number": "OP01-034",
+      "name": "Inuarashi",
+      "status": "skipped_cached"
+    },
+    {
+      "card_number": "OP01-035",
+      "name": "Okiku",
+      "status": "downloaded"
+    },
+    {
+      "card_number": "OP01-036",
+      "name": "Otsuru",
+      "status": "downloaded"
+    },
+    {
+      "card_number": "OP01-037",
+      "name": "Kawamatsu",
+      "status": "downloaded"
+    },
+    {
+      "card_number": "OP01-038",
+      "name": "Kanjuro",
+      "status": "downloaded"
+    },
+    {
+      "card_number": "OP01-039",
+      "name": "Killer",
+      "status": "downloaded"
+    },
+    {
+      "card_number": "OP01-040",
+      "name": "Kin&#039;emon",
+      "status": "downloaded"
+    },
+    {
+      "card_number": "OP01-040",
+      "name": "Kin&#039;emon",
+      "status": "skipped_cached"
+    },
+    {
+      "card_number": "OP01-041",
+      "name": "Kouzuki Momonosuke",
+      "status": "downloaded"
+    },
+    {
+      "card_number": "OP01-042",
+      "name": "Komurasaki",
+      "status": "downloaded"
+    },
+    {
+      "card_number": "OP01-043",
+      "name": "Shinobu",
+      "status": "downloaded"
+    },
+    {
+      "card_number": "OP01-044",
+      "name": "Shachi",
+      "status": "downloaded"
+    },
+    {
+      "card_number": "OP01-045",
+      "name": "Jean Bart",
+      "status": "downloaded"
+    },
+    {
+      "card_number": "OP01-046",
+      "name": "Denjiro",
+      "status": "downloaded"
+    },
+    {
+      "card_number": "OP01-047",
+      "name": "Trafalgar Law",
+      "status": "downloaded"
+    },
+    {
+      "card_number": "OP01-047",
+      "name": "Trafalgar Law",
+      "status": "skipped_cached"
+    },
+    {
+      "card_number": "OP01-048",
+      "name": "Nekomamushi",
+      "status": "downloaded"
+    },
+    {
+      "card_number": "OP01-048",
+      "name": "Nekomamushi",
+      "status": "skipped_cached"
+    },
+    {
+      "card_number": "OP01-049",
+      "name": "Bepo",
+      "status": "downloaded"
+    },
+    {
+      "card_number": "OP01-050",
+      "name": "Penguin",
+      "status": "downloaded"
+    },
+    {
+      "card_number": "OP01-051",
+      "name": "Eustass&quot;Captain&quot;Kid",
+      "status": "downloaded"
+    },
+    {
+      "card_number": "OP01-051",
+      "name": "Eustass&quot;Captain&quot;Kid",
+      "status": "skipped_cached"
+    },
+    {
+      "card_number": "OP01-052",
+      "name": "Raizo",
+      "status": "downloaded"
+    },
+    {
+      "card_number": "OP01-053",
+      "name": "Wire",
+      "status": "downloaded"
+    },
+    {
+      "card_number": "OP01-054",
+      "name": "X.Drake",
+      "status": "downloaded"
+    },
+    {
+      "card_number": "OP01-055",
+      "name": "You Can Be My Samurai!!",
+      "status": "downloaded"
+    },
+    {
+      "card_number": "OP01-056",
+      "name": "Demon Face",
+      "status": "downloaded"
+    },
+    {
+      "card_number": "OP01-057",
+      "name": "Paradise Waterfall",
+      "status": "downloaded"
+    },
+    {
+      "card_number": "OP01-058",
+      "name": "Punk Gibson",
+      "status": "downloaded"
+    },
+    {
+      "card_number": "OP01-059",
+      "name": "BE-BENG!!",
+      "status": "downloaded"
+    },
+    {
+      "card_number": "OP01-060",
+      "name": "Donquixote Doflamingo",
+      "status": "downloaded"
+    },
+    {
+      "card_number": "OP01-060",
+      "name": "Donquixote Doflamingo",
+      "status": "skipped_cached"
+    },
+    {
+      "card_number": "OP01-061",
+      "name": "Kaido",
+      "status": "downloaded"
+    },
+    {
+      "card_number": "OP01-061",
+      "name": "Kaido",
+      "status": "skipped_cached"
+    },
+    {
+      "card_number": "OP01-062",
+      "name": "Crocodile",
+      "status": "downloaded"
+    },
+    {
+      "card_number": "OP01-062",
+      "name": "Crocodile",
+      "status": "skipped_cached"
+    },
+    {
+      "card_number": "OP01-063",
+      "name": "Arlong",
+      "status": "downloaded"
+    },
+    {
+      "card_number": "OP01-064",
+      "name": "Alvida",
+      "status": "downloaded"
+    },
+    {
+      "card_number": "OP01-064",
+      "name": "Alvida",
+      "status": "skipped_cached"
+    },
+    {
+      "card_number": "OP01-065",
+      "name": "Vergo",
+      "status": "downloaded"
+    },
+    {
+      "card_number": "OP01-066",
+      "name": "Krieg",
+      "status": "downloaded"
+    },
+    {
+      "card_number": "OP01-067",
+      "name": "Crocodile",
+      "status": "downloaded"
+    },
+    {
+      "card_number": "OP01-067",
+      "name": "Crocodile",
+      "status": "skipped_cached"
+    },
+    {
+      "card_number": "OP01-068",
+      "name": "Gecko Moria",
+      "status": "downloaded"
+    },
+    {
+      "card_number": "OP01-069",
+      "name": "Caesar Clown",
+      "status": "downloaded"
+    },
+    {
+      "card_number": "OP01-070",
+      "name": "Dracule Mihawk",
+      "status": "downloaded"
+    },
+    {
+      "card_number": "OP01-070",
+      "name": "Dracule Mihawk",
+      "status": "skipped_cached"
+    },
+    {
+      "card_number": "OP01-071",
+      "name": "Jinbe",
+      "status": "downloaded"
+    },
+    {
+      "card_number": "OP01-072",
+      "name": "Smiley",
+      "status": "downloaded"
+    },
+    {
+      "card_number": "OP01-073",
+      "name": "Donquixote Doflamingo",
+      "status": "downloaded"
+    },
+    {
+      "card_number": "OP01-073",
+      "name": "Donquixote Doflamingo",
+      "status": "skipped_cached"
+    },
+    {
+      "card_number": "OP01-074",
+      "name": "Bartholomew Kuma",
+      "status": "downloaded"
+    },
+    {
+      "card_number": "OP01-075",
+      "name": "Pacifista",
+      "status": "downloaded"
+    },
+    {
+      "card_number": "OP01-076",
+      "name": "Bellamy",
+      "status": "downloaded"
+    },
+    {
+      "card_number": "OP01-077",
+      "name": "Perona",
+      "status": "downloaded"
+    },
+    {
+      "card_number": "OP01-077",
+      "name": "Perona",
+      "status": "skipped_cached"
+    },
+    {
+      "card_number": "OP01-078",
+      "name": "Boa Hancock",
+      "status": "downloaded"
+    },
+    {
+      "card_number": "OP01-078",
+      "name": "Boa Hancock",
+      "status": "skipped_cached"
+    },
+    {
+      "card_number": "OP01-079",
+      "name": "Ms. All Sunday",
+      "status": "downloaded"
+    },
+    {
+      "card_number": "OP01-080",
+      "name": "Miss Doublefinger(Zala)",
+      "status": "downloaded"
+    },
+    {
+      "card_number": "OP01-081",
+      "name": "Mocha",
+      "status": "downloaded"
+    },
+    {
+      "card_number": "OP01-082",
+      "name": "Monet",
+      "status": "downloaded"
+    },
+    {
+      "card_number": "OP01-083",
+      "name": "Mr.1(Daz.Bonez)",
+      "status": "downloaded"
+    },
+    {
+      "card_number": "OP01-084",
+      "name": "Mr.2.Bon.Kurei(Bentham)",
+      "status": "downloaded"
+    },
+    {
+      "card_number": "OP01-085",
+      "name": "Mr.3(Galdino)",
+      "status": "downloaded"
+    },
+    {
+      "card_number": "OP01-086",
+      "name": "Overheat",
+      "status": "downloaded"
+    },
+    {
+      "card_number": "OP01-087",
+      "name": "Officer Agents",
+      "status": "downloaded"
+    },
+    {
+      "card_number": "OP01-088",
+      "name": "Desert Spada",
+      "status": "downloaded"
+    },
+    {
+      "card_number": "OP01-089",
+      "name": "Crescent Cutlass",
+      "status": "downloaded"
+    },
+    {
+      "card_number": "OP01-090",
+      "name": "Baroque Works",
+      "status": "downloaded"
+    },
+    {
+      "card_number": "OP01-091",
+      "name": "King",
+      "status": "downloaded"
+    },
+    {
+      "card_number": "OP01-091",
+      "name": "King",
+      "status": "skipped_cached"
+    },
+    {
+      "card_number": "OP01-092",
+      "name": "Urashima",
+      "status": "downloaded"
+    },
+    {
+      "card_number": "OP01-093",
+      "name": "Ulti",
+      "status": "downloaded"
+    },
+    {
+      "card_number": "OP01-093",
+      "name": "Ulti",
+      "status": "skipped_cached"
+    },
+    {
+      "card_number": "OP01-094",
+      "name": "Kaido",
+      "status": "downloaded"
+    },
+    {
+      "card_number": "OP01-094",
+      "name": "Kaido",
+      "status": "skipped_cached"
+    },
+    {
+      "card_number": "OP01-095",
+      "name": "Kyoshirou",
+      "status": "downloaded"
+    },
+    {
+      "card_number": "OP01-096",
+      "name": "King",
+      "status": "downloaded"
+    },
+    {
+      "card_number": "OP01-096",
+      "name": "King",
+      "status": "skipped_cached"
+    },
+    {
+      "card_number": "OP01-097",
+      "name": "Queen",
+      "status": "downloaded"
+    },
+    {
+      "card_number": "OP01-097",
+      "name": "Queen",
+      "status": "skipped_cached"
+    },
+    {
+      "card_number": "OP01-098",
+      "name": "Kurozumi Orochi",
+      "status": "downloaded"
+    },
+    {
+      "card_number": "OP01-099",
+      "name": "Kurozumi Semimaru",
+      "status": "downloaded"
+    },
+    {
+      "card_number": "OP01-100",
+      "name": "Kurozumi Higurashi",
+      "status": "downloaded"
+    },
+    {
+      "card_number": "OP01-101",
+      "name": "Sasaki",
+      "status": "downloaded"
+    },
+    {
+      "card_number": "OP01-102",
+      "name": "Jack",
+      "status": "downloaded"
+    },
+    {
+      "card_number": "OP01-102",
+      "name": "Jack",
+      "status": "skipped_cached"
+    },
+    {
+      "card_number": "OP01-103",
+      "name": "Scratchmen Apoo",
+      "status": "downloaded"
+    },
+    {
+      "card_number": "OP01-104",
+      "name": "Speed",
+      "status": "downloaded"
+    },
+    {
+      "card_number": "OP01-105",
+      "name": "Bao Huang",
+      "status": "downloaded"
+    },
+    {
+      "card_number": "OP01-106",
+      "name": "Basil Hawkins",
+      "status": "downloaded"
+    },
+    {
+      "card_number": "OP01-107",
+      "name": "Babanuki",
+      "status": "downloaded"
+    },
+    {
+      "card_number": "OP01-108",
+      "name": "Hitokiri Kamazo",
+      "status": "downloaded"
+    },
+    {
+      "card_number": "OP01-109",
+      "name": "Who&#039;s.Who",
+      "status": "downloaded"
+    },
+    {
+      "card_number": "OP01-109",
+      "name": "Who&#039;s.Who",
+      "status": "skipped_cached"
+    },
+    {
+      "card_number": "OP01-110",
+      "name": "Fukurokuju",
+      "status": "downloaded"
+    },
+    {
+      "card_number": "OP01-111",
+      "name": "Black Maria",
+      "status": "downloaded"
+    },
+    {
+      "card_number": "OP01-112",
+      "name": "Page One",
+      "status": "downloaded"
+    },
+    {
+      "card_number": "OP01-113",
+      "name": "Holedem",
+      "status": "downloaded"
+    },
+    {
+      "card_number": "OP01-114",
+      "name": "X.Drake",
+      "status": "downloaded"
+    },
+    {
+      "card_number": "OP01-115",
+      "name": "Elephant&#039;s Marchoo",
+      "status": "downloaded"
+    },
+    {
+      "card_number": "OP01-116",
+      "name": "Artificial Devil Fruit SMILE",
+      "status": "downloaded"
+    },
+    {
+      "card_number": "OP01-117",
+      "name": "Sheep&#039;s Horn",
+      "status": "downloaded"
+    },
+    {
+      "card_number": "OP01-118",
+      "name": "Ulti-Mortar",
+      "status": "downloaded"
+    },
+    {
+      "card_number": "OP01-119",
+      "name": "Thunder Bagua",
+      "status": "downloaded"
+    },
+    {
+      "card_number": "OP01-120",
+      "name": "Shanks",
+      "status": "downloaded"
+    },
+    {
+      "card_number": "OP01-120",
+      "name": "Shanks",
+      "status": "skipped_cached"
+    },
+    {
+      "card_number": "OP01-120",
+      "name": "Shanks",
+      "status": "skipped_cached"
+    },
+    {
+      "card_number": "OP01-121",
+      "name": "Yamato",
+      "status": "downloaded"
+    },
+    {
+      "card_number": "OP01-121",
+      "name": "Yamato",
+      "status": "skipped_cached"
+    }
+  ]
+}
