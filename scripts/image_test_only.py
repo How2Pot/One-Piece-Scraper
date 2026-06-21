@@ -65,20 +65,23 @@ CARD_BLOCK = re.compile(
 )
 
 
-def make_img_pattern(card_id: str):
-    escaped = re.escape(card_id)
+def make_img_pattern(unique_id: str):
+    """Match using the unique variant id (e.g. 'OP01-001_p1'), not the
+    shared card_number - otherwise base and parallel cards collide since
+    'OP01-001' is a substring of 'OP01-001_p1'."""
+    escaped = re.escape(unique_id)
     return re.compile(rf'data-src="([^"]*?/card/{escaped}\.png[^"]*)"')
 
 
-def local_image_path(card_id: str) -> str:
-    safe_id = re.sub(r'[^A-Za-z0-9_\-]', '_', card_id)
+def local_image_path(unique_id: str) -> str:
+    safe_id = re.sub(r'[^A-Za-z0-9_\-]', '_', unique_id)
     return os.path.join(IMAGES_DIR, f"{safe_id}.png")
 
 
-def download_image(card_id: str, remote_url: str) -> tuple:
+def download_image(unique_id: str, remote_url: str) -> tuple:
     """Returns (public_path, status) where status is one of:
     'downloaded', 'skipped_cached', 'failed'."""
-    local_path = local_image_path(card_id)
+    local_path = local_image_path(unique_id)
     public_path = f"{IMAGES_PUBLIC_PREFIX}/{os.path.basename(local_path)}"
 
     if os.path.exists(local_path) and os.path.getsize(local_path) > 0:
@@ -90,13 +93,13 @@ def download_image(card_id: str, remote_url: str) -> tuple:
         with urllib.request.urlopen(req, timeout=20) as resp:
             data = resp.read()
         if not data:
-            print(f"    WARN: empty image response for {card_id}", file=sys.stderr)
+            print(f"    WARN: empty image response for {unique_id}", file=sys.stderr)
             return public_path, "failed"
         with open(local_path, "wb") as f:
             f.write(data)
         return public_path, "downloaded"
     except Exception as e:
-        print(f"    WARN: image download failed for {card_id} ({remote_url}): {e}", file=sys.stderr)
+        print(f"    WARN: image download failed for {unique_id} ({remote_url}): {e}", file=sys.stderr)
         return public_path, "failed"
 
 
@@ -104,15 +107,16 @@ def extract_cards_from_html(html: str, set_label: str) -> list:
     cards = []
     for m in CARD_BLOCK.finditer(html):
         dl_id, card_no, rarity, category, name = m.groups()
-        img_pattern = make_img_pattern(card_no.strip())
+        unique_id = dl_id.strip()
+        img_pattern = make_img_pattern(unique_id)
         img_match = img_pattern.search(html)
         if img_match:
             path = img_match.group(1)
             remote_img_url = path if path.startswith("http") else f"{OFFICIAL_BASE}/{path.lstrip('.').lstrip('/')}"
         else:
-            remote_img_url = f"{OFFICIAL_BASE}/images/cardlist/card/{card_no.strip()}.png"
+            remote_img_url = f"{OFFICIAL_BASE}/images/cardlist/card/{unique_id}.png"
         cards.append({
-            "id": dl_id.strip(),
+            "id": unique_id,
             "card_number": card_no.strip(),
             "name": name.strip(),
             "rarity": rarity.strip(),
@@ -185,9 +189,9 @@ def main():
 
     for i, c in enumerate(all_cards):
         remote_url = c.pop("_remote_image_url", None)
-        public_path, status = download_image(c["card_number"], remote_url)
+        public_path, status = download_image(c["id"], remote_url)
         c["image_url"] = public_path
-        results.append((c["card_number"], c["name"], status))
+        results.append((c["id"], c["card_number"], c["name"], status))
 
         if status == "downloaded":
             downloaded += 1
@@ -197,7 +201,7 @@ def main():
         else:
             failed += 1
 
-        print(f"  [{i+1}/{len(all_cards)}] {c['card_number']} ({c['name']}): {status}", file=sys.stderr)
+        print(f"  [{i+1}/{len(all_cards)}] {c['id']} ({c['name']}): {status}", file=sys.stderr)
 
     print(f"\n=== TEST RESULT ===", file=sys.stderr)
     print(f"Downloaded: {downloaded}", file=sys.stderr)
@@ -223,7 +227,7 @@ def main():
             "downloaded": downloaded,
             "skipped_cached": skipped,
             "failed": failed,
-            "details": [{"card_number": cn, "name": n, "status": s} for cn, n, s in results],
+            "details": [{"id": uid, "card_number": cn, "name": n, "status": s} for uid, cn, n, s in results],
         }, f, indent=2, ensure_ascii=False)
     print(f"\nWrote test results to {test_output_path}", file=sys.stderr)
 
