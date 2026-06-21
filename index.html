@@ -1,0 +1,479 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>One Piece Pack Tracker</title>
+<style>
+  :root {
+    --bg-deep: #0D0D14;
+    --bg-panel: #15131F;
+    --bg-card: #1A1830;
+    --gold: #D4A017;
+    --gold-bright: #F0C24B;
+    --teal: #00C9B7;
+    --text-primary: #F0EEF8;
+    --text-secondary: #9A96B0;
+    --text-tertiary: #6B6780;
+    --border: #2A2740;
+    --danger: #E5484D;
+    --success: #3DD68C;
+    --font-display: 'Bebas Neue', 'Arial Narrow', sans-serif;
+    --font-body: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
+  }
+
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+
+  body {
+    background: var(--bg-deep);
+    color: var(--text-primary);
+    font-family: var(--font-body);
+    min-height: 100vh;
+    background-image:
+      radial-gradient(circle at 20% 10%, rgba(212,160,23,0.06), transparent 40%),
+      radial-gradient(circle at 80% 80%, rgba(0,201,183,0.05), transparent 40%);
+  }
+
+  .wrap { max-width: 720px; margin: 0 auto; padding: 24px 16px 80px; }
+
+  header { margin-bottom: 24px; }
+  .logo-row { display: flex; align-items: baseline; gap: 10px; margin-bottom: 4px; }
+  h1 { font-family: var(--font-display); font-size: 32px; letter-spacing: 0.02em; color: var(--gold-bright); }
+  .tagline { font-size: 13px; color: var(--text-tertiary); }
+  #data-status { font-size: 12px; color: var(--text-tertiary); margin-top: 8px; }
+  #data-status.error { color: var(--danger); }
+  #data-status.ok { color: var(--success); }
+
+  .step-bar { display: flex; gap: 6px; align-items: center; margin-bottom: 20px; }
+  .dot { width: 7px; height: 7px; border-radius: 50%; background: var(--border); }
+  .dot.active { background: var(--teal); }
+  .dot.done { background: var(--success); }
+  .step-label { font-size: 11px; color: var(--text-tertiary); margin-left: 6px; text-transform: uppercase; letter-spacing: 0.06em; }
+
+  .phase { display: none; }
+  .phase.active { display: block; animation: fadein 0.25s ease; }
+  @keyframes fadein { from { opacity: 0; transform: translateY(4px); } to { opacity: 1; transform: translateY(0); } }
+
+  h2 { font-size: 19px; font-weight: 600; margin-bottom: 4px; }
+  .sub { font-size: 13px; color: var(--text-secondary); margin-bottom: 18px; }
+
+  .set-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(130px, 1fr)); gap: 8px; margin-bottom: 18px; }
+  .set-card {
+    background: var(--bg-card); border: 1px solid var(--border); border-radius: 10px;
+    padding: 12px 10px; cursor: pointer; text-align: center; transition: border-color 0.15s, transform 0.1s;
+  }
+  .set-card:hover { border-color: var(--gold); transform: translateY(-1px); }
+  .set-card.selected { border-color: var(--gold-bright); box-shadow: 0 0 0 1px var(--gold-bright); }
+  .set-card .sid { font-size: 11px; color: var(--text-tertiary); font-family: var(--font-display); letter-spacing: 0.04em; }
+  .set-card .sname { font-size: 12px; font-weight: 500; margin-top: 2px; line-height: 1.3; }
+  .set-card .scount { font-size: 10px; color: var(--text-tertiary); margin-top: 4px; }
+
+  .cost-row { display: flex; align-items: center; gap: 10px; margin-bottom: 20px; }
+  .cost-row label { font-size: 13px; color: var(--text-secondary); white-space: nowrap; }
+  input[type=text], input[type=number] {
+    background: var(--bg-card); border: 1px solid var(--border); border-radius: 8px;
+    padding: 9px 12px; color: var(--text-primary); font-size: 14px; font-family: var(--font-body);
+    width: 100%;
+  }
+  input[type=number] { max-width: 110px; }
+  input:focus { outline: none; border-color: var(--teal); }
+
+  .btn {
+    background: transparent; border: 1px solid var(--border); border-radius: 8px;
+    padding: 9px 18px; font-size: 14px; font-weight: 500; color: var(--text-primary);
+    cursor: pointer; font-family: var(--font-body); transition: all 0.15s;
+  }
+  .btn:hover { border-color: var(--text-secondary); }
+  .btn-primary { background: var(--gold); color: #1A1500; border-color: var(--gold); font-weight: 600; }
+  .btn-primary:hover { background: var(--gold-bright); border-color: var(--gold-bright); }
+  .btn-sm { padding: 7px 14px; font-size: 13px; }
+  .action-row { display: flex; gap: 8px; flex-wrap: wrap; }
+
+  .banner {
+    background: var(--bg-panel); border: 1px solid var(--border); border-radius: 10px;
+    padding: 10px 14px; margin-bottom: 16px; font-size: 13px; color: var(--text-secondary);
+    display: flex; justify-content: space-between; flex-wrap: wrap; gap: 6px;
+  }
+  .banner strong { color: var(--text-primary); }
+
+  .search-row { display: flex; gap: 8px; margin-bottom: 8px; }
+  .search-row input { flex: 1; }
+
+  #search-status { font-size: 12px; color: var(--text-tertiary); min-height: 16px; margin-bottom: 6px; }
+
+  .results-list {
+    background: var(--bg-card); border: 1px solid var(--border); border-radius: 10px;
+    max-height: 320px; overflow-y: auto; margin-bottom: 16px;
+  }
+  .result-item {
+    display: flex; align-items: center; gap: 10px; padding: 9px 12px; cursor: pointer;
+    border-bottom: 1px solid var(--border); transition: background 0.1s;
+  }
+  .result-item:last-child { border-bottom: none; }
+  .result-item:hover { background: rgba(255,255,255,0.03); }
+  .result-img { width: 38px; height: 53px; object-fit: cover; border-radius: 4px; background: var(--bg-panel); flex-shrink: 0; }
+  .result-info { flex: 1; min-width: 0; }
+  .result-name { font-size: 13px; font-weight: 500; white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }
+  .result-meta { font-size: 11px; color: var(--text-tertiary); margin-top: 2px; }
+  .result-price { font-size: 13px; font-weight: 600; color: var(--gold-bright); white-space: nowrap; }
+
+  .badge { font-size: 9px; padding: 2px 7px; border-radius: 20px; font-weight: 600; letter-spacing: 0.03em; display: inline-block; }
+  .badge.L   { background: rgba(212,160,23,0.18); color: var(--gold-bright); }
+  .badge.SEC { background: rgba(229,72,77,0.18); color: var(--danger); }
+  .badge.SR  { background: rgba(0,201,183,0.18); color: var(--teal); }
+  .badge.SP, .badge.SPECIAL { background: rgba(61,214,140,0.18); color: var(--success); }
+  .badge.R, .badge.UC, .badge.C { background: rgba(255,255,255,0.06); color: var(--text-tertiary); }
+
+  .pulls-list { display: flex; flex-direction: column; gap: 7px; margin-bottom: 18px; }
+  .pull-item {
+    background: var(--bg-card); border: 1px solid var(--border); border-radius: 9px;
+    padding: 8px 11px; display: flex; align-items: center; gap: 10px;
+  }
+  .pull-item.hit { border-left: 3px solid var(--gold); }
+  .pull-thumb { width: 32px; height: 44px; object-fit: cover; border-radius: 3px; background: var(--bg-panel); flex-shrink: 0; }
+  .pull-name { font-size: 13px; flex: 1; min-width: 0; white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }
+  .pull-price { font-size: 13px; font-weight: 600; color: var(--gold-bright); white-space: nowrap; }
+  .remove-btn { background: none; border: none; color: var(--text-tertiary); font-size: 18px; cursor: pointer; line-height: 1; padding: 0 2px; }
+  .remove-btn:hover { color: var(--danger); }
+
+  .empty-state { text-align: center; padding: 32px 16px; color: var(--text-tertiary); font-size: 13px; }
+  .empty-state .icon { font-size: 28px; display: block; margin-bottom: 8px; opacity: 0.5; }
+
+  .metric-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(130px, 1fr)); gap: 10px; margin-bottom: 18px; }
+  .metric { background: var(--bg-panel); border: 1px solid var(--border); border-radius: 10px; padding: 14px; }
+  .metric-label { font-size: 11px; color: var(--text-tertiary); margin-bottom: 4px; text-transform: uppercase; letter-spacing: 0.04em; }
+  .metric-value { font-family: var(--font-display); font-size: 26px; letter-spacing: 0.01em; }
+  .profit { color: var(--success); }
+  .loss { color: var(--danger); }
+
+  .divider { border: none; border-top: 1px solid var(--border); margin: 20px 0; }
+  .section-label { font-size: 11px; font-weight: 600; color: var(--text-tertiary); text-transform: uppercase; letter-spacing: 0.06em; margin-bottom: 8px; }
+
+  .res-pull {
+    display: flex; align-items: center; gap: 10px; padding: 9px 12px; background: var(--bg-card);
+    border: 1px solid var(--border); border-radius: 9px; margin-bottom: 6px;
+  }
+  .res-name { flex: 1; font-size: 13px; min-width: 0; white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }
+
+  .spin { display: inline-block; animation: spin 0.9s linear infinite; }
+  @keyframes spin { to { transform: rotate(360deg); } }
+
+  @media (max-width: 420px) {
+    h1 { font-size: 26px; }
+    .set-grid { grid-template-columns: repeat(auto-fill, minmax(105px, 1fr)); }
+  }
+</style>
+</head>
+<body>
+
+<div class="wrap">
+  <header>
+    <div class="logo-row">
+      <h1>PACK TRACKER</h1>
+    </div>
+    <div class="tagline">One Piece TCG &middot; track every rip, see your profit or loss</div>
+    <div id="data-status"><span class="spin">&#8635;</span> Loading card data&hellip;</div>
+  </header>
+
+  <div class="step-bar">
+    <div class="dot active" id="dot-1"></div>
+    <div class="dot" id="dot-2"></div>
+    <div class="dot" id="dot-3"></div>
+    <span class="step-label" id="step-label">Choose set</span>
+  </div>
+
+  <!-- PHASE 1 -->
+  <div class="phase active" id="phase-1">
+    <h2>What set are you ripping?</h2>
+    <p class="sub">Pick your booster set, then enter what you paid per pack.</p>
+    <div class="set-grid" id="set-grid"></div>
+    <div class="cost-row">
+      <label for="cost-input">Price paid ($)</label>
+      <input type="number" id="cost-input" min="0" step="0.01" placeholder="e.g. 5.99" />
+    </div>
+    <div class="action-row">
+      <button class="btn btn-primary" onclick="goPhase2()">Start logging pulls &rarr;</button>
+    </div>
+  </div>
+
+  <!-- PHASE 2 -->
+  <div class="phase" id="phase-2">
+    <div class="banner">
+      <span>Opening: <strong id="banner-set"></strong></span>
+      <span>Paid: <strong id="banner-cost"></strong></span>
+    </div>
+    <h2>Log your pulls</h2>
+    <p class="sub">Search by card name or ID. Prices come from your last data refresh.</p>
+    <div class="search-row">
+      <input type="text" id="card-search" placeholder="e.g. Roronoa Zoro, OP16-001..." oninput="schedSearch()" onkeydown="if(event.key==='Enter')doSearch()" />
+      <button class="btn btn-sm" onclick="doSearch()">Search</button>
+    </div>
+    <div id="search-status"></div>
+    <div class="results-list" id="results-list" style="display:none"></div>
+    <hr class="divider">
+    <p class="section-label">Cards pulled</p>
+    <div class="pulls-list" id="pulls-list">
+      <div class="empty-state"><span class="icon">&#127183;</span>No cards yet &mdash; search above to add</div>
+    </div>
+    <div class="action-row">
+      <button class="btn" onclick="goPhase1()">&larr; Back</button>
+      <button class="btn btn-primary" onclick="goPhase3()">See results &rarr;</button>
+    </div>
+  </div>
+
+  <!-- PHASE 3 -->
+  <div class="phase" id="phase-3">
+    <h2>Opening results</h2>
+    <p class="sub" id="res-sub"></p>
+    <div class="metric-grid">
+      <div class="metric"><div class="metric-label">Spent</div><div class="metric-value" id="r-spent"></div></div>
+      <div class="metric"><div class="metric-label">Market value</div><div class="metric-value" id="r-value"></div></div>
+      <div class="metric"><div class="metric-label">Profit / Loss</div><div class="metric-value" id="r-pnl"></div></div>
+      <div class="metric"><div class="metric-label">Cards pulled</div><div class="metric-value" id="r-count"></div></div>
+    </div>
+    <hr class="divider">
+    <p class="section-label">Pull breakdown</p>
+    <div id="res-list"></div>
+    <div class="action-row" style="margin-top:16px">
+      <button class="btn" onclick="goPhase2()">&larr; Edit pulls</button>
+      <button class="btn btn-primary" onclick="resetAll()">New opening &rarr;</button>
+    </div>
+  </div>
+</div>
+
+<script>
+// Same-origin fetch: this file is served from GitHub Pages, and cards.json
+// lives in the same repo, so this is a normal same-origin request with
+// zero CORS concerns - no API keys, no proxies, no sandbox restrictions.
+const DATA_URL = "./data/cards.json";
+
+let ALL_CARDS = [];
+let SET_INFO = {}; // set_id -> { name, count }
+let state = { setId: "", setName: "", cost: 0, pulls: [], nextId: 1 };
+let lastResults = [];
+let searchTimer = null;
+
+const SET_DISPLAY_NAMES = {
+  "OP-01": "Romance Dawn", "OP-02": "Paramount War", "OP-03": "Pillars of Strength",
+  "OP-04": "Kingdoms of Intrigue", "OP-05": "Awakening of the New Era", "OP-06": "Wings of the Captain",
+  "OP-07": "500 Years in the Future", "OP-08": "Two Legends", "OP-09": "The Four Emperors",
+  "OP-10": "Royal Blood", "OP-11": "A Fist of Divine Speed", "OP-12": "Legacy of the Master",
+  "OP-13": "Carrying On His Will", "OP14-EB04": "The Azure Sea's Seven",
+  "OP15-EB04": "Adventure on Kami's Island", "OP-16": "The Time of Battle",
+  "EB-01": "Memorial Collection", "EB-02": "Anime 25th Collection", "EB-03": "One Piece Heroines Edition",
+  "PRB-01": "The Best", "PRB-02": "The Best vol.2",
+};
+
+async function loadData() {
+  const statusEl = document.getElementById("data-status");
+  try {
+    const res = await fetch(DATA_URL, { cache: "no-store" });
+    if (!res.ok) throw new Error(`HTTP ${res.status}`);
+    const json = await res.json();
+    ALL_CARDS = json.cards || [];
+
+    SET_INFO = {};
+    ALL_CARDS.forEach(c => {
+      if (!SET_INFO[c.set_id]) SET_INFO[c.set_id] = { count: 0 };
+      SET_INFO[c.set_id].count++;
+    });
+
+    const generated = json.generated_at ? new Date(json.generated_at).toLocaleString() : "unknown";
+    statusEl.innerHTML = `${ALL_CARDS.length} cards loaded &middot; last refreshed ${generated}`;
+    statusEl.className = "ok";
+
+    renderSets();
+  } catch (e) {
+    statusEl.textContent = `Couldn't load card data: ${e.message}. Try refreshing the page.`;
+    statusEl.className = "error";
+    console.error(e);
+  }
+}
+
+function renderSets() {
+  const grid = document.getElementById("set-grid");
+  const setIds = Object.keys(SET_INFO).sort();
+
+  if (!setIds.length) {
+    grid.innerHTML = `<div class="empty-state">No sets found in card data yet.</div>`;
+    return;
+  }
+
+  grid.innerHTML = setIds.map(sid => {
+    const name = SET_DISPLAY_NAMES[sid] || sid;
+    const count = SET_INFO[sid].count;
+    return `<div class="set-card" onclick="pickSet('${sid}')" data-sid="${sid}">
+      <div class="sid">${sid}</div>
+      <div class="sname">${name}</div>
+      <div class="scount">${count} cards</div>
+    </div>`;
+  }).join("");
+}
+
+function pickSet(sid) {
+  document.querySelectorAll(".set-card").forEach(c => c.classList.remove("selected"));
+  document.querySelector(`[data-sid="${sid}"]`).classList.add("selected");
+  state.setId = sid;
+  state.setName = SET_DISPLAY_NAMES[sid] || sid;
+}
+
+function setPhase(n) {
+  document.querySelectorAll(".phase").forEach((el, i) => el.classList.toggle("active", i === n - 1));
+  document.querySelectorAll(".dot").forEach((d, i) => {
+    d.classList.remove("active", "done");
+    if (i < n - 1) d.classList.add("done");
+    else if (i === n - 1) d.classList.add("active");
+  });
+  document.getElementById("step-label").textContent = ["Choose set", "Log pulls", "Results"][n - 1];
+}
+
+function goPhase1() { setPhase(1); }
+
+function goPhase2() {
+  if (!state.setId) { alert("Please select a set first."); return; }
+  const cost = parseFloat(document.getElementById("cost-input").value);
+  if (isNaN(cost) || cost < 0) { alert("Please enter a valid price."); return; }
+  state.cost = cost;
+  document.getElementById("banner-set").textContent = state.setName;
+  document.getElementById("banner-cost").textContent = "$" + cost.toFixed(2);
+  document.getElementById("card-search").value = "";
+  document.getElementById("results-list").style.display = "none";
+  document.getElementById("search-status").textContent = "";
+  renderPulls();
+  setPhase(2);
+}
+
+function schedSearch() {
+  clearTimeout(searchTimer);
+  const q = document.getElementById("card-search").value.trim();
+  if (q.length < 1) {
+    document.getElementById("results-list").style.display = "none";
+    document.getElementById("search-status").textContent = "";
+    return;
+  }
+  searchTimer = setTimeout(doSearch, 200);
+}
+
+function doSearch() {
+  const q = document.getElementById("card-search").value.trim().toLowerCase();
+  if (!q) return;
+
+  const statusEl = document.getElementById("search-status");
+  const resultsEl = document.getElementById("results-list");
+
+  const isId = /^[a-z]{2}\d{2}/.test(q);
+  let matches;
+  if (isId) {
+    matches = ALL_CARDS.filter(c => c.card_number && c.card_number.toLowerCase().includes(q));
+  } else {
+    matches = ALL_CARDS.filter(c => c.name && c.name.toLowerCase().includes(q));
+  }
+
+  // Prefer matches from the currently selected set
+  matches.sort((a, b) => {
+    const aMatch = a.set_id === state.setId ? 0 : 1;
+    const bMatch = b.set_id === state.setId ? 0 : 1;
+    return aMatch - bMatch;
+  });
+  matches = matches.slice(0, 25);
+
+  if (!matches.length) {
+    statusEl.textContent = "No cards found - try a different name or ID";
+    resultsEl.style.display = "none";
+    return;
+  }
+
+  lastResults = matches;
+  statusEl.textContent = `${matches.length} result${matches.length > 1 ? "s" : ""} - tap to add`;
+
+  resultsEl.innerHTML = matches.map((c, i) => {
+    const price = c.market_price != null ? `$${parseFloat(c.market_price).toFixed(2)}` : "N/A";
+    return `<div class="result-item" onclick="addPull(${i})">
+      <img class="result-img" src="${c.image_url || ''}" alt="${c.name}" loading="lazy" onerror="this.style.opacity='0.15'" />
+      <div class="result-info">
+        <div class="result-name">${c.name}</div>
+        <div class="result-meta">${c.card_number || ""} &middot; ${c.set_id} <span class="badge ${c.rarity}">${c.rarity || "?"}</span></div>
+      </div>
+      <div class="result-price">${price}</div>
+    </div>`;
+  }).join("");
+  resultsEl.style.display = "block";
+}
+
+const HIT_RARITIES = ["L", "SR", "SEC", "SP"];
+
+function addPull(i) {
+  const c = lastResults[i];
+  if (!c) return;
+  state.pulls.push({
+    id: state.nextId++,
+    name: c.name,
+    cardNumber: c.card_number,
+    rarity: c.rarity || "",
+    imageUrl: c.image_url || "",
+    price: c.market_price != null ? parseFloat(c.market_price) : null,
+    isHit: HIT_RARITIES.includes(c.rarity),
+  });
+  document.getElementById("card-search").value = "";
+  document.getElementById("results-list").style.display = "none";
+  document.getElementById("search-status").textContent = `Added: ${c.name}`;
+  renderPulls();
+}
+
+function removePull(id) {
+  state.pulls = state.pulls.filter(p => p.id !== id);
+  renderPulls();
+}
+
+function renderPulls() {
+  const list = document.getElementById("pulls-list");
+  if (!state.pulls.length) {
+    list.innerHTML = `<div class="empty-state"><span class="icon">&#127183;</span>No cards yet &mdash; search above to add</div>`;
+    return;
+  }
+  list.innerHTML = state.pulls.map(p => `
+    <div class="pull-item ${p.isHit ? "hit" : ""}">
+      <img class="pull-thumb" src="${p.imageUrl}" alt="${p.name}" onerror="this.style.opacity='0.15'" />
+      <span class="pull-name" title="${p.name}">${p.name}</span>
+      <span class="badge ${p.rarity}">${p.rarity || "?"}</span>
+      <span class="pull-price">${p.price != null ? "$" + p.price.toFixed(2) : "N/A"}</span>
+      <button class="remove-btn" onclick="removePull(${p.id})" aria-label="Remove">&times;</button>
+    </div>`).join("");
+}
+
+function goPhase3() {
+  if (!state.pulls.length) { alert("Add at least one card first."); return; }
+  const spent = state.cost;
+  const value = state.pulls.reduce((s, p) => s + (p.price || 0), 0);
+  const pnl = value - spent;
+
+  document.getElementById("r-spent").textContent = "$" + spent.toFixed(2);
+  document.getElementById("r-value").textContent = "$" + value.toFixed(2);
+  const pnlEl = document.getElementById("r-pnl");
+  pnlEl.textContent = (pnl >= 0 ? "+" : "-") + "$" + Math.abs(pnl).toFixed(2);
+  pnlEl.className = "metric-value " + (pnl >= 0 ? "profit" : "loss");
+  document.getElementById("r-count").textContent = state.pulls.length;
+  document.getElementById("res-sub").textContent = `${state.setName} &middot; ${new Date().toLocaleDateString()}`;
+
+  document.getElementById("res-list").innerHTML = state.pulls.map(p => `
+    <div class="res-pull">
+      <img class="pull-thumb" src="${p.imageUrl}" alt="${p.name}" onerror="this.style.opacity='0.15'" />
+      <span class="res-name">${p.name}</span>
+      <span class="badge ${p.rarity}">${p.rarity || "?"}</span>
+      <span class="pull-price">${p.price != null ? "$" + p.price.toFixed(2) : "N/A"}</span>
+    </div>`).join("");
+
+  setPhase(3);
+}
+
+function resetAll() {
+  state = { setId: "", setName: "", cost: 0, pulls: [], nextId: 1 };
+  document.getElementById("cost-input").value = "";
+  document.querySelectorAll(".set-card").forEach(c => c.classList.remove("selected"));
+  setPhase(1);
+}
+
+loadData();
+</script>
+</body>
+</html>
