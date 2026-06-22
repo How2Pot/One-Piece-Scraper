@@ -1,5 +1,5 @@
 {
-  "generated_at": "2026-06-22T15:44:06Z",
+  "generated_at": "2026-06-22T15:44:50Z",
   "card_count": 3474,
   "sets": [
     "EB-01",
@@ -22750,7 +22750,9 @@
       "category": "Character",
       "set_label": "EB-03",
       "set_id": "EB-03",
-      "image_url": "data/images/EB03-032.png"
+      "image_url": "data/images/EB03-032.png",
+      "market_price": 0.06,
+      "tcgplayer_url": "https://www.tcgplayer.com/product/672779"
     },
     {
       "id": "EB03-033",
@@ -22760,7 +22762,9 @@
       "category": "Character",
       "set_label": "EB-03",
       "set_id": "EB-03",
-      "image_url": "data/images/EB03-033.png"
+      "image_url": "data/images/EB03-033.png",
+      "market_price": 0.06,
+      "tcgplayer_url": "https://www.tcgplayer.com/product/672780"
     },
     {
       "id": "EB03-034",
@@ -22770,7 +22774,9 @@
       "category": "Character",
       "set_label": "EB-03",
       "set_id": "EB-03",
-      "image_url": "data/images/EB03-034.png"
+      "image_url": "data/images/EB03-034.png",
+      "market_price": 0.33,
+      "tcgplayer_url": "https://www.tcgplayer.com/product/672781"
     },
     {
       "id": "EB03-034_p1",
@@ -22780,7 +22786,9 @@
       "category": "Character",
       "set_label": "EB-03",
       "set_id": "EB-03",
-      "image_url": "data/images/EB03-034_p1.png"
+      "image_url": "data/images/EB03-034_p1.png",
+      "market_price": 0.33,
+      "tcgplayer_url": "https://www.tcgplayer.com/product/672781"
     },
     {
       "id": "EB03-035",
@@ -22790,7 +22798,9 @@
       "category": "Character",
       "set_label": "EB-03",
       "set_id": "EB-03",
-      "image_url": "data/images/EB03-035.png"
+      "image_url": "data/images/EB03-035.png",
+      "market_price": 0.29,
+      "tcgplayer_url": "https://www.tcgplayer.com/product/672783"
     },
     {
       "id": "EB03-036",
@@ -22800,7 +22810,9 @@
       "category": "Character",
       "set_label": "EB-03",
       "set_id": "EB-03",
-      "image_url": "data/images/EB03-036.png"
+      "image_url": "data/images/EB03-036.png",
+      "market_price": 0.09,
+      "tcgplayer_url": "https://www.tcgplayer.com/product/672784"
     },
     {
       "id": "EB03-037",
@@ -22810,7 +22822,9 @@
       "category": "Character",
       "set_label": "EB-03",
       "set_id": "EB-03",
-      "image_url": "data/images/EB03-037.png"
+      "image_url": "data/images/EB03-037.png",
+      "market_price": 0.13,
+      "tcgplayer_url": "https://www.tcgplayer.com/product/672785"
     },
     {
       "id": "EB03-038",
@@ -22820,7 +22834,9 @@
       "category": "Event",
       "set_label": "EB-03",
       "set_id": "EB-03",
-      "image_url": "data/images/EB03-038.png"
+      "image_url": "data/images/EB03-038.png",
+      "market_price": null,
+      "tcgplayer_url": null
     },
     {
       "id": "EB03-039",
@@ -22830,7 +22846,9 @@
       "category": "Character",
       "set_label": "EB-03",
       "set_id": "EB-03",
-      "image_url": "data/images/EB03-039.png"
+      "image_url": "data/images/EB03-039.png",
+      "market_price": 0.11,
+      "tcgplayer_url": "https://www.tcgplayer.com/product/672787"
     },
     {
       "id": "EB03-040",
@@ -22840,7 +22858,9 @@
       "category": "Character",
       "set_label": "EB-03",
       "set_id": "EB-03",
-      "image_url": "data/images/EB03-040.png"
+      "image_url": "data/images/EB03-040.png",
+      "market_price": 0.08,
+      "tcgplayer_url": "https://www.tcgplayer.com/product/672788"
     },
     {
       "id": "EB03-041",
@@ -22850,7 +22870,9 @@
       "category": "Character",
       "set_label": "EB-03",
       "set_id": "EB-03",
-      "image_url": "data/images/EB03-041.png"
+      "image_url": "data/images/EB03-041.png",
+      "market_price": 0.24,
+      "tcgplayer_url": "https://www.tcgplayer.com/product/672789"
     },
     {
       "id": "EB03-041_p1",
@@ -22860,7 +22882,9 @@
       "category": "Character",
       "set_label": "EB-03",
       "set_id": "EB-03",
-      "image_url": "data/images/EB03-041_p1.png"
+      "image_url": "data/images/EB03-041_p1.png",
+      "market_price": 0.24,
+      "tcgplayer_url": "https://www.tcgplayer.com/product/672789"
     },
     {
       "id": "EB03-042",
@@ -22870,7 +22894,9 @@
       "category": "Character",
       "set_label": "EB-03",
       "set_id": "EB-03",
-      "image_url": "data/images/EB03-042.png"
+      "image_url": "data/images/EB03-042.png",
+      "market_price": 1.09,
+      "tcgplayer_url": "https://www.tcgplayer.com/product/672791"
     },
     {
       "id": "EB03-042_p1",
@@ -22880,7 +22906,9 @@
       "category": "Character",
       "set_label": "EB-03",
       "set_id": "EB-03",
-      "image_url": "data/images/EB03-042_p1.png"
+      "image_url": "data/images/EB03-042_p1.png",
+      "market_price": 1.09,
+      "tcgplayer_url": "https://www.tcgplayer.com/product/672791"
     },
     {
       "id": "EB03-043",
@@ -22890,7 +22918,9 @@
       "category": "Character",
       "set_label": "EB-03",
       "set_id": "EB-03",
-      "image_url": "data/images/EB03-043.png"
+      "image_url": "data/images/EB03-043.png",
+      "market_price": 0.15,
+      "tcgplayer_url": "https://www.tcgplayer.com/product/672793"
     },
     {
       "id": "EB03-044",
@@ -22900,7 +22930,9 @@
       "category": "Character",
       "set_label": "EB-03",
       "set_id": "EB-03",
-      "image_url": "data/images/EB03-044.png"
+      "image_url": "data/images/EB03-044.png",
+      "market_price": 0.09,
+      "tcgplayer_url": "https://www.tcgplayer.com/product/672794"
     },
     {
       "id": "EB03-045",
@@ -22910,7 +22942,9 @@
       "category": "Character",
       "set_label": "EB-03",
       "set_id": "EB-03",
-      "image_url": "data/images/EB03-045.png"
+      "image_url": "data/images/EB03-045.png",
+      "market_price": 0.92,
+      "tcgplayer_url": "https://www.tcgplayer.com/product/672795"
     },
     {
       "id": "EB03-045_p1",
@@ -22920,7 +22954,9 @@
       "category": "Character",
       "set_label": "EB-03",
       "set_id": "EB-03",
-      "image_url": "data/images/EB03-045_p1.png"
+      "image_url": "data/images/EB03-045_p1.png",
+      "market_price": 0.92,
+      "tcgplayer_url": "https://www.tcgplayer.com/product/672795"
     },
     {
       "id": "EB03-046",
@@ -22930,7 +22966,9 @@
       "category": "Character",
       "set_label": "EB-03",
       "set_id": "EB-03",
-      "image_url": "data/images/EB03-046.png"
+      "image_url": "data/images/EB03-046.png",
+      "market_price": null,
+      "tcgplayer_url": null
     },
     {
       "id": "EB03-047",
@@ -22940,7 +22978,9 @@
       "category": "Character",
       "set_label": "EB-03",
       "set_id": "EB-03",
-      "image_url": "data/images/EB03-047.png"
+      "image_url": "data/images/EB03-047.png",
+      "market_price": null,
+      "tcgplayer_url": null
     },
     {
       "id": "EB03-048",
@@ -22950,7 +22990,9 @@
       "category": "Character",
       "set_label": "EB-03",
       "set_id": "EB-03",
-      "image_url": "data/images/EB03-048.png"
+      "image_url": "data/images/EB03-048.png",
+      "market_price": 0.19,
+      "tcgplayer_url": "https://www.tcgplayer.com/product/672799"
     },
     {
       "id": "EB03-049",
@@ -22960,7 +23002,9 @@
       "category": "Event",
       "set_label": "EB-03",
       "set_id": "EB-03",
-      "image_url": "data/images/EB03-049.png"
+      "image_url": "data/images/EB03-049.png",
+      "market_price": null,
+      "tcgplayer_url": null
     },
     {
       "id": "EB03-050",
@@ -22970,7 +23014,9 @@
       "category": "Character",
       "set_label": "EB-03",
       "set_id": "EB-03",
-      "image_url": "data/images/EB03-050.png"
+      "image_url": "data/images/EB03-050.png",
+      "market_price": 0.07,
+      "tcgplayer_url": "https://www.tcgplayer.com/product/672801"
     },
     {
       "id": "EB03-051",
@@ -22980,7 +23026,9 @@
       "category": "Character",
       "set_label": "EB-03",
       "set_id": "EB-03",
-      "image_url": "data/images/EB03-051.png"
+      "image_url": "data/images/EB03-051.png",
+      "market_price": 0.09,
+      "tcgplayer_url": "https://www.tcgplayer.com/product/672802"
     },
     {
       "id": "EB03-052",
@@ -22990,7 +23038,9 @@
       "category": "Character",
       "set_label": "EB-03",
       "set_id": "EB-03",
-      "image_url": "data/images/EB03-052.png"
+      "image_url": "data/images/EB03-052.png",
+      "market_price": 0.25,
+      "tcgplayer_url": "https://www.tcgplayer.com/product/672803"
     },
     {
       "id": "EB03-053",
