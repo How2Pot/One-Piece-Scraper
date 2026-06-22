@@ -1,0 +1,73 @@
+{
+  "card_id": "OP08-083",
+  "card_number": "OP08-083",
+  "name": "Sheepshead",
+  "backfilled_at": "2026-06-22",
+  "history": [
+    {
+      "date": "2026-05-23",
+      "market_price": 0.3,
+      "low_price": 0.24
+    },
+    {
+      "date": "2026-05-25",
+      "market_price": 0.3,
+      "low_price": 0.24
+    },
+    {
+      "date": "2026-05-28",
+      "market_price": 0.3,
+      "low_price": 0.24
+    },
+    {
+      "date": "2026-05-31",
+      "market_price": 0.3,
+      "low_price": 0.24
+    },
+    {
+      "date": "2026-06-05",
+      "market_price": 0.3,
+      "low_price": 0.24
+    },
+    {
+      "date": "2026-06-07",
+      "market_price": 0.3,
+      "low_price": 0.24
+    },
+    {
+      "date": "2026-06-08",
+      "market_price": 0.3,
+      "low_price": 0.24
+    },
+    {
+      "date": "2026-06-09",
+      "market_price": 0.3,
+      "low_price": 0.24
+    },
+    {
+      "date": "2026-06-13",
+      "market_price": 0.3,
+      "low_price": 0.24
+    },
+    {
+      "date": "2026-06-15",
+      "market_price": 0.3,
+      "low_price": 0.24
+    },
+    {
+      "date": "2026-06-17",
+      "market_price": 0.3,
+      "low_price": 0.24
+    },
+    {
+      "date": "2026-06-19",
+      "market_price": 0.29,
+      "low_price": 0.24
+    },
+    {
+      "date": "2026-06-21",
+      "market_price": 0.29,
+      "low_price": 0.24
+    }
+  ]
+}
