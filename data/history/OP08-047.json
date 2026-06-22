@@ -1,0 +1,148 @@
+{
+  "card_id": "OP08-047",
+  "card_number": "OP08-047",
+  "name": "Jozu",
+  "backfilled_at": "2026-06-22",
+  "history": [
+    {
+      "date": "2026-05-23",
+      "market_price": 2.51,
+      "low_price": null
+    },
+    {
+      "date": "2026-05-24",
+      "market_price": 2.56,
+      "low_price": null
+    },
+    {
+      "date": "2026-05-25",
+      "market_price": 2.53,
+      "low_price": null
+    },
+    {
+      "date": "2026-05-26",
+      "market_price": 2.66,
+      "low_price": null
+    },
+    {
+      "date": "2026-05-27",
+      "market_price": 2.93,
+      "low_price": null
+    },
+    {
+      "date": "2026-05-28",
+      "market_price": 3.06,
+      "low_price": null
+    },
+    {
+      "date": "2026-05-29",
+      "market_price": 2.83,
+      "low_price": null
+    },
+    {
+      "date": "2026-05-30",
+      "market_price": 2.81,
+      "low_price": null
+    },
+    {
+      "date": "2026-05-31",
+      "market_price": 2.65,
+      "low_price": null
+    },
+    {
+      "date": "2026-06-01",
+      "market_price": 2.64,
+      "low_price": null
+    },
+    {
+      "date": "2026-06-02",
+      "market_price": 2.72,
+      "low_price": null
+    },
+    {
+      "date": "2026-06-03",
+      "market_price": 2.61,
+      "low_price": null
+    },
+    {
+      "date": "2026-06-04",
+      "market_price": 2.63,
+      "low_price": null
+    },
+    {
+      "date": "2026-06-05",
+      "market_price": 2.73,
+      "low_price": null
+    },
+    {
+      "date": "2026-06-06",
+      "market_price": 2.51,
+      "low_price": null
+    },
+    {
+      "date": "2026-06-07",
+      "market_price": 2.19,
+      "low_price": null
+    },
+    {
+      "date": "2026-06-08",
+      "market_price": 1.99,
+      "low_price": null
+    },
+    {
+      "date": "2026-06-09",
+      "market_price": 2.14,
+      "low_price": null
+    },
+    {
+      "date": "2026-06-10",
+      "market_price": 2.15,
+      "low_price": null
+    },
+    {
+      "date": "2026-06-11",
+      "market_price": 2.23,
+      "low_price": null
+    },
+    {
+      "date": "2026-06-12",
+      "market_price": 2.48,
+      "low_price": null
+    },
+    {
+      "date": "2026-06-13",
+      "market_price": 2.45,
+      "low_price": null
+    },
+    {
+      "date": "2026-06-14",
+      "market_price": 2.44,
+      "low_price": null
+    },
+    {
+      "date": "2026-06-15",
+      "market_price": 2.38,
+      "low_price": null
+    },
+    {
+      "date": "2026-06-16",
+      "market_price": 2.4,
+      "low_price": null
+    },
+    {
+      "date": "2026-06-17",
+      "market_price": 2.27,
+      "low_price": null
+    },
+    {
+      "date": "2026-06-19",
+      "market_price": 2.49,
+      "low_price": 0.99
+    },
+    {
+      "date": "2026-06-21",
+      "market_price": 2.49,
+      "low_price": 1.5
+    }
+  ]
+}
