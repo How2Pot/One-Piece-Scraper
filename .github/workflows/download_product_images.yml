@@ -1,0 +1,24 @@
+name: Download Product Images
+
+on:
+  workflow_dispatch: {}
+
+permissions:
+  contents: write
+
+jobs:
+  download:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+      - run: |
+          git config user.name "github-actions[bot]"
+          git config user.email "github-actions[bot]@users.noreply.github.com"
+      - run: python scripts/download_product_images.py
+      - run: |
+          git add -A data/product-images/
+          git diff --staged --quiet || git commit -m "Download booster box product images"
+          git push
