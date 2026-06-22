@@ -1,0 +1,148 @@
+{
+  "card_id": "OP08-118",
+  "card_number": "OP08-118",
+  "name": "Silvers Rayleigh",
+  "backfilled_at": "2026-06-22",
+  "history": [
+    {
+      "date": "2026-05-23",
+      "market_price": 5.16,
+      "low_price": null
+    },
+    {
+      "date": "2026-05-24",
+      "market_price": 5.16,
+      "low_price": null
+    },
+    {
+      "date": "2026-05-25",
+      "market_price": 5.15,
+      "low_price": null
+    },
+    {
+      "date": "2026-05-26",
+      "market_price": 5.01,
+      "low_price": null
+    },
+    {
+      "date": "2026-05-27",
+      "market_price": 5.02,
+      "low_price": null
+    },
+    {
+      "date": "2026-05-28",
+      "market_price": 4.94,
+      "low_price": null
+    },
+    {
+      "date": "2026-05-29",
+      "market_price": 4.8,
+      "low_price": null
+    },
+    {
+      "date": "2026-05-30",
+      "market_price": 4.83,
+      "low_price": null
+    },
+    {
+      "date": "2026-05-31",
+      "market_price": 4.9,
+      "low_price": null
+    },
+    {
+      "date": "2026-06-01",
+      "market_price": 5.02,
+      "low_price": null
+    },
+    {
+      "date": "2026-06-02",
+      "market_price": 5.06,
+      "low_price": null
+    },
+    {
+      "date": "2026-06-03",
+      "market_price": 5.03,
+      "low_price": null
+    },
+    {
+      "date": "2026-06-04",
+      "market_price": 5.09,
+      "low_price": null
+    },
+    {
+      "date": "2026-06-05",
+      "market_price": 5.14,
+      "low_price": null
+    },
+    {
+      "date": "2026-06-06",
+      "market_price": 5.12,
+      "low_price": null
+    },
+    {
+      "date": "2026-06-07",
+      "market_price": 5.03,
+      "low_price": null
+    },
+    {
+      "date": "2026-06-08",
+      "market_price": 4.99,
+      "low_price": null
+    },
+    {
+      "date": "2026-06-09",
+      "market_price": 5.19,
+      "low_price": null
+    },
+    {
+      "date": "2026-06-10",
+      "market_price": 5.5,
+      "low_price": null
+    },
+    {
+      "date": "2026-06-11",
+      "market_price": 5.49,
+      "low_price": null
+    },
+    {
+      "date": "2026-06-12",
+      "market_price": 5.49,
+      "low_price": null
+    },
+    {
+      "date": "2026-06-13",
+      "market_price": 5.52,
+      "low_price": null
+    },
+    {
+      "date": "2026-06-14",
+      "market_price": 5.56,
+      "low_price": null
+    },
+    {
+      "date": "2026-06-15",
+      "market_price": 5.64,
+      "low_price": null
+    },
+    {
+      "date": "2026-06-16",
+      "market_price": 5.78,
+      "low_price": null
+    },
+    {
+      "date": "2026-06-17",
+      "market_price": 5.78,
+      "low_price": null
+    },
+    {
+      "date": "2026-06-19",
+      "market_price": 5.81,
+      "low_price": 4.97
+    },
+    {
+      "date": "2026-06-21",
+      "market_price": 5.56,
+      "low_price": 5
+    }
+  ]
+}
