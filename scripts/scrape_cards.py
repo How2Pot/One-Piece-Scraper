@@ -469,7 +469,69 @@ def main():
 
     cards = enrich_with_prices(cards)
 
+    # Append today's price to each card's history file.
+    # This is a small, non-destructive addition - if the history file
+    # doesn't exist yet (not yet backfilled), it creates a new one with
+    # just today's entry. If it already exists, it appends today's entry
+    # without touching any existing data. Completely safe.
+    append_today_to_history(cards)
+
     print(f"Done. {len(cards)} cards from this run's group were priced and saved incrementally to {OUTPUT_PATH}", file=sys.stderr)
+
+
+def append_today_to_history(cards: list) -> None:
+    """Append today's market_price to each card's history file.
+    Called after enrich_with_prices so prices are already set.
+    Creates the file if it doesn't exist yet (for cards not yet
+    backfilled). Skips cards with no market_price. Never overwrites
+    or modifies existing history entries."""
+    today = datetime.datetime.utcnow().date().isoformat()
+    history_dir = os.path.join(os.path.dirname(__file__), "..", "data", "history")
+    os.makedirs(history_dir, exist_ok=True)
+
+    updated = 0
+    skipped = 0
+
+    for c in cards:
+        if c.get("market_price") is None:
+            skipped += 1
+            continue
+
+        card_id = c["id"]
+        history_path = os.path.join(history_dir, f"{card_id}.json")
+
+        # Load existing file or start fresh
+        if os.path.exists(history_path):
+            try:
+                with open(history_path, "r", encoding="utf-8") as f:
+                    history_data = json.load(f)
+            except Exception:
+                history_data = {"card_id": card_id, "history": []}
+        else:
+            history_data = {
+                "card_id": card_id,
+                "card_number": c.get("card_number", card_id),
+                "name": c.get("name", ""),
+                "history": [],
+            }
+
+        # Don't add a duplicate entry for today
+        existing_dates = {e["date"] for e in history_data.get("history", [])}
+        if today in existing_dates:
+            skipped += 1
+            continue
+
+        history_data.setdefault("history", []).append({
+            "date": today,
+            "market_price": c["market_price"],
+            "low_price": None,  # not available from the search endpoint
+        })
+
+        with open(history_path, "w", encoding="utf-8") as f:
+            json.dump(history_data, f, indent=2, ensure_ascii=False)
+        updated += 1
+
+    print(f"History append complete: {updated} updated, {skipped} skipped (null price or already today)", file=sys.stderr)
 
 
 if __name__ == "__main__":
