@@ -33,41 +33,37 @@ def main():
         print("ERROR: TCGAPI_KEY not set.", file=sys.stderr)
         sys.exit(1)
 
-    params = urllib.parse.urlencode({
-        "q": "Portgas.D.Ace 001",
-        "game": "one-piece",
-        "per_page": "10",
-    })
-    url = f"{TCGAPI_BASE}/search?{params}"
-    req = urllib.request.Request(url, headers={**HEADERS, "X-API-Key": TCGAPI_KEY})
+    import time as t
 
-    print(f"Making ONE request to: {url}", file=sys.stderr)
+    # Test multiple query variations to find what tcgapi.dev actually matches
+    # for OP-16 cards which seem to use a different naming convention
+    queries_to_test = [
+        "Portgas D Ace 001",
+        "Portgas D Ace",
+        "portgasdace 001",
+        "Portgas.D.Ace (001)",
+    ]
 
-    with urllib.request.urlopen(req, timeout=20) as resp:
-        raw = resp.read().decode("utf-8")
-
-    data = json.loads(raw)
-
-    print("\n=== FULL RAW RESPONSE ===", file=sys.stderr)
-    print(json.dumps(data, indent=2), file=sys.stderr)
-
-    print("\n=== FIELD NAMES IN FIRST RESULT ===", file=sys.stderr)
-    results = data.get("data", [])
-    if results:
-        for key, val in results[0].items():
-            print(f"  {key}: {val!r}", file=sys.stderr)
-    else:
-        print("  No results returned.", file=sys.stderr)
-
-    print("\n=== ALL RESULTS WHOSE 'number' CONTAINS 'OP16-001' ===", file=sys.stderr)
-    matches = [r for r in results if "OP16-001" in (r.get("number") or "")]
-    if not matches:
-        print("  NONE FOUND - showing all results returned instead:", file=sys.stderr)
-        for r in results:
-            print(f"    number={r.get('number')!r} name={r.get('name')!r} printing={r.get('printing')!r} market_price={r.get('market_price')!r}", file=sys.stderr)
-    for r in matches:
-        print(f"  number={r.get('number')!r} printing={r.get('printing')!r} rarity={r.get('rarity')!r} "
-              f"market_price={r.get('market_price')!r} set_name={r.get('set_name')!r} tcgplayer_id={r.get('tcgplayer_id')!r}", file=sys.stderr)
+    for q in queries_to_test:
+        params = urllib.parse.urlencode({
+            "q": q,
+            "game": "one-piece",
+            "per_page": "5",
+        })
+        url = f"{TCGAPI_BASE}/search?{params}"
+        req = urllib.request.Request(url, headers={**HEADERS, "X-API-Key": TCGAPI_KEY})
+        print(f"\nTesting query: {q!r}", file=sys.stderr)
+        try:
+            with urllib.request.urlopen(req, timeout=20) as resp:
+                data = json.loads(resp.read().decode("utf-8"))
+            results = data.get("data", [])
+            total = data.get("meta", {}).get("total", 0)
+            print(f"  total results: {total}", file=sys.stderr)
+            for r in results:
+                print(f"  number={r.get('number')!r} name={r.get('name')!r} market_price={r.get('market_price')!r}", file=sys.stderr)
+        except Exception as e:
+            print(f"  ERROR: {e}", file=sys.stderr)
+        t.sleep(0.5)
 
 
 if __name__ == "__main__":
