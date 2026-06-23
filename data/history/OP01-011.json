@@ -1,0 +1,12 @@
+{
+  "card_id": "OP01-011",
+  "card_number": "OP01-011",
+  "name": "Gordon",
+  "history": [
+    {
+      "date": "2026-06-23",
+      "market_price": 0.25,
+      "low_price": null
+    }
+  ]
+}

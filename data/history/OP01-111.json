@@ -1,0 +1,12 @@
+{
+  "card_id": "OP01-111",
+  "card_number": "OP01-111",
+  "name": "Black Maria",
+  "history": [
+    {
+      "date": "2026-06-23",
+      "market_price": 0.24,
+      "low_price": null
+    }
+  ]
+}
