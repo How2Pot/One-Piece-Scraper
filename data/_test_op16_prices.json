@@ -1,9 +1,9 @@
 {
   "test_set": "OP-16",
-  "generated_at": "2026-06-23T04:31:08.054205",
+  "generated_at": "2026-06-23T04:46:12.111900",
   "total_cards": 155,
-  "priced": 102,
-  "null_price": 53,
+  "priced": 121,
+  "null_price": 34,
   "cards": [
     {
       "id": "OP16-001",
@@ -13,10 +13,10 @@
       "category": "Leader",
       "set_label": "OP-16",
       "set_id": "OP-16",
-      "market_price": null,
-      "tcgplayer_url": null,
-      "_matched_name": null,
-      "_matched_printing": null
+      "market_price": 0.15,
+      "tcgplayer_url": "https://www.tcgplayer.com/product/693417",
+      "_matched_name": "Portgas.D.Ace (001)",
+      "_matched_printing": "Normal"
     },
     {
       "id": "OP16-001_p1",
@@ -26,10 +26,10 @@
       "category": "Leader",
       "set_label": "OP-16",
       "set_id": "OP-16",
-      "market_price": null,
-      "tcgplayer_url": null,
-      "_matched_name": null,
-      "_matched_printing": null
+      "market_price": 42.78,
+      "tcgplayer_url": "https://www.tcgplayer.com/product/693418",
+      "_matched_name": "Portgas.D.Ace (001) (Alternate Art)",
+      "_matched_printing": "Foil"
     },
     {
       "id": "OP16-002",
@@ -247,10 +247,10 @@
       "category": "Character",
       "set_label": "OP-16",
       "set_id": "OP-16",
-      "market_price": null,
-      "tcgplayer_url": null,
-      "_matched_name": null,
-      "_matched_printing": null
+      "market_price": 2.04,
+      "tcgplayer_url": "https://www.tcgplayer.com/product/543617",
+      "_matched_name": "Monkey.D.Luffy (015)",
+      "_matched_printing": "Foil"
     },
     {
       "id": "OP16-015_p1",
@@ -260,10 +260,10 @@
       "category": "Character",
       "set_label": "OP-16",
       "set_id": "OP-16",
-      "market_price": null,
-      "tcgplayer_url": null,
-      "_matched_name": null,
-      "_matched_printing": null
+      "market_price": 2.04,
+      "tcgplayer_url": "https://www.tcgplayer.com/product/543617",
+      "_matched_name": "Monkey.D.Luffy (015)",
+      "_matched_printing": "Foil"
     },
     {
       "id": "OP16-016",
@@ -364,10 +364,10 @@
       "category": "Leader",
       "set_label": "OP-16",
       "set_id": "OP-16",
-      "market_price": null,
-      "tcgplayer_url": null,
-      "_matched_name": null,
-      "_matched_printing": null
+      "market_price": 0.2,
+      "tcgplayer_url": "https://www.tcgplayer.com/product/696006",
+      "_matched_name": "Monkey.D.Luffy (022)",
+      "_matched_printing": "Normal"
     },
     {
       "id": "OP16-022_p1",
@@ -377,10 +377,10 @@
       "category": "Leader",
       "set_label": "OP-16",
       "set_id": "OP-16",
-      "market_price": null,
-      "tcgplayer_url": null,
-      "_matched_name": null,
-      "_matched_printing": null
+      "market_price": 107.89,
+      "tcgplayer_url": "https://www.tcgplayer.com/product/696007",
+      "_matched_name": "Monkey.D.Luffy (022) (Alternate Art)",
+      "_matched_printing": "Foil"
     },
     {
       "id": "OP16-023",
@@ -429,10 +429,10 @@
       "category": "Character",
       "set_label": "OP-16",
       "set_id": "OP-16",
-      "market_price": null,
-      "tcgplayer_url": null,
-      "_matched_name": null,
-      "_matched_printing": null
+      "market_price": 0.68,
+      "tcgplayer_url": "https://www.tcgplayer.com/product/696011",
+      "_matched_name": "Emporio.Ivankov (026)",
+      "_matched_printing": "Foil"
     },
     {
       "id": "OP16-026_p1",
@@ -442,10 +442,10 @@
       "category": "Character",
       "set_label": "OP-16",
       "set_id": "OP-16",
-      "market_price": null,
-      "tcgplayer_url": null,
-      "_matched_name": null,
-      "_matched_printing": null
+      "market_price": 14.16,
+      "tcgplayer_url": "https://www.tcgplayer.com/product/696012",
+      "_matched_name": "Emporio.Ivankov (026) (Alternate Art)",
+      "_matched_printing": "Foil"
     },
     {
       "id": "OP16-027",
@@ -559,10 +559,10 @@
       "category": "Character",
       "set_label": "OP-16",
       "set_id": "OP-16",
-      "market_price": null,
-      "tcgplayer_url": null,
-      "_matched_name": null,
-      "_matched_printing": null
+      "market_price": 0.17,
+      "tcgplayer_url": "https://www.tcgplayer.com/product/696019",
+      "_matched_name": "Monkey.D.Luffy (034)",
+      "_matched_printing": "Foil"
     },
     {
       "id": "OP16-034_p1",
@@ -572,10 +572,10 @@
       "category": "Character",
       "set_label": "OP-16",
       "set_id": "OP-16",
-      "market_price": null,
-      "tcgplayer_url": null,
-      "_matched_name": null,
-      "_matched_printing": null
+      "market_price": 18.97,
+      "tcgplayer_url": "https://www.tcgplayer.com/product/696020",
+      "_matched_name": "Monkey.D.Luffy (034) (Alternate Art)",
+      "_matched_printing": "Foil"
     },
     {
       "id": "OP16-035",
@@ -715,10 +715,10 @@
       "category": "Character",
       "set_label": "OP-16",
       "set_id": "OP-16",
-      "market_price": null,
-      "tcgplayer_url": null,
-      "_matched_name": null,
-      "_matched_printing": null
+      "market_price": 0.13,
+      "tcgplayer_url": "https://www.tcgplayer.com/product/696031",
+      "_matched_name": "Emporio.Ivankov (044)",
+      "_matched_printing": "Normal"
     },
     {
       "id": "OP16-045",
@@ -793,10 +793,10 @@
       "category": "Character",
       "set_label": "OP-16",
       "set_id": "OP-16",
-      "market_price": null,
-      "tcgplayer_url": null,
-      "_matched_name": null,
-      "_matched_printing": null
+      "market_price": 0.08,
+      "tcgplayer_url": "https://www.tcgplayer.com/product/696035",
+      "_matched_name": "Portgas.D.Ace (049)",
+      "_matched_printing": "Normal"
     },
     {
       "id": "OP16-050",
@@ -832,10 +832,10 @@
       "category": "Character",
       "set_label": "OP-16",
       "set_id": "OP-16",
-      "market_price": null,
-      "tcgplayer_url": null,
-      "_matched_name": null,
-      "_matched_printing": null
+      "market_price": 0.18,
+      "tcgplayer_url": "https://www.tcgplayer.com/product/696038",
+      "_matched_name": "Monkey.D.Luffy (052)",
+      "_matched_printing": "Normal"
     },
     {
       "id": "OP16-053",
@@ -845,10 +845,10 @@
       "category": "Character",
       "set_label": "OP-16",
       "set_id": "OP-16",
-      "market_price": 0.09,
-      "tcgplayer_url": "https://www.tcgplayer.com/product/696039",
-      "_matched_name": "Roronoa Zoro (053)",
-      "_matched_printing": "Normal"
+      "market_price": null,
+      "tcgplayer_url": null,
+      "_matched_name": null,
+      "_matched_printing": null
     },
     {
       "id": "OP16-054",
@@ -1131,10 +1131,10 @@
       "category": "Character",
       "set_label": "OP-16",
       "set_id": "OP-16",
-      "market_price": 0.1,
-      "tcgplayer_url": "https://www.tcgplayer.com/product/696056",
-      "_matched_name": "Trafalgar Law (068)",
-      "_matched_printing": "Normal"
+      "market_price": null,
+      "tcgplayer_url": null,
+      "_matched_name": null,
+      "_matched_printing": null
     },
     {
       "id": "OP16-069",
@@ -1326,10 +1326,10 @@
       "category": "Leader",
       "set_label": "OP-16",
       "set_id": "OP-16",
-      "market_price": null,
-      "tcgplayer_url": null,
-      "_matched_name": null,
-      "_matched_printing": null
+      "market_price": 0.17,
+      "tcgplayer_url": "https://www.tcgplayer.com/product/694627",
+      "_matched_name": "Marshall.D.Teach (080)",
+      "_matched_printing": "Normal"
     },
     {
       "id": "OP16-080_p1",
@@ -1339,10 +1339,10 @@
       "category": "Leader",
       "set_label": "OP-16",
       "set_id": "OP-16",
-      "market_price": null,
-      "tcgplayer_url": null,
-      "_matched_name": null,
-      "_matched_printing": null
+      "market_price": 54.05,
+      "tcgplayer_url": "https://www.tcgplayer.com/product/694628",
+      "_matched_name": "Marshall.D.Teach (080) (Alternate Art)",
+      "_matched_printing": "Foil"
     },
     {
       "id": "OP16-081",
@@ -1547,10 +1547,10 @@
       "category": "Character",
       "set_label": "OP-16",
       "set_id": "OP-16",
-      "market_price": null,
-      "tcgplayer_url": null,
-      "_matched_name": null,
-      "_matched_printing": null
+      "market_price": 0.23,
+      "tcgplayer_url": "https://www.tcgplayer.com/product/696077",
+      "_matched_name": "Portgas.D.Ace (094)",
+      "_matched_printing": "Normal"
     },
     {
       "id": "OP16-095",
@@ -1560,10 +1560,10 @@
       "category": "Character",
       "set_label": "OP-16",
       "set_id": "OP-16",
-      "market_price": null,
-      "tcgplayer_url": null,
-      "_matched_name": null,
-      "_matched_printing": null
+      "market_price": 0.28,
+      "tcgplayer_url": "https://www.tcgplayer.com/product/696078",
+      "_matched_name": "Monkey.D.Luffy (095)",
+      "_matched_printing": "Foil"
     },
     {
       "id": "OP16-096",
@@ -1898,10 +1898,10 @@
       "category": "Character",
       "set_label": "OP-16",
       "set_id": "OP-16",
-      "market_price": null,
-      "tcgplayer_url": null,
-      "_matched_name": null,
-      "_matched_printing": null
+      "market_price": 13.15,
+      "tcgplayer_url": "https://www.tcgplayer.com/product/694932",
+      "_matched_name": "Portgas.D.Ace (118)",
+      "_matched_printing": "Foil"
     },
     {
       "id": "OP16-118_p1",
@@ -1911,10 +1911,10 @@
       "category": "Character",
       "set_label": "OP-16",
       "set_id": "OP-16",
-      "market_price": null,
-      "tcgplayer_url": null,
-      "_matched_name": null,
-      "_matched_printing": null
+      "market_price": 31.22,
+      "tcgplayer_url": "https://www.tcgplayer.com/product/694933",
+      "_matched_name": "Portgas.D.Ace (118) (Alternate Art)",
+      "_matched_printing": "Foil"
     },
     {
       "id": "OP16-119",
@@ -1924,10 +1924,10 @@
       "category": "Character",
       "set_label": "OP-16",
       "set_id": "OP-16",
-      "market_price": null,
-      "tcgplayer_url": null,
-      "_matched_name": null,
-      "_matched_printing": null
+      "market_price": 41.06,
+      "tcgplayer_url": "https://www.tcgplayer.com/product/695756",
+      "_matched_name": "Marshall.D.Teach (119)",
+      "_matched_printing": "Foil"
     },
     {
       "id": "OP16-119_p1",
@@ -1937,10 +1937,10 @@
       "category": "Character",
       "set_label": "OP-16",
       "set_id": "OP-16",
-      "market_price": null,
-      "tcgplayer_url": null,
-      "_matched_name": null,
-      "_matched_printing": null
+      "market_price": 96.18,
+      "tcgplayer_url": "https://www.tcgplayer.com/product/695757",
+      "_matched_name": "Marshall.D.Teach (119) (Alternate Art)",
+      "_matched_printing": "Foil"
     },
     {
       "id": "EB04-054_p1",
