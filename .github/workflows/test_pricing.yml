@@ -21,6 +21,6 @@ jobs:
           TCGAPI_KEY: ${{ secrets.TCGAPI_KEY }}
         run: python scripts/test_op01_pricing.py
       - run: |
-          git add data/_test_op16_prices.json
+          git add data/_test_eb01_prices.json
           git diff --staged --quiet || git commit -m "Test: OP-16 pricing results"
           git push
