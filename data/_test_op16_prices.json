@@ -1,6 +1,6 @@
 {
   "test_set": "OP-16",
-  "generated_at": "2026-06-23T04:22:00.290098",
+  "generated_at": "2026-06-23T04:31:08.054205",
   "total_cards": 155,
   "priced": 102,
   "null_price": 53,
@@ -455,10 +455,10 @@
       "category": "Character",
       "set_label": "OP-16",
       "set_id": "OP-16",
-      "market_price": 0.3,
-      "tcgplayer_url": "https://www.tcgplayer.com/product/581011",
-      "_matched_name": "Jinbe",
-      "_matched_printing": "Normal"
+      "market_price": 0.18,
+      "tcgplayer_url": "https://www.tcgplayer.com/product/696013",
+      "_matched_name": "Jinbe (027)",
+      "_matched_printing": "Foil"
     },
     {
       "id": "OP16-028",
@@ -741,9 +741,9 @@
       "category": "Character",
       "set_label": "OP-16",
       "set_id": "OP-16",
-      "market_price": 0.3,
-      "tcgplayer_url": "https://www.tcgplayer.com/product/581011",
-      "_matched_name": "Jinbe",
+      "market_price": 0.09,
+      "tcgplayer_url": "https://www.tcgplayer.com/product/696033",
+      "_matched_name": "Jinbe (046)",
       "_matched_printing": "Normal"
     },
     {
@@ -845,9 +845,9 @@
       "category": "Character",
       "set_label": "OP-16",
       "set_id": "OP-16",
-      "market_price": 1.02,
-      "tcgplayer_url": "https://www.tcgplayer.com/product/539152",
-      "_matched_name": "Roronoa Zoro",
+      "market_price": 0.09,
+      "tcgplayer_url": "https://www.tcgplayer.com/product/696039",
+      "_matched_name": "Roronoa Zoro (053)",
       "_matched_printing": "Normal"
     },
     {
@@ -1131,10 +1131,10 @@
       "category": "Character",
       "set_label": "OP-16",
       "set_id": "OP-16",
-      "market_price": 2.88,
-      "tcgplayer_url": "https://www.tcgplayer.com/product/288257",
-      "_matched_name": "Trafalgar Law",
-      "_matched_printing": "Foil"
+      "market_price": 0.1,
+      "tcgplayer_url": "https://www.tcgplayer.com/product/696056",
+      "_matched_name": "Trafalgar Law (068)",
+      "_matched_printing": "Normal"
     },
     {
       "id": "OP16-069",
