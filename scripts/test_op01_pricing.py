@@ -30,8 +30,8 @@ CARDLIST_URL = f"{OFFICIAL_BASE}/cardlist/"
 TCGAPI_BASE = "https://api.tcgapi.dev/v1"
 TCGAPI_KEY = os.environ.get("TCGAPI_KEY", "")
 
-TEST_SET = "OP-16"
-TEST_OUTPUT_PATH = os.path.join(os.path.dirname(__file__), "..", "data", "_test_op16_prices.json")
+TEST_SET = "EB-01"
+TEST_OUTPUT_PATH = os.path.join(os.path.dirname(__file__), "..", "data", "_test_eb01_prices.json")
 
 REQUEST_DELAY = 0.8
 HEADERS = {
@@ -138,11 +138,15 @@ def fetch_price(card_name: str, unique_id: str, card_number: str, card_set_id: s
     # Primary search by card name
     results = do_search(card_name)
 
-    # Fallback: use clean_name format (no dots, lowercase + number suffix)
-    # Confirmed: "portgasdace 001" finds OP16-001, "Portgas.D.Ace 001" finds nothing
+    # Fallback: use clean_name format - strip ALL non-alphanumeric chars,
+    # handle HTML entities, lowercase, append number suffix
     num_suffix_match = re.search(r'-(\d+)$', card_number)
     num_suffix = num_suffix_match.group(1) if num_suffix_match else ""
-    clean_name = re.sub(r'[.\s]', '', card_name).lower()
+    decoded_name = card_name
+    for entity, char in [("&#039;", ""), ("&quot;", ""), ("&amp;", "and"),
+                         ("&lt;", ""), ("&gt;", ""), ("&#39;", "")]:
+        decoded_name = decoded_name.replace(entity, char)
+    clean_name = re.sub(r'[^a-zA-Z0-9]', '', decoded_name).lower()
     fallback_query = f"{clean_name} {num_suffix}" if num_suffix else clean_name
 
     if not results or not any(card_number in (r.get("number") or "") for r in results):
