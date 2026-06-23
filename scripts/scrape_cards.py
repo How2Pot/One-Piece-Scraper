@@ -353,10 +353,16 @@ def fetch_price(card_name: str, unique_id: str, card_number: str, card_set_id: s
     # - "Portgas.D.Ace" -> 0 results
     # - "Portgas.D.Ace 001" -> 0 results
     # - "portgasdace 001" -> 2 results (both base and alt art) ✓
-    # Strategy: strip dots and spaces from name, lowercase, append number suffix
+    # Strategy: replicate tcgapi.dev's clean_name - strip ALL non-alphanumeric
+    # chars (dots, spaces, apostrophes, quotes, HTML entities), lowercase,
+    # append number suffix. Also handles Bandai HTML entities like &#039; -> '
     num_suffix_match = re.search(r'-(\d+)$', card_number)
     num_suffix = num_suffix_match.group(1) if num_suffix_match else ""
-    clean_name = re.sub(r'[.\s]', '', card_name).lower()
+    decoded_name = card_name
+    for entity, char in [("&#039;", ""), ("&quot;", ""), ("&amp;", "and"),
+                         ("&lt;", ""), ("&gt;", ""), ("&#39;", "")]:
+        decoded_name = decoded_name.replace(entity, char)
+    clean_name = re.sub(r'[^a-zA-Z0-9]', '', decoded_name).lower()
     fallback_query = f"{clean_name} {num_suffix}" if num_suffix else clean_name
 
     if not results or not any(card_number in (r.get("number") or "") for r in results):
