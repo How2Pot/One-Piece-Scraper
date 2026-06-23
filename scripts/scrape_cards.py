@@ -272,32 +272,56 @@ def scrape_official_cards() -> list:
     return list(all_cards.values())
 
 
-def fetch_price(card_name: str, unique_id: str, card_number: str, retries: int = 2) -> dict:
-    """unique_id is the scraped card's own id (e.g. 'OP01-002' for the
-    base print, 'OP01-002_p1' for a parallel/alt-art). tcgapi.dev doesn't
-    use the same _p1 convention - instead it returns separate results
-    with a 'printing' field of 'Normal' or 'Foil' for the same card
-    number. A parallel/alt-art card on the official site corresponds to
-    tcgapi.dev's 'Foil' printing; the base card corresponds to 'Normal'.
+def fetch_price(card_name: str, unique_id: str, card_number: str, card_set_id: str = "", retries: int = 2) -> dict:
+    """Match a scraped card variant to its tcgapi.dev price entry.
 
-    Confirmed via real lookups: OP01-002 Normal = $4.44, OP01-002 Foil =
-    $436.19 - picking the wrong one isn't a small error, it's off by
-    nearly 100x. The previous version of this function just returned
-    whichever result's 'number' matched first, with no regard for
-    printing, which is why parallel cards were sometimes priced as if
-    they were the cheap base version (or vice versa)."""
+    Three distinct matching strategies are needed:
+
+    STRATEGY A - Normal/Foil printing distinction (most cards):
+    Many cards have a base 'Normal' print and a parallel 'Foil' print.
+    Our _p1 suffix = Foil, no suffix = Normal. Works for cards like
+    Trafalgar Law (OP01-002): Normal=$4.44, Foil=$436.19.
+
+    STRATEGY B - Name-based distinction (multi-variant SECs):
+    Some cards (e.g. Mihawk OP14-119) have 3+ variants where ALL
+    printings are 'Foil Only'. tcgapi.dev adds name suffixes:
+      - Base:          "Dracule Mihawk - OP14-119"
+      - Alternate Art: "Dracule Mihawk - OP14-119 (Alternate Art)"
+      - Manga:         "Dracule Mihawk (Manga)"
+    clean_name keywords: 'manga' -> _p2, 'alternate/alt' -> _p1
+
+    STRATEGY C - SP reprint detection:
+    SP cards appear in a newer set (e.g. OP-16) but keep the original
+    card number (e.g. OP10-045). tcgapi.dev lists them as a separate
+    entry with clean_name containing 'sp'. Detected by checking whether
+    the card's set_id prefix doesn't match its card number prefix.
+    e.g. card_set_id='OP-16', card_number='OP10-045' -> SP card."""
     if not TCGAPI_KEY:
         return {}
 
-    is_parallel = "_p" in unique_id
+    # Detect SP reprint: set_id prefix doesn't match card number prefix
+    # e.g. card in OP-16 but number is OP10-045 -> it's an SP card
+    card_num_set_prefix = re.match(r'^([A-Z]{2,4}-?\d{2,3})', card_number)
+    set_id_prefix = re.match(r'^([A-Z]{2,4}-?\d{2,3})', card_set_id)
+    is_sp_reprint = (
+        card_num_set_prefix and set_id_prefix and
+        card_num_set_prefix.group(1).replace("-", "").lower() !=
+        set_id_prefix.group(1).replace("-", "").lower()
+    )
+
+    # Determine parallel index (0=base, 1=first parallel, etc.)
+    parallel_match = re.search(r'_p(\d+)$', unique_id)
+    parallel_index = int(parallel_match.group(1)) if parallel_match else 0
+    is_parallel = parallel_index > 0
     wanted_printing = "Foil" if is_parallel else "Normal"
+
+    if is_sp_reprint:
+        print(f"    [SP reprint detected] {unique_id} is in set {card_set_id} but has number {card_number}", file=sys.stderr)
 
     params = urllib.parse.urlencode({
         "q": card_name,
         "game": "one-piece",
-        "per_page": "30",  # bumped from 10 - Normal/Foil pairs for the
-                            # right card may not both appear in a smaller
-                            # page, especially for common names
+        "per_page": "30",
     })
     url = f"{TCGAPI_BASE}/search?{params}"
     req = urllib.request.Request(url, headers={**HEADERS, "X-API-Key": TCGAPI_KEY})
@@ -334,28 +358,48 @@ def fetch_price(card_name: str, unique_id: str, card_number: str, retries: int =
             "tcgplayer_url": f"https://www.tcgplayer.com/product/{tcgplayer_id}" if tcgplayer_id else None,
         }
 
-    # First pass: match on BOTH card number AND the correct printing
-    # (Normal for base cards, Foil for parallels/alt-arts). This is the
-    # precise match.
+    # All results whose card number matches ours
     number_matches = [r for r in results if card_number and card_number in (r.get("number") or "")]
+
+    if not number_matches:
+        print(f"    WARN: no number match for {unique_id} ({card_number}) - using top result", file=sys.stderr)
+        return build_result(results[0])
+
+    # Strategy C: SP reprint - look for clean_name containing 'sp'
+    if is_sp_reprint:
+        for r in number_matches:
+            cn = (r.get("clean_name") or "").lower()
+            if " sp" in cn or cn.endswith("sp"):
+                return build_result(r)
+        print(f"    WARN: SP reprint detected for {unique_id} but no 'sp' clean_name found - falling through", file=sys.stderr)
+
+    # Check if all number-matches share the same printing (multi-variant case)
+    printings = set((r.get("printing") or "").strip().lower() for r in number_matches)
+    all_same_printing = len(printings) <= 1
+
+    if all_same_printing and len(number_matches) > 1:
+        # Strategy B: use clean_name keywords to pick the right variant
+        for r in number_matches:
+            cn = (r.get("clean_name") or "").lower()
+            if parallel_index == 2:
+                if "manga" in cn:
+                    return build_result(r)
+            elif parallel_index == 1:
+                if "alternate" in cn or "alt art" in cn or "parallel" in cn:
+                    return build_result(r)
+            else:
+                if "manga" not in cn and "alternate" not in cn and "alt art" not in cn and " sp" not in cn:
+                    return build_result(r)
+        print(f"    WARN: clean_name matching failed for {unique_id}, trying printing fallback", file=sys.stderr)
+
+    # Strategy A: use printing to disambiguate (Normal vs Foil)
     for r in number_matches:
         if (r.get("printing") or "").strip().lower() == wanted_printing.lower():
             return build_result(r)
 
-    # Second pass: if no printing-specific match was found (e.g. tcgapi.dev
-    # genuinely only has one printing for this card), fall back to any
-    # number match rather than returning nothing - better to show some
-    # price than none, but this is logged so it's visible when it happens.
-    if number_matches:
-        print(f"    WARN: no '{wanted_printing}' printing found for {unique_id} "
-              f"({card_number}) among {len(number_matches)} number match(es) - "
-              f"using first available as fallback", file=sys.stderr)
-        return build_result(number_matches[0])
-
-    # Last resort: no number match at all, use the top overall search hit.
-    print(f"    WARN: no number match for {unique_id} ({card_number}) at all - "
-          f"using top search result as last-resort fallback", file=sys.stderr)
-    return build_result(results[0])
+    # Final fallback: any number match
+    print(f"    WARN: no '{wanted_printing}' printing found for {unique_id} - using first number match", file=sys.stderr)
+    return build_result(number_matches[0])
 
 
 def enrich_with_prices(cards: list, save_every: int = 25) -> list:
@@ -369,7 +413,7 @@ def enrich_with_prices(cards: list, save_every: int = 25) -> list:
 
     print(f"Fetching prices for {len(cards)} cards via tcgapi.dev...", file=sys.stderr)
     for i, c in enumerate(cards):
-        price_info = fetch_price(c["name"], c["id"], c["card_number"])
+        price_info = fetch_price(c["name"], c["id"], c["card_number"], c.get("set_id", ""))
         c["market_price"] = price_info.get("market_price")
         c["tcgplayer_url"] = price_info.get("tcgplayer_url")
         # image_url is already set to a local repo path by download_all_images;
