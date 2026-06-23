@@ -348,18 +348,19 @@ def fetch_price(card_name: str, unique_id: str, card_number: str, card_set_id: s
     # Primary search: by card name alone
     results = do_search(card_name)
 
-    # Fallback search: some sets (e.g. OP-16) store cards in tcgapi.dev as
-    # "Name (CardNumber)" e.g. "Portgas.D.Ace (001)" instead of just
-    # "Portgas.D.Ace". If the primary search returns no number-matching
-    # results, retry with the card number appended to the name.
-    # Strip the set prefix only, keep the number part including leading zeros
-    # e.g. "OP16-001" -> "001", "OP14-119" -> "119"
+    # Fallback search: some sets (e.g. OP-16) store cards in tcgapi.dev
+    # using a clean_name style query. Confirmed via testing:
+    # - "Portgas.D.Ace" -> 0 results
+    # - "Portgas.D.Ace 001" -> 0 results
+    # - "portgasdace 001" -> 2 results (both base and alt art) ✓
+    # Strategy: strip dots and spaces from name, lowercase, append number suffix
     num_suffix_match = re.search(r'-(\d+)$', card_number)
     num_suffix = num_suffix_match.group(1) if num_suffix_match else ""
-    fallback_query = f"{card_name} {num_suffix}" if num_suffix else card_name
+    clean_name = re.sub(r'[.\s]', '', card_name).lower()
+    fallback_query = f"{clean_name} {num_suffix}" if num_suffix else clean_name
 
     if not results or not any(card_number in (r.get("number") or "") for r in results):
-        if fallback_query != card_name:
+        if fallback_query and fallback_query != card_name.lower():
             print(f"    [retry] no number match on '{card_name}', retrying with '{fallback_query}'", file=sys.stderr)
             time.sleep(REQUEST_DELAY)
             results = do_search(fallback_query)
