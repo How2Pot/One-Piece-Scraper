@@ -109,34 +109,47 @@ def fetch_price(card_name: str, unique_id: str, card_number: str, card_set_id: s
     if is_sp_reprint:
         print(f"    [SP reprint] {unique_id} in {card_set_id} has number {card_number}", file=sys.stderr)
 
-    params = urllib.parse.urlencode({
-        "q": card_name,
-        "game": "one-piece",
-        "per_page": "30",
-    })
-    url = f"{TCGAPI_BASE}/search?{params}"
-    req = urllib.request.Request(url, headers={**HEADERS, "X-API-Key": TCGAPI_KEY})
+    def do_search(query: str) -> list:
+        params = urllib.parse.urlencode({
+            "q": query,
+            "game": "one-piece",
+            "per_page": "30",
+        })
+        url = f"{TCGAPI_BASE}/search?{params}"
+        req = urllib.request.Request(url, headers={**HEADERS, "X-API-Key": TCGAPI_KEY})
+        for attempt in range(retries + 1):
+            try:
+                with urllib.request.urlopen(req, timeout=20) as resp:
+                    data = json.loads(resp.read().decode("utf-8"))
+                return data.get("data", [])
+            except urllib.error.HTTPError as e:
+                if e.code == 429 and attempt < retries:
+                    wait = 5 * (attempt + 1)
+                    print(f"    WARN: 429 on '{query}', waiting {wait}s...", file=sys.stderr)
+                    time.sleep(wait)
+                    continue
+                print(f"    WARN: price lookup failed for {card_name}: HTTP {e.code}", file=sys.stderr)
+                return []
+            except Exception as e:
+                print(f"    WARN: price lookup failed for {card_name}: {e}", file=sys.stderr)
+                return []
+        return []
 
-    for attempt in range(retries + 1):
-        try:
-            with urllib.request.urlopen(req, timeout=20) as resp:
-                data = json.loads(resp.read().decode("utf-8"))
-            break
-        except urllib.error.HTTPError as e:
-            if e.code == 429 and attempt < retries:
-                wait = 5 * (attempt + 1)
-                print(f"    WARN: 429 on '{card_name}', waiting {wait}s...", file=sys.stderr)
-                time.sleep(wait)
-                continue
-            print(f"    WARN: price lookup failed for {card_name}: HTTP {e.code}", file=sys.stderr)
-            return {}
-        except Exception as e:
-            print(f"    WARN: price lookup failed for {card_name}: {e}", file=sys.stderr)
-            return {}
-    else:
-        return {}
+    # Primary search by card name
+    results = do_search(card_name)
 
-    results = data.get("data", [])
+    # Fallback: some sets store cards as "Name (CardNumber)" in tcgapi.dev
+    # e.g. "Portgas.D.Ace (001)" - retry with number suffix appended
+    num_suffix_match = re.search(r'-(\d+)$', card_number)
+    num_suffix = num_suffix_match.group(1) if num_suffix_match else ""
+    fallback_query = f"{card_name} {num_suffix}" if num_suffix else card_name
+
+    if not results or not any(card_number in (r.get("number") or "") for r in results):
+        if fallback_query != card_name:
+            print(f"    [retry] no number match on '{card_name}', retrying with '{fallback_query}'", file=sys.stderr)
+            time.sleep(REQUEST_DELAY)
+            results = do_search(fallback_query)
+
     if not results:
         return {}
 
