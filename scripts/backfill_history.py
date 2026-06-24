@@ -65,30 +65,61 @@ def fetch_json(url: str, extra_headers: dict = None) -> dict:
 
 def get_tcgapi_id(card_name: str, card_number: str, is_parallel: bool) -> int | None:
     """Search tcgapi.dev to find the numeric id for this specific card
-    and printing. Returns the id, or None if not found."""
+    and printing. Returns the id, or None if not found.
+    Uses the same two-pass search strategy as the main scraper:
+    1. Primary: search by card name
+    2. Fallback: search by clean_name format (strip non-alphanumeric, lowercase)
+       e.g. "Tony Tony.Chopper 006" for cards stored as "Tony Tony.Chopper (006)"
+    """
+    import re as _re
     wanted_printing = "Foil" if is_parallel else "Normal"
-    params = urllib.parse.urlencode({
-        "q": card_name,
-        "game": "one-piece",
-        "per_page": "30",
-    })
-    try:
-        data = fetch_json(f"{TCGAPI_BASE}/search?{params}")
-        time.sleep(REQUEST_DELAY)
-    except Exception as e:
-        print(f"    WARN: search failed for {card_number}: {e}", file=sys.stderr)
+
+    def do_search(query: str) -> list:
+        params = urllib.parse.urlencode({
+            "q": query,
+            "game": "one-piece",
+            "per_page": "30",
+        })
+        try:
+            data = fetch_json(f"{TCGAPI_BASE}/search?{params}")
+            time.sleep(REQUEST_DELAY)
+            return data.get("data", [])
+        except Exception as e:
+            print(f"    WARN: search failed for {card_number} ('{query}'): {e}", file=sys.stderr)
+            return []
+
+    def find_match(results: list) -> int | None:
+        number_matches = [r for r in results if card_number in (r.get("number") or "")]
+        for r in number_matches:
+            if (r.get("printing") or "").strip().lower() == wanted_printing.lower():
+                return r.get("id")
+        if number_matches:
+            return number_matches[0].get("id")
         return None
 
-    results = data.get("data", [])
-    number_matches = [r for r in results if card_number in (r.get("number") or "")]
+    # Primary search by card name
+    results = do_search(card_name)
+    match = find_match(results)
+    if match:
+        return match
 
-    for r in number_matches:
-        if (r.get("printing") or "").strip().lower() == wanted_printing.lower():
-            return r.get("id")
+    # Fallback: clean_name format - strip all non-alphanumeric chars,
+    # decode HTML entities, lowercase, append number suffix
+    decoded = card_name
+    for entity, char in [("&#039;", ""), ("&quot;", ""), ("&amp;", "and"),
+                         ("&lt;", ""), ("&gt;", ""), ("&#39;", "")]:
+        decoded = decoded.replace(entity, char)
+    num_suffix_match = _re.search(r'-(\d+)$', card_number)
+    num_suffix = num_suffix_match.group(1) if num_suffix_match else ""
+    clean = _re.sub(r'[^a-zA-Z0-9]', '', decoded).lower()
+    fallback_query = f"{clean} {num_suffix}" if num_suffix else clean
 
-    # Fallback: any number match
-    if number_matches:
-        return number_matches[0].get("id")
+    if fallback_query and fallback_query != card_name.lower():
+        print(f"    [retry] no match on '{card_name}', retrying with '{fallback_query}'", file=sys.stderr)
+        results = do_search(fallback_query)
+        match = find_match(results)
+        if match:
+            return match
 
     return None
 
