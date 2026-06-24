@@ -2,11 +2,142 @@
   "card_id": "OP06-035",
   "card_number": "OP06-035",
   "name": "Hody Jones",
+  "backfilled_at": "2026-06-24",
   "history": [
+    {
+      "date": "2026-05-25",
+      "market_price": 4.64,
+      "low_price": null
+    },
+    {
+      "date": "2026-05-26",
+      "market_price": 4.58,
+      "low_price": null
+    },
+    {
+      "date": "2026-05-27",
+      "market_price": 4.5,
+      "low_price": null
+    },
+    {
+      "date": "2026-05-28",
+      "market_price": 4.54,
+      "low_price": null
+    },
+    {
+      "date": "2026-05-29",
+      "market_price": 4.7,
+      "low_price": null
+    },
+    {
+      "date": "2026-05-30",
+      "market_price": 4.71,
+      "low_price": null
+    },
+    {
+      "date": "2026-05-31",
+      "market_price": 4.72,
+      "low_price": null
+    },
+    {
+      "date": "2026-06-01",
+      "market_price": 4.74,
+      "low_price": null
+    },
+    {
+      "date": "2026-06-02",
+      "market_price": 4.6,
+      "low_price": null
+    },
+    {
+      "date": "2026-06-03",
+      "market_price": 4.63,
+      "low_price": null
+    },
+    {
+      "date": "2026-06-04",
+      "market_price": 4.49,
+      "low_price": null
+    },
+    {
+      "date": "2026-06-05",
+      "market_price": 4.36,
+      "low_price": null
+    },
+    {
+      "date": "2026-06-06",
+      "market_price": 4.37,
+      "low_price": null
+    },
+    {
+      "date": "2026-06-07",
+      "market_price": 4.4,
+      "low_price": null
+    },
+    {
+      "date": "2026-06-08",
+      "market_price": 4.43,
+      "low_price": null
+    },
+    {
+      "date": "2026-06-09",
+      "market_price": 4.31,
+      "low_price": null
+    },
+    {
+      "date": "2026-06-10",
+      "market_price": 4.31,
+      "low_price": null
+    },
+    {
+      "date": "2026-06-11",
+      "market_price": 4.12,
+      "low_price": null
+    },
+    {
+      "date": "2026-06-12",
+      "market_price": 4.17,
+      "low_price": null
+    },
+    {
+      "date": "2026-06-13",
+      "market_price": 4.04,
+      "low_price": null
+    },
+    {
+      "date": "2026-06-14",
+      "market_price": 3.97,
+      "low_price": null
+    },
+    {
+      "date": "2026-06-15",
+      "market_price": 3.9,
+      "low_price": null
+    },
+    {
+      "date": "2026-06-16",
+      "market_price": 3.92,
+      "low_price": null
+    },
+    {
+      "date": "2026-06-17",
+      "market_price": 3.9,
+      "low_price": null
+    },
+    {
+      "date": "2026-06-19",
+      "market_price": 3.63,
+      "low_price": 2.99
+    },
+    {
+      "date": "2026-06-21",
+      "market_price": 3.54,
+      "low_price": 2.5
+    },
     {
       "date": "2026-06-23",
       "market_price": 3.59,
-      "low_price": null
+      "low_price": 2.75
     }
   ]
 }
