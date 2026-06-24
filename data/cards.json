@@ -1,5 +1,5 @@
 {
-  "generated_at": "2026-06-24T11:44:45Z",
+  "generated_at": "2026-06-24T11:45:50Z",
   "card_count": 3474,
   "sets": [
     "EB-01",
@@ -16150,7 +16150,9 @@
       "category": "Character",
       "set_label": "PRB-02",
       "set_id": "PRB-02",
-      "image_url": "data/images/OP09-014_p2.png"
+      "image_url": "data/images/OP09-014_p2.png",
+      "market_price": 10.68,
+      "tcgplayer_url": "https://www.tcgplayer.com/product/656038"
     },
     {
       "id": "OP09-014_r2",
@@ -16160,7 +16162,9 @@
       "category": "Character",
       "set_label": "PRB-02",
       "set_id": "PRB-02",
-      "image_url": "data/images/OP09-014_r2.png"
+      "image_url": "data/images/OP09-014_r2.png",
+      "market_price": 2.66,
+      "tcgplayer_url": "https://www.tcgplayer.com/product/600761"
     },
     {
       "id": "OP09-020_r2",
@@ -16170,7 +16174,9 @@
       "category": "Event",
       "set_label": "PRB-02",
       "set_id": "PRB-02",
-      "image_url": "data/images/OP09-020_r2.png"
+      "image_url": "data/images/OP09-020_r2.png",
+      "market_price": null,
+      "tcgplayer_url": null
     },
     {
       "id": "OP09-027_p1",
@@ -16180,7 +16186,9 @@
       "category": "Character",
       "set_label": "PRB-02",
       "set_id": "PRB-02",
-      "image_url": "data/images/OP09-027_p1.png"
+      "image_url": "data/images/OP09-027_p1.png",
+      "market_price": 3.09,
+      "tcgplayer_url": "https://www.tcgplayer.com/product/600765"
     },
     {
       "id": "OP09-027_r1",
@@ -16190,7 +16198,9 @@
       "category": "Character",
       "set_label": "PRB-02",
       "set_id": "PRB-02",
-      "image_url": "data/images/OP09-027_r1.png"
+      "image_url": "data/images/OP09-027_r1.png",
+      "market_price": 3.09,
+      "tcgplayer_url": "https://www.tcgplayer.com/product/600765"
     },
     {
       "id": "OP09-033_p1",
@@ -16200,7 +16210,9 @@
       "category": "Character",
       "set_label": "PRB-02",
       "set_id": "PRB-02",
-      "image_url": "data/images/OP09-033_p1.png"
+      "image_url": "data/images/OP09-033_p1.png",
+      "market_price": 8,
+      "tcgplayer_url": "https://www.tcgplayer.com/product/600725"
     },
     {
       "id": "OP09-033_r1",
@@ -16210,7 +16222,9 @@
       "category": "Character",
       "set_label": "PRB-02",
       "set_id": "PRB-02",
-      "image_url": "data/images/OP09-033_r1.png"
+      "image_url": "data/images/OP09-033_r1.png",
+      "market_price": 8,
+      "tcgplayer_url": "https://www.tcgplayer.com/product/600725"
     },
     {
       "id": "OP09-046_r1",
@@ -16220,7 +16234,9 @@
       "category": "Character",
       "set_label": "PRB-02",
       "set_id": "PRB-02",
-      "image_url": "data/images/OP09-046_r1.png"
+      "image_url": "data/images/OP09-046_r1.png",
+      "market_price": 0.4,
+      "tcgplayer_url": "https://www.tcgplayer.com/product/596975"
     },
     {
       "id": "OP09-048_r1",
@@ -16230,7 +16246,9 @@
       "category": "Character",
       "set_label": "PRB-02",
       "set_id": "PRB-02",
-      "image_url": "data/images/OP09-048_r1.png"
+      "image_url": "data/images/OP09-048_r1.png",
+      "market_price": 0.53,
+      "tcgplayer_url": "https://www.tcgplayer.com/product/596978"
     },
     {
       "id": "OP09-056_p1",
@@ -16240,7 +16258,9 @@
       "category": "Character",
       "set_label": "PRB-02",
       "set_id": "PRB-02",
-      "image_url": "data/images/OP09-056_p1.png"
+      "image_url": "data/images/OP09-056_p1.png",
+      "market_price": 8.34,
+      "tcgplayer_url": "https://www.tcgplayer.com/product/696043"
     },
     {
       "id": "OP09-056_r2",
@@ -16250,7 +16270,9 @@
       "category": "Character",
       "set_label": "PRB-02",
       "set_id": "PRB-02",
-      "image_url": "data/images/OP09-056_r2.png"
+      "image_url": "data/images/OP09-056_r2.png",
+      "market_price": 8.34,
+      "tcgplayer_url": "https://www.tcgplayer.com/product/696043"
     },
     {
       "id": "OP09-057_r2",
@@ -16260,7 +16282,9 @@
       "category": "Event",
       "set_label": "PRB-02",
       "set_id": "PRB-02",
-      "image_url": "data/images/OP09-057_r2.png"
+      "image_url": "data/images/OP09-057_r2.png",
+      "market_price": 0.1,
+      "tcgplayer_url": "https://www.tcgplayer.com/product/634303"
     },
     {
       "id": "OP09-065_r1",
@@ -16270,7 +16294,9 @@
       "category": "Character",
       "set_label": "PRB-02",
       "set_id": "PRB-02",
-      "image_url": "data/images/OP09-065_r1.png"
+      "image_url": "data/images/OP09-065_r1.png",
+      "market_price": 0.79,
+      "tcgplayer_url": "https://www.tcgplayer.com/product/597002"
     },
     {
       "id": "OP09-069_r1",
@@ -16280,7 +16306,9 @@
       "category": "Character",
       "set_label": "PRB-02",
       "set_id": "PRB-02",
-      "image_url": "data/images/OP09-069_r1.png"
+      "image_url": "data/images/OP09-069_r1.png",
+      "market_price": null,
+      "tcgplayer_url": null
     },
     {
       "id": "OP09-072_r1",
@@ -16290,7 +16318,9 @@
       "category": "Character",
       "set_label": "PRB-02",
       "set_id": "PRB-02",
-      "image_url": "data/images/OP09-072_r1.png"
+      "image_url": "data/images/OP09-072_r1.png",
+      "market_price": 0.93,
+      "tcgplayer_url": "https://www.tcgplayer.com/product/597011"
     },
     {
       "id": "OP09-076_p2",
@@ -16300,7 +16330,9 @@
       "category": "Character",
       "set_label": "PRB-02",
       "set_id": "PRB-02",
-      "image_url": "data/images/OP09-076_p2.png"
+      "image_url": "data/images/OP09-076_p2.png",
+      "market_price": null,
+      "tcgplayer_url": null
     },
     {
       "id": "OP09-076_r2",
@@ -16310,7 +16342,9 @@
       "category": "Character",
       "set_label": "PRB-02",
       "set_id": "PRB-02",
-      "image_url": "data/images/OP09-076_r2.png"
+      "image_url": "data/images/OP09-076_r2.png",
+      "market_price": null,
+      "tcgplayer_url": null
     },
     {
       "id": "OP09-077_p1",
@@ -16320,7 +16354,9 @@
       "category": "Event",
       "set_label": "PRB-02",
       "set_id": "PRB-02",
-      "image_url": "data/images/OP09-077_p1.png"
+      "image_url": "data/images/OP09-077_p1.png",
+      "market_price": null,
+      "tcgplayer_url": null
     },
     {
       "id": "OP09-077_r2",
@@ -16330,7 +16366,9 @@
       "category": "Event",
       "set_label": "PRB-02",
       "set_id": "PRB-02",
-      "image_url": "data/images/OP09-077_r2.png"
+      "image_url": "data/images/OP09-077_r2.png",
+      "market_price": null,
+      "tcgplayer_url": null
     },
     {
       "id": "OP09-078_r1",
@@ -16340,7 +16378,9 @@
       "category": "Event",
       "set_label": "PRB-02",
       "set_id": "PRB-02",
-      "image_url": "data/images/OP09-078_r1.png"
+      "image_url": "data/images/OP09-078_r1.png",
+      "market_price": null,
+      "tcgplayer_url": null
     },
     {
       "id": "OP09-079_p1",
@@ -16350,7 +16390,9 @@
       "category": "Event",
       "set_label": "PRB-02",
       "set_id": "PRB-02",
-      "image_url": "data/images/OP09-079_p1.png"
+      "image_url": "data/images/OP09-079_p1.png",
+      "market_price": null,
+      "tcgplayer_url": null
     },
     {
       "id": "OP09-079_r1",
@@ -16360,7 +16402,9 @@
       "category": "Event",
       "set_label": "PRB-02",
       "set_id": "PRB-02",
-      "image_url": "data/images/OP09-079_r1.png"
+      "image_url": "data/images/OP09-079_r1.png",
+      "market_price": null,
+      "tcgplayer_url": null
     },
     {
       "id": "OP09-084_p1",
@@ -16370,7 +16414,9 @@
       "category": "Character",
       "set_label": "PRB-02",
       "set_id": "PRB-02",
-      "image_url": "data/images/OP09-084_p1.png"
+      "image_url": "data/images/OP09-084_p1.png",
+      "market_price": 0.29,
+      "tcgplayer_url": "https://www.tcgplayer.com/product/656086"
     },
     {
       "id": "OP09-084_r1",
@@ -16380,7 +16426,9 @@
       "category": "Character",
       "set_label": "PRB-02",
       "set_id": "PRB-02",
-      "image_url": "data/images/OP09-084_r1.png"
+      "image_url": "data/images/OP09-084_r1.png",
+      "market_price": 3.26,
+      "tcgplayer_url": "https://www.tcgplayer.com/product/600781"
     },
     {
       "id": "OP09-086_p1",
@@ -16390,7 +16438,9 @@
       "category": "Character",
       "set_label": "PRB-02",
       "set_id": "PRB-02",
-      "image_url": "data/images/OP09-086_p1.png"
+      "image_url": "data/images/OP09-086_p1.png",
+      "market_price": 0.22,
+      "tcgplayer_url": "https://www.tcgplayer.com/product/597027"
     },
     {
       "id": "OP09-086_r2",
