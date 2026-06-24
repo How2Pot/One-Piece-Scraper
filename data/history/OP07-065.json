@@ -2,7 +2,138 @@
   "card_id": "OP07-065",
   "card_number": "OP07-065",
   "name": "Gina",
+  "backfilled_at": "2026-06-24",
   "history": [
+    {
+      "date": "2026-05-25",
+      "market_price": 6.52,
+      "low_price": 6.19
+    },
+    {
+      "date": "2026-05-26",
+      "market_price": 6.52,
+      "low_price": null
+    },
+    {
+      "date": "2026-05-27",
+      "market_price": 6.52,
+      "low_price": null
+    },
+    {
+      "date": "2026-05-28",
+      "market_price": 6.52,
+      "low_price": 6.19
+    },
+    {
+      "date": "2026-05-29",
+      "market_price": 6.6,
+      "low_price": null
+    },
+    {
+      "date": "2026-05-30",
+      "market_price": 6.6,
+      "low_price": null
+    },
+    {
+      "date": "2026-05-31",
+      "market_price": 6.6,
+      "low_price": 6.27
+    },
+    {
+      "date": "2026-06-01",
+      "market_price": 6.6,
+      "low_price": null
+    },
+    {
+      "date": "2026-06-02",
+      "market_price": 6.6,
+      "low_price": null
+    },
+    {
+      "date": "2026-06-03",
+      "market_price": 6.6,
+      "low_price": null
+    },
+    {
+      "date": "2026-06-04",
+      "market_price": 6.6,
+      "low_price": null
+    },
+    {
+      "date": "2026-06-05",
+      "market_price": 6.6,
+      "low_price": 6.4
+    },
+    {
+      "date": "2026-06-06",
+      "market_price": 6.6,
+      "low_price": null
+    },
+    {
+      "date": "2026-06-07",
+      "market_price": 6.6,
+      "low_price": 6.4
+    },
+    {
+      "date": "2026-06-08",
+      "market_price": 6.6,
+      "low_price": 6.4
+    },
+    {
+      "date": "2026-06-09",
+      "market_price": 6.6,
+      "low_price": 6.4
+    },
+    {
+      "date": "2026-06-10",
+      "market_price": 6.6,
+      "low_price": null
+    },
+    {
+      "date": "2026-06-11",
+      "market_price": 6.6,
+      "low_price": null
+    },
+    {
+      "date": "2026-06-12",
+      "market_price": 6.6,
+      "low_price": 6.4
+    },
+    {
+      "date": "2026-06-13",
+      "market_price": 6.6,
+      "low_price": null
+    },
+    {
+      "date": "2026-06-14",
+      "market_price": 6.6,
+      "low_price": null
+    },
+    {
+      "date": "2026-06-15",
+      "market_price": 6.6,
+      "low_price": 6.4
+    },
+    {
+      "date": "2026-06-16",
+      "market_price": 6.6,
+      "low_price": null
+    },
+    {
+      "date": "2026-06-17",
+      "market_price": 6.6,
+      "low_price": 5.99
+    },
+    {
+      "date": "2026-06-19",
+      "market_price": 6.63,
+      "low_price": 5.99
+    },
+    {
+      "date": "2026-06-21",
+      "market_price": 6.75,
+      "low_price": null
+    },
     {
       "date": "2026-06-23",
       "market_price": 6.75,
