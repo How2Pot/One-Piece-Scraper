@@ -1,0 +1,33 @@
+{
+  "card_id": "OP05-119",
+  "card_number": "OP05-119",
+  "name": "Monkey.D.Luffy",
+  "backfilled_at": "2026-06-25",
+  "history": [
+    {
+      "date": "2026-05-28",
+      "market_price": 5700,
+      "low_price": 8899.99
+    },
+    {
+      "date": "2026-05-31",
+      "market_price": 5700,
+      "low_price": 8000
+    },
+    {
+      "date": "2026-06-05",
+      "market_price": 5700,
+      "low_price": 8000
+    },
+    {
+      "date": "2026-06-07",
+      "market_price": 5700,
+      "low_price": 8699.69
+    },
+    {
+      "date": "2026-06-08",
+      "market_price": 5700,
+      "low_price": 8699.69
+    }
+  ]
+}

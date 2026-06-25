@@ -2,11 +2,142 @@
   "card_id": "OP05-119_p1",
   "card_number": "OP05-119",
   "name": "Monkey.D.Luffy",
+  "backfilled_at": "2026-06-25",
   "history": [
+    {
+      "date": "2026-05-26",
+      "market_price": 14.21,
+      "low_price": null
+    },
+    {
+      "date": "2026-05-27",
+      "market_price": 14.02,
+      "low_price": null
+    },
+    {
+      "date": "2026-05-28",
+      "market_price": 13.52,
+      "low_price": null
+    },
+    {
+      "date": "2026-05-29",
+      "market_price": 13.53,
+      "low_price": null
+    },
+    {
+      "date": "2026-05-30",
+      "market_price": 13.53,
+      "low_price": null
+    },
+    {
+      "date": "2026-05-31",
+      "market_price": 13.4,
+      "low_price": null
+    },
+    {
+      "date": "2026-06-01",
+      "market_price": 12.87,
+      "low_price": null
+    },
+    {
+      "date": "2026-06-02",
+      "market_price": 12.49,
+      "low_price": null
+    },
+    {
+      "date": "2026-06-03",
+      "market_price": 11.78,
+      "low_price": null
+    },
+    {
+      "date": "2026-06-04",
+      "market_price": 12.67,
+      "low_price": null
+    },
+    {
+      "date": "2026-06-05",
+      "market_price": 12.87,
+      "low_price": null
+    },
+    {
+      "date": "2026-06-06",
+      "market_price": 12.87,
+      "low_price": null
+    },
+    {
+      "date": "2026-06-07",
+      "market_price": 12.41,
+      "low_price": null
+    },
+    {
+      "date": "2026-06-08",
+      "market_price": 12,
+      "low_price": null
+    },
+    {
+      "date": "2026-06-09",
+      "market_price": 11.21,
+      "low_price": null
+    },
+    {
+      "date": "2026-06-10",
+      "market_price": 11.41,
+      "low_price": null
+    },
+    {
+      "date": "2026-06-11",
+      "market_price": 11.66,
+      "low_price": null
+    },
+    {
+      "date": "2026-06-12",
+      "market_price": 11.69,
+      "low_price": null
+    },
+    {
+      "date": "2026-06-13",
+      "market_price": 12.11,
+      "low_price": null
+    },
+    {
+      "date": "2026-06-14",
+      "market_price": 12.34,
+      "low_price": null
+    },
+    {
+      "date": "2026-06-15",
+      "market_price": 12.23,
+      "low_price": null
+    },
+    {
+      "date": "2026-06-16",
+      "market_price": 12.48,
+      "low_price": null
+    },
+    {
+      "date": "2026-06-17",
+      "market_price": 12.48,
+      "low_price": null
+    },
+    {
+      "date": "2026-06-19",
+      "market_price": 12.19,
+      "low_price": 9.99
+    },
+    {
+      "date": "2026-06-21",
+      "market_price": 11.31,
+      "low_price": 3.69
+    },
     {
       "date": "2026-06-23",
       "market_price": 11.18,
-      "low_price": null
+      "low_price": 3.69
+    },
+    {
+      "date": "2026-06-24",
+      "market_price": 11.23,
+      "low_price": 9.99
     }
   ]
 }

@@ -2,11 +2,142 @@
   "card_id": "OP04-001_p1",
   "card_number": "OP04-001",
   "name": "Nefeltari Vivi",
+  "backfilled_at": "2026-06-25",
   "history": [
+    {
+      "date": "2026-05-26",
+      "market_price": 89.76,
+      "low_price": null
+    },
+    {
+      "date": "2026-05-27",
+      "market_price": 89.89,
+      "low_price": null
+    },
+    {
+      "date": "2026-05-28",
+      "market_price": 89.23,
+      "low_price": null
+    },
+    {
+      "date": "2026-05-29",
+      "market_price": 89.36,
+      "low_price": null
+    },
+    {
+      "date": "2026-05-30",
+      "market_price": 89.36,
+      "low_price": null
+    },
+    {
+      "date": "2026-05-31",
+      "market_price": 89.36,
+      "low_price": null
+    },
+    {
+      "date": "2026-06-01",
+      "market_price": 89.36,
+      "low_price": null
+    },
+    {
+      "date": "2026-06-02",
+      "market_price": 89.36,
+      "low_price": null
+    },
+    {
+      "date": "2026-06-03",
+      "market_price": 89.36,
+      "low_price": null
+    },
+    {
+      "date": "2026-06-04",
+      "market_price": 89.22,
+      "low_price": null
+    },
+    {
+      "date": "2026-06-05",
+      "market_price": 88.97,
+      "low_price": null
+    },
+    {
+      "date": "2026-06-06",
+      "market_price": 88.97,
+      "low_price": null
+    },
+    {
+      "date": "2026-06-07",
+      "market_price": 88.97,
+      "low_price": null
+    },
+    {
+      "date": "2026-06-08",
+      "market_price": 88.97,
+      "low_price": null
+    },
+    {
+      "date": "2026-06-09",
+      "market_price": 88.97,
+      "low_price": null
+    },
+    {
+      "date": "2026-06-10",
+      "market_price": 88.97,
+      "low_price": null
+    },
+    {
+      "date": "2026-06-11",
+      "market_price": 88.98,
+      "low_price": null
+    },
+    {
+      "date": "2026-06-12",
+      "market_price": 92.24,
+      "low_price": null
+    },
+    {
+      "date": "2026-06-13",
+      "market_price": 91.46,
+      "low_price": null
+    },
+    {
+      "date": "2026-06-14",
+      "market_price": 91.62,
+      "low_price": null
+    },
+    {
+      "date": "2026-06-15",
+      "market_price": 91.62,
+      "low_price": null
+    },
+    {
+      "date": "2026-06-16",
+      "market_price": 92.58,
+      "low_price": null
+    },
+    {
+      "date": "2026-06-17",
+      "market_price": 92.58,
+      "low_price": null
+    },
+    {
+      "date": "2026-06-19",
+      "market_price": 98.76,
+      "low_price": 75
+    },
+    {
+      "date": "2026-06-21",
+      "market_price": 101.72,
+      "low_price": 75
+    },
     {
       "date": "2026-06-23",
       "market_price": 103.32,
-      "low_price": null
+      "low_price": 134.99
+    },
+    {
+      "date": "2026-06-24",
+      "market_price": 111.89,
+      "low_price": 149
     }
   ]
 }
