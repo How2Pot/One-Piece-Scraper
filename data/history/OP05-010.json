@@ -2,9 +2,140 @@
   "card_id": "OP05-010",
   "card_number": "OP05-010",
   "name": "Nico Robin",
+  "backfilled_at": "2026-06-25",
   "history": [
     {
+      "date": "2026-05-26",
+      "market_price": 192.74,
+      "low_price": null
+    },
+    {
+      "date": "2026-05-27",
+      "market_price": 192.74,
+      "low_price": null
+    },
+    {
+      "date": "2026-05-28",
+      "market_price": 192.74,
+      "low_price": 275
+    },
+    {
+      "date": "2026-05-29",
+      "market_price": 192.74,
+      "low_price": null
+    },
+    {
+      "date": "2026-05-30",
+      "market_price": 192.74,
+      "low_price": null
+    },
+    {
+      "date": "2026-05-31",
+      "market_price": 192.74,
+      "low_price": 275
+    },
+    {
+      "date": "2026-06-01",
+      "market_price": 192.74,
+      "low_price": null
+    },
+    {
+      "date": "2026-06-02",
+      "market_price": 198.23,
+      "low_price": null
+    },
+    {
+      "date": "2026-06-03",
+      "market_price": 199.2,
+      "low_price": null
+    },
+    {
+      "date": "2026-06-04",
+      "market_price": 199.2,
+      "low_price": null
+    },
+    {
+      "date": "2026-06-05",
+      "market_price": 199.2,
+      "low_price": null
+    },
+    {
+      "date": "2026-06-06",
+      "market_price": 199.2,
+      "low_price": null
+    },
+    {
+      "date": "2026-06-07",
+      "market_price": 199.2,
+      "low_price": 400
+    },
+    {
+      "date": "2026-06-08",
+      "market_price": 199.2,
+      "low_price": 400
+    },
+    {
+      "date": "2026-06-09",
+      "market_price": 199.2,
+      "low_price": 400
+    },
+    {
+      "date": "2026-06-10",
+      "market_price": 199.2,
+      "low_price": null
+    },
+    {
+      "date": "2026-06-11",
+      "market_price": 202.21,
+      "low_price": null
+    },
+    {
+      "date": "2026-06-12",
+      "market_price": 203.67,
+      "low_price": 400
+    },
+    {
+      "date": "2026-06-13",
+      "market_price": 203.67,
+      "low_price": null
+    },
+    {
+      "date": "2026-06-14",
+      "market_price": 203.67,
+      "low_price": null
+    },
+    {
+      "date": "2026-06-15",
+      "market_price": 203.67,
+      "low_price": 400
+    },
+    {
+      "date": "2026-06-16",
+      "market_price": 202.6,
+      "low_price": null
+    },
+    {
+      "date": "2026-06-17",
+      "market_price": 202.6,
+      "low_price": 400
+    },
+    {
+      "date": "2026-06-19",
+      "market_price": 203.67,
+      "low_price": null
+    },
+    {
+      "date": "2026-06-21",
+      "market_price": 209.54,
+      "low_price": null
+    },
+    {
       "date": "2026-06-23",
+      "market_price": 223.15,
+      "low_price": null
+    },
+    {
+      "date": "2026-06-24",
       "market_price": 223.15,
       "low_price": null
     }
