@@ -2,9 +2,70 @@
   "card_id": "OP05-080",
   "card_number": "OP05-080",
   "name": "Elizabello II",
+  "backfilled_at": "2026-06-25",
   "history": [
     {
+      "date": "2026-05-28",
+      "market_price": 6.56,
+      "low_price": 13.79
+    },
+    {
+      "date": "2026-05-31",
+      "market_price": 6.56,
+      "low_price": 10
+    },
+    {
+      "date": "2026-06-05",
+      "market_price": 6.56,
+      "low_price": 10
+    },
+    {
+      "date": "2026-06-07",
+      "market_price": 6.56,
+      "low_price": 10
+    },
+    {
+      "date": "2026-06-08",
+      "market_price": 6.56,
+      "low_price": 10
+    },
+    {
+      "date": "2026-06-09",
+      "market_price": 6.56,
+      "low_price": 10
+    },
+    {
+      "date": "2026-06-12",
+      "market_price": 6.56,
+      "low_price": 11.99
+    },
+    {
+      "date": "2026-06-15",
+      "market_price": 6.56,
+      "low_price": 10.67
+    },
+    {
+      "date": "2026-06-17",
+      "market_price": 6.56,
+      "low_price": 7.54
+    },
+    {
+      "date": "2026-06-19",
+      "market_price": 6.56,
+      "low_price": 7.54
+    },
+    {
+      "date": "2026-06-21",
+      "market_price": 6.56,
+      "low_price": 8.67
+    },
+    {
       "date": "2026-06-23",
+      "market_price": 6.72,
+      "low_price": null
+    },
+    {
+      "date": "2026-06-24",
       "market_price": 6.72,
       "low_price": null
     }
