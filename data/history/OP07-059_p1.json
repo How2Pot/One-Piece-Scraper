@@ -138,6 +138,11 @@
       "date": "2026-06-23",
       "market_price": 20.41,
       "low_price": 9.99
+    },
+    {
+      "date": "2026-06-25",
+      "market_price": 20.38,
+      "low_price": null
     }
   ]
 }
