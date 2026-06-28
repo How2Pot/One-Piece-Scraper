@@ -2,21 +2,77 @@
   "card_id": "OP04-111",
   "card_number": "OP04-111",
   "name": "Hera",
+  "backfilled_at": "2026-06-28",
   "history": [
+    {
+      "date": "2026-05-31",
+      "market_price": 2.2,
+      "low_price": 0.99
+    },
+    {
+      "date": "2026-06-05",
+      "market_price": 2.2,
+      "low_price": 1.13
+    },
+    {
+      "date": "2026-06-07",
+      "market_price": 2.2,
+      "low_price": 1.13
+    },
+    {
+      "date": "2026-06-08",
+      "market_price": 2.2,
+      "low_price": 1.13
+    },
+    {
+      "date": "2026-06-09",
+      "market_price": 2.2,
+      "low_price": 1.13
+    },
+    {
+      "date": "2026-06-12",
+      "market_price": 2.2,
+      "low_price": 1.99
+    },
+    {
+      "date": "2026-06-15",
+      "market_price": 2.2,
+      "low_price": 1.99
+    },
+    {
+      "date": "2026-06-17",
+      "market_price": 2.2,
+      "low_price": 1.99
+    },
+    {
+      "date": "2026-06-19",
+      "market_price": 2.16,
+      "low_price": 1.99
+    },
+    {
+      "date": "2026-06-21",
+      "market_price": 2.16,
+      "low_price": 1.99
+    },
     {
       "date": "2026-06-23",
       "market_price": 2.16,
-      "low_price": null
+      "low_price": 1.99
     },
     {
-      "date": "2026-06-25",
+      "date": "2026-06-24",
       "market_price": 2.16,
-      "low_price": null
+      "low_price": 1.99
+    },
+    {
+      "date": "2026-06-26",
+      "market_price": 2.16,
+      "low_price": 1.99
     },
     {
       "date": "2026-06-27",
       "market_price": 2.16,
-      "low_price": null
+      "low_price": 1.99
     }
   ]
 }
