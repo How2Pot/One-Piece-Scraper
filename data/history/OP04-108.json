@@ -133,6 +133,11 @@
       "date": "2026-06-27",
       "market_price": 1.51,
       "low_price": 1.18
+    },
+    {
+      "date": "2026-06-29",
+      "market_price": 1.51,
+      "low_price": null
     }
   ]
 }
