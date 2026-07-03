@@ -27,6 +27,11 @@
       "date": "2026-07-01",
       "market_price": 6.57,
       "low_price": null
+    },
+    {
+      "date": "2026-07-03",
+      "market_price": 6.83,
+      "low_price": null
     }
   ]
 }
