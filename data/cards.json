@@ -1,5 +1,5 @@
 {
-  "generated_at": "2026-07-04T15:03:16Z",
+  "generated_at": "2026-07-04T15:17:21Z",
   "card_count": 3474,
   "sets": [
     "EB-01",
@@ -41350,7 +41350,9 @@
       "category": "Character",
       "set_label": "OP-09",
       "set_id": "OP-09",
-      "image_url": "data/images/OP09-105.png"
+      "image_url": "data/images/OP09-105.png",
+      "market_price": null,
+      "tcgplayer_url": null
     },
     {
       "id": "OP09-106",
@@ -41360,7 +41362,9 @@
       "category": "Character",
       "set_label": "OP-09",
       "set_id": "OP-09",
-      "image_url": "data/images/OP09-106.png"
+      "image_url": "data/images/OP09-106.png",
+      "market_price": null,
+      "tcgplayer_url": null
     },
     {
       "id": "OP09-107",
@@ -41370,7 +41374,9 @@
       "category": "Character",
       "set_label": "OP-09",
       "set_id": "OP-09",
-      "image_url": "data/images/OP09-107.png"
+      "image_url": "data/images/OP09-107.png",
+      "market_price": null,
+      "tcgplayer_url": null
     },
     {
       "id": "OP09-107_p1",
@@ -41380,7 +41386,9 @@
       "category": "Character",
       "set_label": "OP-09",
       "set_id": "OP-09",
-      "image_url": "data/images/OP09-107_p1.png"
+      "image_url": "data/images/OP09-107_p1.png",
+      "market_price": null,
+      "tcgplayer_url": null
     },
     {
       "id": "OP09-108",
@@ -41390,7 +41398,9 @@
       "category": "Character",
       "set_label": "OP-09",
       "set_id": "OP-09",
-      "image_url": "data/images/OP09-108.png"
+      "image_url": "data/images/OP09-108.png",
+      "market_price": null,
+      "tcgplayer_url": null
     },
     {
       "id": "OP09-109",
@@ -41400,7 +41410,9 @@
       "category": "Character",
       "set_label": "OP-09",
       "set_id": "OP-09",
-      "image_url": "data/images/OP09-109.png"
+      "image_url": "data/images/OP09-109.png",
+      "market_price": null,
+      "tcgplayer_url": null
     },
     {
       "id": "OP09-110",
@@ -41410,7 +41422,9 @@
       "category": "Character",
       "set_label": "OP-09",
       "set_id": "OP-09",
-      "image_url": "data/images/OP09-110.png"
+      "image_url": "data/images/OP09-110.png",
+      "market_price": null,
+      "tcgplayer_url": null
     },
     {
       "id": "OP09-111",
@@ -41420,7 +41434,9 @@
       "category": "Character",
       "set_label": "OP-09",
       "set_id": "OP-09",
-      "image_url": "data/images/OP09-111.png"
+      "image_url": "data/images/OP09-111.png",
+      "market_price": null,
+      "tcgplayer_url": null
     },
     {
       "id": "OP09-112",
@@ -41430,7 +41446,9 @@
       "category": "Character",
       "set_label": "OP-09",
       "set_id": "OP-09",
-      "image_url": "data/images/OP09-112.png"
+      "image_url": "data/images/OP09-112.png",
+      "market_price": null,
+      "tcgplayer_url": null
     },
     {
       "id": "OP09-113",
@@ -41440,7 +41458,9 @@
       "category": "Character",
       "set_label": "OP-09",
       "set_id": "OP-09",
-      "image_url": "data/images/OP09-113.png"
+      "image_url": "data/images/OP09-113.png",
+      "market_price": null,
+      "tcgplayer_url": null
     },
     {
       "id": "OP09-114",
@@ -41450,7 +41470,9 @@
       "category": "Character",
       "set_label": "OP-09",
       "set_id": "OP-09",
-      "image_url": "data/images/OP09-114.png"
+      "image_url": "data/images/OP09-114.png",
+      "market_price": null,
+      "tcgplayer_url": null
     },
     {
       "id": "OP09-115",
@@ -41460,7 +41482,9 @@
       "category": "Event",
       "set_label": "OP-09",
       "set_id": "OP-09",
-      "image_url": "data/images/OP09-115.png"
+      "image_url": "data/images/OP09-115.png",
+      "market_price": null,
+      "tcgplayer_url": null
     },
     {
       "id": "OP09-116",
@@ -41470,7 +41494,9 @@
       "category": "Event",
       "set_label": "OP-09",
       "set_id": "OP-09",
-      "image_url": "data/images/OP09-116.png"
+      "image_url": "data/images/OP09-116.png",
+      "market_price": null,
+      "tcgplayer_url": null
     },
     {
       "id": "OP09-117",
@@ -41480,7 +41506,9 @@
       "category": "Event",
       "set_label": "OP-09",
       "set_id": "OP-09",
-      "image_url": "data/images/OP09-117.png"
+      "image_url": "data/images/OP09-117.png",
+      "market_price": null,
+      "tcgplayer_url": null
     },
     {
       "id": "OP09-118",
@@ -41490,7 +41518,9 @@
       "category": "Character",
       "set_label": "OP-09",
       "set_id": "OP-09",
-      "image_url": "data/images/OP09-118.png"
+      "image_url": "data/images/OP09-118.png",
+      "market_price": null,
+      "tcgplayer_url": null
     },
     {
       "id": "OP09-118_p1",
@@ -41500,7 +41530,9 @@
       "category": "Character",
       "set_label": "OP-09",
       "set_id": "OP-09",
-      "image_url": "data/images/OP09-118_p1.png"
+      "image_url": "data/images/OP09-118_p1.png",
+      "market_price": null,
+      "tcgplayer_url": null
     },
     {
       "id": "OP09-118_p2",
@@ -41510,7 +41542,9 @@
       "category": "Character",
       "set_label": "OP-09",
       "set_id": "OP-09",
-      "image_url": "data/images/OP09-118_p2.png"
+      "image_url": "data/images/OP09-118_p2.png",
+      "market_price": null,
+      "tcgplayer_url": null
     },
     {
       "id": "OP09-119",
@@ -41520,7 +41554,9 @@
       "category": "Character",
       "set_label": "OP-09",
       "set_id": "OP-09",
-      "image_url": "data/images/OP09-119.png"
+      "image_url": "data/images/OP09-119.png",
+      "market_price": null,
+      "tcgplayer_url": null
     },
     {
       "id": "OP09-119_p1",
@@ -41530,7 +41566,9 @@
       "category": "Character",
       "set_label": "OP-09",
       "set_id": "OP-09",
-      "image_url": "data/images/OP09-119_p1.png"
+      "image_url": "data/images/OP09-119_p1.png",
+      "market_price": null,
+      "tcgplayer_url": null
     },
     {
       "id": "OP09-119_p2",
@@ -41540,7 +41578,9 @@
       "category": "Character",
       "set_label": "OP-09",
       "set_id": "OP-09",
-      "image_url": "data/images/OP09-119_p2.png"
+      "image_url": "data/images/OP09-119_p2.png",
+      "market_price": null,
+      "tcgplayer_url": null
     },
     {
       "id": "ST18-004_p1",
@@ -41550,7 +41590,9 @@
       "category": "Character",
       "set_label": "OP-09",
       "set_id": "OP-09",
-      "image_url": "data/images/ST18-004_p1.png"
+      "image_url": "data/images/ST18-004_p1.png",
+      "market_price": null,
+      "tcgplayer_url": null
     },
     {
       "id": "OP04-119_p2",
@@ -41560,7 +41602,9 @@
       "category": "Character",
       "set_label": "OP-09",
       "set_id": "OP-09",
-      "image_url": "data/images/OP04-119_p2.png"
+      "image_url": "data/images/OP04-119_p2.png",
+      "market_price": null,
+      "tcgplayer_url": null
     },
     {
       "id": "OP05-067_p4",
@@ -41570,7 +41614,9 @@
       "category": "Character",
       "set_label": "OP-09",
       "set_id": "OP-09",
-      "image_url": "data/images/OP05-067_p4.png"
+      "image_url": "data/images/OP05-067_p4.png",
+      "market_price": null,
+      "tcgplayer_url": null
     },
     {
       "id": "OP05-093_p2",
@@ -41580,7 +41626,9 @@
       "category": "Character",
       "set_label": "OP-09",
       "set_id": "OP-09",
-      "image_url": "data/images/OP05-093_p2.png"
+      "image_url": "data/images/OP05-093_p2.png",
+      "market_price": null,
+      "tcgplayer_url": null
     },
     {
       "id": "OP05-119_p6",
@@ -41590,7 +41638,9 @@
       "category": "Character",
       "set_label": "OP-09",
       "set_id": "OP-09",
-      "image_url": "data/images/OP05-119_p6.png"
+      "image_url": "data/images/OP05-119_p6.png",
+      "market_price": null,
+      "tcgplayer_url": null
     },
     {
       "id": "OP07-015_p2",
