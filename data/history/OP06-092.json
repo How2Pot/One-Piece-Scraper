@@ -2,13 +2,8 @@
   "card_id": "OP06-092",
   "card_number": "OP06-092",
   "name": "Brook",
-  "backfilled_at": "2026-06-28",
+  "backfilled_at": "2026-07-05",
   "history": [
-    {
-      "date": "2026-05-31",
-      "market_price": 203.25,
-      "low_price": 800
-    },
     {
       "date": "2026-06-05",
       "market_price": 203.25,
