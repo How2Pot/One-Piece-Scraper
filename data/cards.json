@@ -1,5 +1,5 @@
 {
-  "generated_at": "2026-07-12T14:33:11Z",
+  "generated_at": "2026-07-12T14:36:35Z",
   "card_count": 3474,
   "sets": [
     "EB-01",
@@ -41650,7 +41650,9 @@
       "category": "Character",
       "set_label": "OP-09",
       "set_id": "OP-09",
-      "image_url": "data/images/OP07-015_p2.png"
+      "image_url": "data/images/OP07-015_p2.png",
+      "market_price": null,
+      "tcgplayer_url": null
     },
     {
       "id": "OP07-051_p3",
@@ -41660,7 +41662,9 @@
       "category": "Character",
       "set_label": "OP-09",
       "set_id": "OP-09",
-      "image_url": "data/images/OP07-051_p3.png"
+      "image_url": "data/images/OP07-051_p3.png",
+      "market_price": null,
+      "tcgplayer_url": null
     },
     {
       "id": "OP08-106_p2",
@@ -41670,7 +41674,9 @@
       "category": "Character",
       "set_label": "OP-09",
       "set_id": "OP-09",
-      "image_url": "data/images/OP08-106_p2.png"
+      "image_url": "data/images/OP08-106_p2.png",
+      "market_price": null,
+      "tcgplayer_url": null
     },
     {
       "id": "OP09-004_p3",
@@ -41680,7 +41686,9 @@
       "category": "Character",
       "set_label": "OP-09",
       "set_id": "OP-09",
-      "image_url": "data/images/OP09-004_p3.png"
+      "image_url": "data/images/OP09-004_p3.png",
+      "market_price": null,
+      "tcgplayer_url": null
     },
     {
       "id": "OP09-051_p3",
@@ -41690,7 +41698,9 @@
       "category": "Character",
       "set_label": "OP-09",
       "set_id": "OP-09",
-      "image_url": "data/images/OP09-051_p3.png"
+      "image_url": "data/images/OP09-051_p3.png",
+      "market_price": null,
+      "tcgplayer_url": null
     },
     {
       "id": "OP09-093_p3",
@@ -41700,7 +41710,9 @@
       "category": "Character",
       "set_label": "OP-09",
       "set_id": "OP-09",
-      "image_url": "data/images/OP09-093_p3.png"
+      "image_url": "data/images/OP09-093_p3.png",
+      "market_price": null,
+      "tcgplayer_url": null
     }
   ]
 }
