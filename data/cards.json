@@ -1,5 +1,5 @@
 {
-  "generated_at": "2026-07-18T10:24:05Z",
+  "generated_at": "2026-07-18T10:25:21Z",
   "card_count": 3474,
   "sets": [
     "EB-01",
@@ -17950,7 +17950,9 @@
       "category": "Event",
       "set_label": "PRB-02",
       "set_id": "PRB-02",
-      "image_url": "data/images/ST14-016_p1.png"
+      "image_url": "data/images/ST14-016_p1.png",
+      "market_price": null,
+      "tcgplayer_url": null
     },
     {
       "id": "ST14-016_r1",
@@ -17960,7 +17962,9 @@
       "category": "Event",
       "set_label": "PRB-02",
       "set_id": "PRB-02",
-      "image_url": "data/images/ST14-016_r1.png"
+      "image_url": "data/images/ST14-016_r1.png",
+      "market_price": null,
+      "tcgplayer_url": null
     },
     {
       "id": "ST14-017_p1",
@@ -17970,7 +17974,9 @@
       "category": "Stage",
       "set_label": "PRB-02",
       "set_id": "PRB-02",
-      "image_url": "data/images/ST14-017_p1.png"
+      "image_url": "data/images/ST14-017_p1.png",
+      "market_price": 0.21,
+      "tcgplayer_url": "https://www.tcgplayer.com/product/656251"
     },
     {
       "id": "ST14-017_r1",
@@ -17980,7 +17986,9 @@
       "category": "Stage",
       "set_label": "PRB-02",
       "set_id": "PRB-02",
-      "image_url": "data/images/ST14-017_r1.png"
+      "image_url": "data/images/ST14-017_r1.png",
+      "market_price": 0.2,
+      "tcgplayer_url": "https://www.tcgplayer.com/product/548428"
     },
     {
       "id": "ST15-002_p2",
@@ -17990,7 +17998,9 @@
       "category": "Character",
       "set_label": "PRB-02",
       "set_id": "PRB-02",
-      "image_url": "data/images/ST15-002_p2.png"
+      "image_url": "data/images/ST15-002_p2.png",
+      "market_price": null,
+      "tcgplayer_url": null
     },
     {
       "id": "ST15-002_r1",
@@ -18000,7 +18010,9 @@
       "category": "Character",
       "set_label": "PRB-02",
       "set_id": "PRB-02",
-      "image_url": "data/images/ST15-002_r1.png"
+      "image_url": "data/images/ST15-002_r1.png",
+      "market_price": null,
+      "tcgplayer_url": null
     },
     {
       "id": "ST16-003_p1",
@@ -18010,7 +18022,9 @@
       "category": "Character",
       "set_label": "PRB-02",
       "set_id": "PRB-02",
-      "image_url": "data/images/ST16-003_p1.png"
+      "image_url": "data/images/ST16-003_p1.png",
+      "market_price": 0.17,
+      "tcgplayer_url": "https://www.tcgplayer.com/product/656068"
     },
     {
       "id": "ST16-003_r1",
@@ -18020,7 +18034,9 @@
       "category": "Character",
       "set_label": "PRB-02",
       "set_id": "PRB-02",
-      "image_url": "data/images/ST16-003_r1.png"
+      "image_url": "data/images/ST16-003_r1.png",
+      "market_price": 0.12,
+      "tcgplayer_url": "https://www.tcgplayer.com/product/581003"
     },
     {
       "id": "ST16-004_p2",
@@ -18030,7 +18046,9 @@
       "category": "Character",
       "set_label": "PRB-02",
       "set_id": "PRB-02",
-      "image_url": "data/images/ST16-004_p2.png"
+      "image_url": "data/images/ST16-004_p2.png",
+      "market_price": 3.7,
+      "tcgplayer_url": "https://www.tcgplayer.com/product/581004"
     },
     {
       "id": "ST16-004_r1",
@@ -18040,7 +18058,9 @@
       "category": "Character",
       "set_label": "PRB-02",
       "set_id": "PRB-02",
-      "image_url": "data/images/ST16-004_r1.png"
+      "image_url": "data/images/ST16-004_r1.png",
+      "market_price": 3.7,
+      "tcgplayer_url": "https://www.tcgplayer.com/product/581004"
     },
     {
       "id": "ST16-005_p1",
@@ -18050,7 +18070,9 @@
       "category": "Character",
       "set_label": "PRB-02",
       "set_id": "PRB-02",
-      "image_url": "data/images/ST16-005_p1.png"
+      "image_url": "data/images/ST16-005_p1.png",
+      "market_price": null,
+      "tcgplayer_url": null
     },
     {
       "id": "ST16-005_r1",
@@ -18060,7 +18082,9 @@
       "category": "Character",
       "set_label": "PRB-02",
       "set_id": "PRB-02",
-      "image_url": "data/images/ST16-005_r1.png"
+      "image_url": "data/images/ST16-005_r1.png",
+      "market_price": null,
+      "tcgplayer_url": null
     },
     {
       "id": "ST17-002_p1",
@@ -18070,7 +18094,9 @@
       "category": "Character",
       "set_label": "PRB-02",
       "set_id": "PRB-02",
-      "image_url": "data/images/ST17-002_p1.png"
+      "image_url": "data/images/ST17-002_p1.png",
+      "market_price": null,
+      "tcgplayer_url": null
     },
     {
       "id": "ST17-002_r1",
@@ -18080,7 +18106,9 @@
       "category": "Character",
       "set_label": "PRB-02",
       "set_id": "PRB-02",
-      "image_url": "data/images/ST17-002_r1.png"
+      "image_url": "data/images/ST17-002_r1.png",
+      "market_price": null,
+      "tcgplayer_url": null
     },
     {
       "id": "ST17-003_p3",
@@ -18090,7 +18118,9 @@
       "category": "Character",
       "set_label": "PRB-02",
       "set_id": "PRB-02",
-      "image_url": "data/images/ST17-003_p3.png"
+      "image_url": "data/images/ST17-003_p3.png",
+      "market_price": 0.51,
+      "tcgplayer_url": "https://www.tcgplayer.com/product/581018"
     },
     {
       "id": "ST17-003_r1",
@@ -18100,7 +18130,9 @@
       "category": "Character",
       "set_label": "PRB-02",
       "set_id": "PRB-02",
-      "image_url": "data/images/ST17-003_r1.png"
+      "image_url": "data/images/ST17-003_r1.png",
+      "market_price": 0.51,
+      "tcgplayer_url": "https://www.tcgplayer.com/product/581018"
     },
     {
       "id": "ST17-005_p1",
@@ -18110,7 +18142,9 @@
       "category": "Character",
       "set_label": "PRB-02",
       "set_id": "PRB-02",
-      "image_url": "data/images/ST17-005_p1.png"
+      "image_url": "data/images/ST17-005_p1.png",
+      "market_price": null,
+      "tcgplayer_url": null
     },
     {
       "id": "ST17-005_r1",
@@ -18120,7 +18154,9 @@
       "category": "Character",
       "set_label": "PRB-02",
       "set_id": "PRB-02",
-      "image_url": "data/images/ST17-005_r1.png"
+      "image_url": "data/images/ST17-005_r1.png",
+      "market_price": null,
+      "tcgplayer_url": null
     },
     {
       "id": "ST18-001_p2",
@@ -18130,7 +18166,9 @@
       "category": "Character",
       "set_label": "PRB-02",
       "set_id": "PRB-02",
-      "image_url": "data/images/ST18-001_p2.png"
+      "image_url": "data/images/ST18-001_p2.png",
+      "market_price": null,
+      "tcgplayer_url": null
     },
     {
       "id": "ST18-001_p3",
@@ -18140,7 +18178,9 @@
       "category": "Character",
       "set_label": "PRB-02",
       "set_id": "PRB-02",
-      "image_url": "data/images/ST18-001_p3.png"
+      "image_url": "data/images/ST18-001_p3.png",
+      "market_price": null,
+      "tcgplayer_url": null
     },
     {
       "id": "ST18-001_r1",
@@ -18150,7 +18190,9 @@
       "category": "Character",
       "set_label": "PRB-02",
       "set_id": "PRB-02",
-      "image_url": "data/images/ST18-001_r1.png"
+      "image_url": "data/images/ST18-001_r1.png",
+      "market_price": null,
+      "tcgplayer_url": null
     },
     {
       "id": "ST18-002_p1",
@@ -18160,7 +18202,9 @@
       "category": "Character",
       "set_label": "PRB-02",
       "set_id": "PRB-02",
-      "image_url": "data/images/ST18-002_p1.png"
+      "image_url": "data/images/ST18-002_p1.png",
+      "market_price": null,
+      "tcgplayer_url": null
     },
     {
       "id": "ST18-002_r1",
@@ -18170,7 +18214,9 @@
       "category": "Character",
       "set_label": "PRB-02",
       "set_id": "PRB-02",
-      "image_url": "data/images/ST18-002_r1.png"
+      "image_url": "data/images/ST18-002_r1.png",
+      "market_price": null,
+      "tcgplayer_url": null
     },
     {
       "id": "ST18-003_p2",
@@ -18180,7 +18226,9 @@
       "category": "Character",
       "set_label": "PRB-02",
       "set_id": "PRB-02",
-      "image_url": "data/images/ST18-003_p2.png"
+      "image_url": "data/images/ST18-003_p2.png",
+      "market_price": null,
+      "tcgplayer_url": null
     },
     {
       "id": "ST18-003_r1",
@@ -18190,7 +18238,9 @@
       "category": "Character",
       "set_label": "PRB-02",
       "set_id": "PRB-02",
-      "image_url": "data/images/ST18-003_r1.png"
+      "image_url": "data/images/ST18-003_r1.png",
+      "market_price": null,
+      "tcgplayer_url": null
     },
     {
       "id": "ST19-002_p3",
