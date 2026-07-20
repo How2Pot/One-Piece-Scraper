@@ -1,5 +1,5 @@
 {
-  "generated_at": "2026-07-20T12:08:25Z",
+  "generated_at": "2026-07-20T12:09:22Z",
   "card_count": 3474,
   "sets": [
     "EB-01",
@@ -24250,7 +24250,9 @@
       "category": "Character",
       "set_label": "EB-02",
       "set_id": "EB-02",
-      "image_url": "data/images/EB02-057.png"
+      "image_url": "data/images/EB02-057.png",
+      "market_price": 0.07,
+      "tcgplayer_url": "https://www.tcgplayer.com/product/629161"
     },
     {
       "id": "EB02-058",
@@ -24260,7 +24262,9 @@
       "category": "Event",
       "set_label": "EB-02",
       "set_id": "EB-02",
-      "image_url": "data/images/EB02-058.png"
+      "image_url": "data/images/EB02-058.png",
+      "market_price": null,
+      "tcgplayer_url": null
     },
     {
       "id": "EB02-059",
@@ -24270,7 +24274,9 @@
       "category": "Event",
       "set_label": "EB-02",
       "set_id": "EB-02",
-      "image_url": "data/images/EB02-059.png"
+      "image_url": "data/images/EB02-059.png",
+      "market_price": null,
+      "tcgplayer_url": null
     },
     {
       "id": "EB02-060",
@@ -24280,7 +24286,9 @@
       "category": "Stage",
       "set_label": "EB-02",
       "set_id": "EB-02",
-      "image_url": "data/images/EB02-060.png"
+      "image_url": "data/images/EB02-060.png",
+      "market_price": 0.09,
+      "tcgplayer_url": "https://www.tcgplayer.com/product/629164"
     },
     {
       "id": "EB02-061",
@@ -24290,7 +24298,9 @@
       "category": "Character",
       "set_label": "EB-02",
       "set_id": "EB-02",
-      "image_url": "data/images/EB02-061.png"
+      "image_url": "data/images/EB02-061.png",
+      "market_price": 9.34,
+      "tcgplayer_url": "https://www.tcgplayer.com/product/629165"
     },
     {
       "id": "EB02-061_p1",
@@ -24300,7 +24310,9 @@
       "category": "Character",
       "set_label": "EB-02",
       "set_id": "EB-02",
-      "image_url": "data/images/EB02-061_p1.png"
+      "image_url": "data/images/EB02-061_p1.png",
+      "market_price": 143.32,
+      "tcgplayer_url": "https://www.tcgplayer.com/product/629166"
     },
     {
       "id": "EB02-061_p2",
@@ -24310,7 +24322,9 @@
       "category": "Character",
       "set_label": "EB-02",
       "set_id": "EB-02",
-      "image_url": "data/images/EB02-061_p2.png"
+      "image_url": "data/images/EB02-061_p2.png",
+      "market_price": 5108,
+      "tcgplayer_url": "https://www.tcgplayer.com/product/629167"
     },
     {
       "id": "OP05-001_p2",
@@ -24320,7 +24334,9 @@
       "category": "Leader",
       "set_label": "EB-02",
       "set_id": "EB-02",
-      "image_url": "data/images/OP05-001_p2.png"
+      "image_url": "data/images/OP05-001_p2.png",
+      "market_price": 15.02,
+      "tcgplayer_url": "https://www.tcgplayer.com/product/527007"
     },
     {
       "id": "OP05-002_p2",
@@ -24330,7 +24346,9 @@
       "category": "Leader",
       "set_label": "EB-02",
       "set_id": "EB-02",
-      "image_url": "data/images/OP05-002_p2.png"
+      "image_url": "data/images/OP05-002_p2.png",
+      "market_price": 586.45,
+      "tcgplayer_url": "https://www.tcgplayer.com/product/629169"
     },
     {
       "id": "OP05-022_p2",
@@ -24340,7 +24358,9 @@
       "category": "Leader",
       "set_label": "EB-02",
       "set_id": "EB-02",
-      "image_url": "data/images/OP05-022_p2.png"
+      "image_url": "data/images/OP05-022_p2.png",
+      "market_price": 824.83,
+      "tcgplayer_url": "https://www.tcgplayer.com/product/629170"
     },
     {
       "id": "OP05-060_p4",
@@ -24350,7 +24370,9 @@
       "category": "Leader",
       "set_label": "EB-02",
       "set_id": "EB-02",
-      "image_url": "data/images/OP05-060_p4.png"
+      "image_url": "data/images/OP05-060_p4.png",
+      "market_price": 133.07,
+      "tcgplayer_url": "https://www.tcgplayer.com/product/527014"
     },
     {
       "id": "OP05-098_p2",
@@ -24360,7 +24382,9 @@
       "category": "Leader",
       "set_label": "EB-02",
       "set_id": "EB-02",
-      "image_url": "data/images/OP05-098_p2.png"
+      "image_url": "data/images/OP05-098_p2.png",
+      "market_price": 704.19,
+      "tcgplayer_url": "https://www.tcgplayer.com/product/629172"
     },
     {
       "id": "OP06-001_p2",
@@ -24370,7 +24394,9 @@
       "category": "Leader",
       "set_label": "EB-02",
       "set_id": "EB-02",
-      "image_url": "data/images/OP06-001_p2.png"
+      "image_url": "data/images/OP06-001_p2.png",
+      "market_price": 36.29,
+      "tcgplayer_url": "https://www.tcgplayer.com/product/539285"
     },
     {
       "id": "OP06-020_p2",
@@ -24380,7 +24406,9 @@
       "category": "Leader",
       "set_label": "EB-02",
       "set_id": "EB-02",
-      "image_url": "data/images/OP06-020_p2.png"
+      "image_url": "data/images/OP06-020_p2.png",
+      "market_price": 385.07,
+      "tcgplayer_url": "https://www.tcgplayer.com/product/629174"
     },
     {
       "id": "OP06-021_p2",
@@ -24390,7 +24418,9 @@
       "category": "Leader",
       "set_label": "EB-02",
       "set_id": "EB-02",
-      "image_url": "data/images/OP06-021_p2.png"
+      "image_url": "data/images/OP06-021_p2.png",
+      "market_price": 62.45,
+      "tcgplayer_url": "https://www.tcgplayer.com/product/541044"
     },
     {
       "id": "OP06-022_p2",
@@ -24400,7 +24430,9 @@
       "category": "Leader",
       "set_label": "EB-02",
       "set_id": "EB-02",
-      "image_url": "data/images/OP06-022_p2.png"
+      "image_url": "data/images/OP06-022_p2.png",
+      "market_price": 71.29,
+      "tcgplayer_url": "https://www.tcgplayer.com/product/539490"
     },
     {
       "id": "OP06-042_p2",
@@ -24410,7 +24442,9 @@
       "category": "Leader",
       "set_label": "EB-02",
       "set_id": "EB-02",
-      "image_url": "data/images/OP06-042_p2.png"
+      "image_url": "data/images/OP06-042_p2.png",
+      "market_price": 744.6,
+      "tcgplayer_url": "https://www.tcgplayer.com/product/629177"
     },
     {
       "id": "OP06-080_p2",
@@ -24420,7 +24454,9 @@
       "category": "Leader",
       "set_label": "EB-02",
       "set_id": "EB-02",
-      "image_url": "data/images/OP06-080_p2.png"
+      "image_url": "data/images/OP06-080_p2.png",
+      "market_price": 459.66,
+      "tcgplayer_url": "https://www.tcgplayer.com/product/629178"
     },
     {
       "id": "OP07-001_p2",
@@ -24430,7 +24466,9 @@
       "category": "Leader",
       "set_label": "EB-02",
       "set_id": "EB-02",
-      "image_url": "data/images/OP07-001_p2.png"
+      "image_url": "data/images/OP07-001_p2.png",
+      "market_price": 20.55,
+      "tcgplayer_url": "https://www.tcgplayer.com/product/545779"
     },
     {
       "id": "OP07-019_p2",
@@ -24440,7 +24478,9 @@
       "category": "Leader",
       "set_label": "EB-02",
       "set_id": "EB-02",
-      "image_url": "data/images/OP07-019_p2.png"
+      "image_url": "data/images/OP07-019_p2.png",
+      "market_price": 52.04,
+      "tcgplayer_url": "https://www.tcgplayer.com/product/545800"
     },
     {
       "id": "OP07-038_p2",
@@ -24450,7 +24490,9 @@
       "category": "Leader",
       "set_label": "EB-02",
       "set_id": "EB-02",
-      "image_url": "data/images/OP07-038_p2.png"
+      "image_url": "data/images/OP07-038_p2.png",
+      "market_price": 127.85,
+      "tcgplayer_url": "https://www.tcgplayer.com/product/545823"
     },
     {
       "id": "OP07-059_p2",
@@ -24460,7 +24502,9 @@
       "category": "Leader",
       "set_label": "EB-02",
       "set_id": "EB-02",
-      "image_url": "data/images/OP07-059_p2.png"
+      "image_url": "data/images/OP07-059_p2.png",
+      "market_price": 428.48,
+      "tcgplayer_url": "https://www.tcgplayer.com/product/629182"
     },
     {
       "id": "OP07-079_p2",
@@ -24470,7 +24514,9 @@
       "category": "Leader",
       "set_label": "EB-02",
       "set_id": "EB-02",
-      "image_url": "data/images/OP07-079_p2.png"
+      "image_url": "data/images/OP07-079_p2.png",
+      "market_price": 688.99,
+      "tcgplayer_url": "https://www.tcgplayer.com/product/629183"
     },
     {
       "id": "OP07-097_p2",
@@ -24480,7 +24526,9 @@
       "category": "Leader",
       "set_label": "EB-02",
       "set_id": "EB-02",
-      "image_url": "data/images/OP07-097_p2.png"
+      "image_url": "data/images/OP07-097_p2.png",
+      "market_price": 746.52,
+      "tcgplayer_url": "https://www.tcgplayer.com/product/629184"
     },
     {
       "id": "OP08-001_p2",
@@ -24490,7 +24538,9 @@
       "category": "Leader",
       "set_label": "EB-02",
       "set_id": "EB-02",
-      "image_url": "data/images/OP08-001_p2.png"
+      "image_url": "data/images/OP08-001_p2.png",
+      "market_price": null,
+      "tcgplayer_url": null
     },
     {
       "id": "OP08-002_p2",
