@@ -1,5 +1,5 @@
 {
-  "generated_at": "2026-08-28T00:02:03Z",
+  "generated_at": "2026-08-28T00:02:25Z",
   "card_count": 3474,
   "sets": [
     "EB-01",
@@ -41650,7 +41650,9 @@
       "category": "Character",
       "set_label": "OP-09",
       "set_id": "OP-09",
-      "image_url": "data/images/OP07-015_p2.png"
+      "image_url": "data/images/OP07-015_p2.png",
+      "market_price": 0.44,
+      "tcgplayer_url": "https://www.tcgplayer.com/product/545794"
     },
     {
       "id": "OP07-051_p3",
@@ -41660,7 +41662,9 @@
       "category": "Character",
       "set_label": "OP-09",
       "set_id": "OP-09",
-      "image_url": "data/images/OP07-051_p3.png"
+      "image_url": "data/images/OP07-051_p3.png",
+      "market_price": 4.63,
+      "tcgplayer_url": "https://www.tcgplayer.com/product/545839"
     },
     {
       "id": "OP08-106_p2",
@@ -41670,7 +41674,9 @@
       "category": "Character",
       "set_label": "OP-09",
       "set_id": "OP-09",
-      "image_url": "data/images/OP08-106_p2.png"
+      "image_url": "data/images/OP08-106_p2.png",
+      "market_price": 3.06,
+      "tcgplayer_url": "https://www.tcgplayer.com/product/558145"
     },
     {
       "id": "OP09-004_p3",
@@ -41680,7 +41686,9 @@
       "category": "Character",
       "set_label": "OP-09",
       "set_id": "OP-09",
-      "image_url": "data/images/OP09-004_p3.png"
+      "image_url": "data/images/OP09-004_p3.png",
+      "market_price": 1.07,
+      "tcgplayer_url": "https://www.tcgplayer.com/product/596924"
     },
     {
       "id": "OP09-051_p3",
@@ -41690,7 +41698,9 @@
       "category": "Character",
       "set_label": "OP-09",
       "set_id": "OP-09",
-      "image_url": "data/images/OP09-051_p3.png"
+      "image_url": "data/images/OP09-051_p3.png",
+      "market_price": 0.18,
+      "tcgplayer_url": "https://www.tcgplayer.com/product/596983"
     },
     {
       "id": "OP09-093_p3",
@@ -41700,7 +41710,9 @@
       "category": "Character",
       "set_label": "OP-09",
       "set_id": "OP-09",
-      "image_url": "data/images/OP09-093_p3.png"
+      "image_url": "data/images/OP09-093_p3.png",
+      "market_price": 1.71,
+      "tcgplayer_url": "https://www.tcgplayer.com/product/597034"
     }
   ]
 }
