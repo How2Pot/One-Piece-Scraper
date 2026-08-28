@@ -1,0 +1,12 @@
+{
+  "card_id": "OP09-110",
+  "card_number": "OP09-110",
+  "name": "Pierre",
+  "history": [
+    {
+      "date": "2026-08-28",
+      "market_price": 0.42,
+      "low_price": null
+    }
+  ]
+}
