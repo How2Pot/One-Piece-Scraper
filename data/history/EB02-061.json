@@ -152,6 +152,11 @@
       "date": "2026-08-28",
       "market_price": 12.04,
       "low_price": null
+    },
+    {
+      "date": "2026-08-29",
+      "market_price": 12.52,
+      "low_price": null
     }
   ]
 }
