@@ -418,6 +418,11 @@
       "date": "2026-10-13",
       "market_price": 18.27,
       "low_price": null
+    },
+    {
+      "date": "2026-10-15",
+      "market_price": 18.27,
+      "low_price": null
     }
   ]
 }
