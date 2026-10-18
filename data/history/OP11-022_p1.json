@@ -282,6 +282,11 @@
       "date": "2026-10-16",
       "market_price": 54.77,
       "low_price": null
+    },
+    {
+      "date": "2026-10-18",
+      "market_price": 54.69,
+      "low_price": null
     }
   ]
 }
