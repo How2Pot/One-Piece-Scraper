@@ -1,5 +1,5 @@
 {
-  "generated_at": "2026-11-24T02:19:33Z",
+  "generated_at": "2026-11-24T02:32:50Z",
   "card_count": 3474,
   "sets": [
     "EB-01",
@@ -23314,7 +23314,9 @@
       "category": "Character",
       "set_label": "EB-02",
       "set_id": "EB-02",
-      "image_url": "data/images/EB02-057.png"
+      "image_url": "data/images/EB02-057.png",
+      "market_price": null,
+      "tcgplayer_url": null
     },
     {
       "id": "EB02-058",
@@ -23324,7 +23326,9 @@
       "category": "Event",
       "set_label": "EB-02",
       "set_id": "EB-02",
-      "image_url": "data/images/EB02-058.png"
+      "image_url": "data/images/EB02-058.png",
+      "market_price": null,
+      "tcgplayer_url": null
     },
     {
       "id": "EB02-059",
@@ -23334,7 +23338,9 @@
       "category": "Event",
       "set_label": "EB-02",
       "set_id": "EB-02",
-      "image_url": "data/images/EB02-059.png"
+      "image_url": "data/images/EB02-059.png",
+      "market_price": null,
+      "tcgplayer_url": null
     },
     {
       "id": "EB02-060",
@@ -23344,7 +23350,9 @@
       "category": "Stage",
       "set_label": "EB-02",
       "set_id": "EB-02",
-      "image_url": "data/images/EB02-060.png"
+      "image_url": "data/images/EB02-060.png",
+      "market_price": null,
+      "tcgplayer_url": null
     },
     {
       "id": "EB02-061",
@@ -23354,7 +23362,9 @@
       "category": "Character",
       "set_label": "EB-02",
       "set_id": "EB-02",
-      "image_url": "data/images/EB02-061.png"
+      "image_url": "data/images/EB02-061.png",
+      "market_price": null,
+      "tcgplayer_url": null
     },
     {
       "id": "EB02-061_p1",
@@ -23364,7 +23374,9 @@
       "category": "Character",
       "set_label": "EB-02",
       "set_id": "EB-02",
-      "image_url": "data/images/EB02-061_p1.png"
+      "image_url": "data/images/EB02-061_p1.png",
+      "market_price": null,
+      "tcgplayer_url": null
     },
     {
       "id": "EB02-061_p2",
@@ -23374,7 +23386,9 @@
       "category": "Character",
       "set_label": "EB-02",
       "set_id": "EB-02",
-      "image_url": "data/images/EB02-061_p2.png"
+      "image_url": "data/images/EB02-061_p2.png",
+      "market_price": null,
+      "tcgplayer_url": null
     },
     {
       "id": "OP05-001_p2",
@@ -23384,7 +23398,9 @@
       "category": "Leader",
       "set_label": "EB-02",
       "set_id": "EB-02",
-      "image_url": "data/images/OP05-001_p2.png"
+      "image_url": "data/images/OP05-001_p2.png",
+      "market_price": null,
+      "tcgplayer_url": null
     },
     {
       "id": "OP05-002_p2",
@@ -23394,7 +23410,9 @@
       "category": "Leader",
       "set_label": "EB-02",
       "set_id": "EB-02",
-      "image_url": "data/images/OP05-002_p2.png"
+      "image_url": "data/images/OP05-002_p2.png",
+      "market_price": null,
+      "tcgplayer_url": null
     },
     {
       "id": "OP05-022_p2",
@@ -23404,7 +23422,9 @@
       "category": "Leader",
       "set_label": "EB-02",
       "set_id": "EB-02",
-      "image_url": "data/images/OP05-022_p2.png"
+      "image_url": "data/images/OP05-022_p2.png",
+      "market_price": null,
+      "tcgplayer_url": null
     },
     {
       "id": "OP05-060_p4",
@@ -23414,7 +23434,9 @@
       "category": "Leader",
       "set_label": "EB-02",
       "set_id": "EB-02",
-      "image_url": "data/images/OP05-060_p4.png"
+      "image_url": "data/images/OP05-060_p4.png",
+      "market_price": null,
+      "tcgplayer_url": null
     },
     {
       "id": "OP05-098_p2",
@@ -23424,7 +23446,9 @@
       "category": "Leader",
       "set_label": "EB-02",
       "set_id": "EB-02",
-      "image_url": "data/images/OP05-098_p2.png"
+      "image_url": "data/images/OP05-098_p2.png",
+      "market_price": null,
+      "tcgplayer_url": null
     },
     {
       "id": "OP06-001_p2",
@@ -23434,7 +23458,9 @@
       "category": "Leader",
       "set_label": "EB-02",
       "set_id": "EB-02",
-      "image_url": "data/images/OP06-001_p2.png"
+      "image_url": "data/images/OP06-001_p2.png",
+      "market_price": null,
+      "tcgplayer_url": null
     },
     {
       "id": "OP06-020_p2",
@@ -23444,7 +23470,9 @@
       "category": "Leader",
       "set_label": "EB-02",
       "set_id": "EB-02",
-      "image_url": "data/images/OP06-020_p2.png"
+      "image_url": "data/images/OP06-020_p2.png",
+      "market_price": null,
+      "tcgplayer_url": null
     },
     {
       "id": "OP06-021_p2",
@@ -23454,7 +23482,9 @@
       "category": "Leader",
       "set_label": "EB-02",
       "set_id": "EB-02",
-      "image_url": "data/images/OP06-021_p2.png"
+      "image_url": "data/images/OP06-021_p2.png",
+      "market_price": null,
+      "tcgplayer_url": null
     },
     {
       "id": "OP06-022_p2",
@@ -23464,7 +23494,9 @@
       "category": "Leader",
       "set_label": "EB-02",
       "set_id": "EB-02",
-      "image_url": "data/images/OP06-022_p2.png"
+      "image_url": "data/images/OP06-022_p2.png",
+      "market_price": null,
+      "tcgplayer_url": null
     },
     {
       "id": "OP06-042_p2",
@@ -23474,7 +23506,9 @@
       "category": "Leader",
       "set_label": "EB-02",
       "set_id": "EB-02",
-      "image_url": "data/images/OP06-042_p2.png"
+      "image_url": "data/images/OP06-042_p2.png",
+      "market_price": null,
+      "tcgplayer_url": null
     },
     {
       "id": "OP06-080_p2",
@@ -23484,7 +23518,9 @@
       "category": "Leader",
       "set_label": "EB-02",
       "set_id": "EB-02",
-      "image_url": "data/images/OP06-080_p2.png"
+      "image_url": "data/images/OP06-080_p2.png",
+      "market_price": null,
+      "tcgplayer_url": null
     },
     {
       "id": "OP07-001_p2",
@@ -23494,7 +23530,9 @@
       "category": "Leader",
       "set_label": "EB-02",
       "set_id": "EB-02",
-      "image_url": "data/images/OP07-001_p2.png"
+      "image_url": "data/images/OP07-001_p2.png",
+      "market_price": null,
+      "tcgplayer_url": null
     },
     {
       "id": "OP07-019_p2",
@@ -23504,7 +23542,9 @@
       "category": "Leader",
       "set_label": "EB-02",
       "set_id": "EB-02",
-      "image_url": "data/images/OP07-019_p2.png"
+      "image_url": "data/images/OP07-019_p2.png",
+      "market_price": null,
+      "tcgplayer_url": null
     },
     {
       "id": "OP07-038_p2",
@@ -23514,7 +23554,9 @@
       "category": "Leader",
       "set_label": "EB-02",
       "set_id": "EB-02",
-      "image_url": "data/images/OP07-038_p2.png"
+      "image_url": "data/images/OP07-038_p2.png",
+      "market_price": null,
+      "tcgplayer_url": null
     },
     {
       "id": "OP07-059_p2",
@@ -23524,7 +23566,9 @@
       "category": "Leader",
       "set_label": "EB-02",
       "set_id": "EB-02",
-      "image_url": "data/images/OP07-059_p2.png"
+      "image_url": "data/images/OP07-059_p2.png",
+      "market_price": null,
+      "tcgplayer_url": null
     },
     {
       "id": "OP07-079_p2",
@@ -23534,7 +23578,9 @@
       "category": "Leader",
       "set_label": "EB-02",
       "set_id": "EB-02",
-      "image_url": "data/images/OP07-079_p2.png"
+      "image_url": "data/images/OP07-079_p2.png",
+      "market_price": null,
+      "tcgplayer_url": null
     },
     {
       "id": "OP07-097_p2",
@@ -23544,7 +23590,9 @@
       "category": "Leader",
       "set_label": "EB-02",
       "set_id": "EB-02",
-      "image_url": "data/images/OP07-097_p2.png"
+      "image_url": "data/images/OP07-097_p2.png",
+      "market_price": null,
+      "tcgplayer_url": null
     },
     {
       "id": "OP08-001_p2",
@@ -23554,7 +23602,9 @@
       "category": "Leader",
       "set_label": "EB-02",
       "set_id": "EB-02",
-      "image_url": "data/images/OP08-001_p2.png"
+      "image_url": "data/images/OP08-001_p2.png",
+      "market_price": null,
+      "tcgplayer_url": null
     },
     {
       "id": "OP08-002_p2",
