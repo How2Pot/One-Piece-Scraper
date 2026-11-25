@@ -1,5 +1,5 @@
 {
-  "generated_at": "2026-11-25T18:54:59Z",
+  "generated_at": "2026-11-25T19:08:25Z",
   "card_count": 3474,
   "sets": [
     "EB-01",
@@ -13664,7 +13664,9 @@
       "category": "Event",
       "set_label": "PRB-02",
       "set_id": "PRB-02",
-      "image_url": "data/images/EB01-009_p1.png"
+      "image_url": "data/images/EB01-009_p1.png",
+      "market_price": null,
+      "tcgplayer_url": null
     },
     {
       "id": "EB01-009_r1",
@@ -13674,7 +13676,9 @@
       "category": "Event",
       "set_label": "PRB-02",
       "set_id": "PRB-02",
-      "image_url": "data/images/EB01-009_r1.png"
+      "image_url": "data/images/EB01-009_r1.png",
+      "market_price": null,
+      "tcgplayer_url": null
     },
     {
       "id": "EB01-012_r1",
@@ -13684,7 +13688,9 @@
       "category": "Character",
       "set_label": "PRB-02",
       "set_id": "PRB-02",
-      "image_url": "data/images/EB01-012_r1.png"
+      "image_url": "data/images/EB01-012_r1.png",
+      "market_price": null,
+      "tcgplayer_url": null
     },
     {
       "id": "EB01-015_p5",
@@ -13694,7 +13700,9 @@
       "category": "Character",
       "set_label": "PRB-02",
       "set_id": "PRB-02",
-      "image_url": "data/images/EB01-015_p5.png"
+      "image_url": "data/images/EB01-015_p5.png",
+      "market_price": null,
+      "tcgplayer_url": null
     },
     {
       "id": "EB01-015_r1",
@@ -13704,7 +13712,9 @@
       "category": "Character",
       "set_label": "PRB-02",
       "set_id": "PRB-02",
-      "image_url": "data/images/EB01-015_r1.png"
+      "image_url": "data/images/EB01-015_r1.png",
+      "market_price": null,
+      "tcgplayer_url": null
     },
     {
       "id": "EB01-018_p1",
@@ -13714,7 +13724,9 @@
       "category": "Character",
       "set_label": "PRB-02",
       "set_id": "PRB-02",
-      "image_url": "data/images/EB01-018_p1.png"
+      "image_url": "data/images/EB01-018_p1.png",
+      "market_price": null,
+      "tcgplayer_url": null
     },
     {
       "id": "EB01-018_r1",
@@ -13724,7 +13736,9 @@
       "category": "Character",
       "set_label": "PRB-02",
       "set_id": "PRB-02",
-      "image_url": "data/images/EB01-018_r1.png"
+      "image_url": "data/images/EB01-018_r1.png",
+      "market_price": null,
+      "tcgplayer_url": null
     },
     {
       "id": "EB01-038_p1",
@@ -13734,7 +13748,9 @@
       "category": "Event",
       "set_label": "PRB-02",
       "set_id": "PRB-02",
-      "image_url": "data/images/EB01-038_p1.png"
+      "image_url": "data/images/EB01-038_p1.png",
+      "market_price": null,
+      "tcgplayer_url": null
     },
     {
       "id": "EB01-038_r1",
@@ -13744,7 +13760,9 @@
       "category": "Event",
       "set_label": "PRB-02",
       "set_id": "PRB-02",
-      "image_url": "data/images/EB01-038_r1.png"
+      "image_url": "data/images/EB01-038_r1.png",
+      "market_price": null,
+      "tcgplayer_url": null
     },
     {
       "id": "EB01-046_r1",
@@ -13754,7 +13772,9 @@
       "category": "Character",
       "set_label": "PRB-02",
       "set_id": "PRB-02",
-      "image_url": "data/images/EB01-046_r1.png"
+      "image_url": "data/images/EB01-046_r1.png",
+      "market_price": null,
+      "tcgplayer_url": null
     },
     {
       "id": "EB01-048_r1",
@@ -13764,7 +13784,9 @@
       "category": "Character",
       "set_label": "PRB-02",
       "set_id": "PRB-02",
-      "image_url": "data/images/EB01-048_r1.png"
+      "image_url": "data/images/EB01-048_r1.png",
+      "market_price": null,
+      "tcgplayer_url": null
     },
     {
       "id": "EB01-051_p1",
@@ -13774,7 +13796,9 @@
       "category": "Event",
       "set_label": "PRB-02",
       "set_id": "PRB-02",
-      "image_url": "data/images/EB01-051_p1.png"
+      "image_url": "data/images/EB01-051_p1.png",
+      "market_price": null,
+      "tcgplayer_url": null
     },
     {
       "id": "EB01-051_r1",
@@ -13784,7 +13808,9 @@
       "category": "Event",
       "set_label": "PRB-02",
       "set_id": "PRB-02",
-      "image_url": "data/images/EB01-051_r1.png"
+      "image_url": "data/images/EB01-051_r1.png",
+      "market_price": null,
+      "tcgplayer_url": null
     },
     {
       "id": "EB01-057_r1",
@@ -13794,7 +13820,9 @@
       "category": "Character",
       "set_label": "PRB-02",
       "set_id": "PRB-02",
-      "image_url": "data/images/EB01-057_r1.png"
+      "image_url": "data/images/EB01-057_r1.png",
+      "market_price": null,
+      "tcgplayer_url": null
     },
     {
       "id": "EB01-060_p1",
@@ -13804,7 +13832,9 @@
       "category": "Event",
       "set_label": "PRB-02",
       "set_id": "PRB-02",
-      "image_url": "data/images/EB01-060_p1.png"
+      "image_url": "data/images/EB01-060_p1.png",
+      "market_price": null,
+      "tcgplayer_url": null
     },
     {
       "id": "EB01-060_r1",
@@ -13814,7 +13844,9 @@
       "category": "Event",
       "set_label": "PRB-02",
       "set_id": "PRB-02",
-      "image_url": "data/images/EB01-060_r1.png"
+      "image_url": "data/images/EB01-060_r1.png",
+      "market_price": null,
+      "tcgplayer_url": null
     },
     {
       "id": "EB01-061_r1",
@@ -13824,7 +13856,9 @@
       "category": "Character",
       "set_label": "PRB-02",
       "set_id": "PRB-02",
-      "image_url": "data/images/EB01-061_r1.png"
+      "image_url": "data/images/EB01-061_r1.png",
+      "market_price": null,
+      "tcgplayer_url": null
     },
     {
       "id": "EB02-061_r1",
@@ -13834,7 +13868,9 @@
       "category": "Character",
       "set_label": "PRB-02",
       "set_id": "PRB-02",
-      "image_url": "data/images/EB02-061_r1.png"
+      "image_url": "data/images/EB02-061_r1.png",
+      "market_price": null,
+      "tcgplayer_url": null
     },
     {
       "id": "OP01-039_p1",
@@ -13844,7 +13880,9 @@
       "category": "Character",
       "set_label": "PRB-02",
       "set_id": "PRB-02",
-      "image_url": "data/images/OP01-039_p1.png"
+      "image_url": "data/images/OP01-039_p1.png",
+      "market_price": null,
+      "tcgplayer_url": null
     },
     {
       "id": "OP01-039_r1",
@@ -13854,7 +13892,9 @@
       "category": "Character",
       "set_label": "PRB-02",
       "set_id": "PRB-02",
-      "image_url": "data/images/OP01-039_r1.png"
+      "image_url": "data/images/OP01-039_r1.png",
+      "market_price": null,
+      "tcgplayer_url": null
     },
     {
       "id": "OP01-055_p1",
@@ -13864,7 +13904,9 @@
       "category": "Event",
       "set_label": "PRB-02",
       "set_id": "PRB-02",
-      "image_url": "data/images/OP01-055_p1.png"
+      "image_url": "data/images/OP01-055_p1.png",
+      "market_price": null,
+      "tcgplayer_url": null
     },
     {
       "id": "OP01-055_r1",
@@ -13874,7 +13916,9 @@
       "category": "Event",
       "set_label": "PRB-02",
       "set_id": "PRB-02",
-      "image_url": "data/images/OP01-055_r1.png"
+      "image_url": "data/images/OP01-055_r1.png",
+      "market_price": null,
+      "tcgplayer_url": null
     },
     {
       "id": "OP02-005_p1",
@@ -13884,7 +13928,9 @@
       "category": "Character",
       "set_label": "PRB-02",
       "set_id": "PRB-02",
-      "image_url": "data/images/OP02-005_p1.png"
+      "image_url": "data/images/OP02-005_p1.png",
+      "market_price": null,
+      "tcgplayer_url": null
     },
     {
       "id": "OP02-005_r1",
@@ -13894,7 +13940,9 @@
       "category": "Character",
       "set_label": "PRB-02",
       "set_id": "PRB-02",
-      "image_url": "data/images/OP02-005_r1.png"
+      "image_url": "data/images/OP02-005_r1.png",
+      "market_price": null,
+      "tcgplayer_url": null
     },
     {
       "id": "OP02-068_p1",
@@ -13904,7 +13952,9 @@
       "category": "Event",
       "set_label": "PRB-02",
       "set_id": "PRB-02",
-      "image_url": "data/images/OP02-068_p1.png"
+      "image_url": "data/images/OP02-068_p1.png",
+      "market_price": null,
+      "tcgplayer_url": null
     },
     {
       "id": "OP02-068_r1",
