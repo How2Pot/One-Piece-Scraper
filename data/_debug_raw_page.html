@@ -14,20 +14,20 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
 'https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);
 })(window,document,'script','dataLayer','GTM-KKN2G96');</script>
 <!-- End Google Tag Manager -->  <meta charset="utf-8">
-  <title>CARD LIST｜ONE PIECE CARD GAME - Official Web Site</title>
+  <title>CARDS｜ONE PIECE CARD GAME - Official Web Site</title>
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
   <meta name="viewport" content="width=device-width,initial-scale=1.0,maximum-scale=1.0">
   <meta name="format-detection" content="telephone=no">
   <meta name="keywords" content="ONE PIECE,Luffy,Zolo,Nami,Usopp,Sanji,Chopper,Robin,Franky,Brook,Jimbei,Shanks,CARD GAME,Straw hat,Bandai,Eiichiro Oda,Oda-sensei,TCG">
   <meta name="description" content="The official ONE PIECE Card Game website. Find out about the latest cards, products, events, rules, FAQ and more! Set sail for the new era of card games!">
   <meta property="og:type" content="article">
-  <meta property="og:title" content="CARD LIST｜ONE PIECE CARD GAME - Official Web Site">
+  <meta property="og:title" content="CARDS｜ONE PIECE CARD GAME - Official Web Site">
   <meta property="og:image" content="https://en.onepiece-cardgame.com/ogp.png">
   <meta property="og:url" content="https://en.onepiece-cardgame.com/cardlist/">
   <meta property="og:site_name" content="ONE PIECE CARD GAME - Official Web Site">
   <meta property="og:description" content="The official ONE PIECE Card Game website. Find out about the latest cards, products, events, rules, FAQ and more! Set sail for the new era of card games!">
   <meta name="twitter:card" content="summary_large_image">
-  <meta name="twitter:title" content="CARD LIST｜ONE PIECE CARD GAME - Official Web Site">
+  <meta name="twitter:title" content="CARDS｜ONE PIECE CARD GAME - Official Web Site">
   <meta name="twitter:description" content="The official ONE PIECE Card Game website. Find out about the latest cards, products, events, rules, FAQ and more! Set sail for the new era of card games!">
   <meta name="twitter:image" content="https://en.onepiece-cardgame.com/ogp.png">
   <meta name="theme-color" content="#fff">
@@ -141,24 +141,18 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
   <link rel="alternate" hreflang="en-ru" href="https://en.onepiece-cardgame.com/">
   <link rel="alternate" hreflang="en-gr" href="https://en.onepiece-cardgame.com/">
   <link rel="alternate" hreflang="en-pt" href="https://en.onepiece-cardgame.com/">
-  <link rel="stylesheet" href="/renewal/css/lib/jquery.fancybox.min.css">
-  <link rel="stylesheet" href="/css/layout.css?261016">
   <script src="/renewal/js/lib/jquery.min.js?v=3.7.1"></script>
-  <script src="/js/lib/jquery.easing.1.4.min.js"></script>
   <script src="/renewal/js/lib/jquery.fancybox.min.js"></script>
   <script src="/renewal/js/lib/lazyload.min.js"></script>
-  <script src="/js/common_re.js?261016"></script>
-  <link rel="stylesheet" href="/css/layout_en_re.css?261016">
   <script src="/renewal/js/common.js?261016"></script>
-  <link rel="stylesheet" href="/renewal/css/common_overwrite.css?261016">
-  <link rel="stylesheet" href="/css/cardlist.css?261016">
-  <script src="/js/cardlist.js?261016"></script>
-  <link rel="stylesheet" href="/css/cardlist_en.css?2610165">
-  <script src="/js/cardlist_en.js?2610164"></script>
-  <link rel="stylesheet" href="../css/lib/jquery.selmodal.css">
+  <link rel="stylesheet" href="/renewal/css/lib/jquery.fancybox.min.css">
+  <link rel="stylesheet" href="/renewal/css/layout.css?261016">
+  <link rel="stylesheet" href="/renewal/css/cardlist.css?261016">
+  <script src="/renewal/js/cardlist.js?261016"></script>
+  <script src="/renewal/js/fixed.js"></script>
+
   <script src="../js/modal.js?261016"></script>
-  <script src="../js/pager.js?261016"></script>
-  <script src="../js/lib/jquery.selmodal.js"></script>
+  <script src="../js/pager_1.16.js?261016"></script>
   <script>
     function Post(obj) {
       var name = obj.name;
@@ -368,27 +362,31 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
 </div>        </div>
       </div>
     </div>
-  </header>  <ul class="breadcrumbList">
-    <li><a href="/">HOME</a></li>
-    <li>CARD LIST</li>
-  </ul>
-  
+  </header>  
   <main class="mainCol">
-    <article>
-      <h2 class="categoryTitle">CARD LIST</h2>
+    <article class="articleCol">
+
+      <div class="layoutTop">
+        <div class="titleCol">
+          <span class="titleSub">CARDS</span>
+        </div>
+      </div>
+
       <div class="contentsWrap isIndex">
         <div class="searchCol">
           <form action="" method="post" id="frmSearch">
             <div class="formsetDefaultArea">
               <div class="freewordsCol">
-                <input class="freewords" type="text" name="freewords" placeholder="Search..." value="" id="form-free">
+                <h3 class="searchTit">Card Name &amp; Keyword Search</h3>
+                <input class="freewords" type="text" name="freewords" placeholder="Ex: Straw Hat Crew  Luffy" value="" id="form-free">
                 <input class="clearBtn" type="button" value="✕" onclick="clearText()">
-                <input class="freewordsSearchBtn" type="button" value="SEARCH" onclick="freewordsSearch()">
               </div>
-              <div class="seriesCol">
-                <select name="series" class="selectModal" id="series">
-                  <option value>Recording</option>
-                  <option value>ALL</option>
+
+              <div class="searchSelectBoxCol">
+                <h3 class="searchTit js-searchSelectTit">Booster</h3>
+                <button id="selectSeriesBtn" type="button" class="selectModalButton" data-tgt="series">No filter</button>
+                <select name="series" class="searchSelectBox" id="series">
+                  <option value>No filter</option>
                   <option value="569302" >PREMIUM BOOSTER &lt;br class=&quot;spInline&quot;&gt;-ONE PIECE CARD THE BEST vol.2- [PRB-02]</option>
                   <option value="569301" >PREMIUM BOOSTER &lt;br class=&quot;spInline&quot;&gt;-ONE PIECE CARD THE BEST- [PRB-01]</option>
                   <option value="569205" >EXTRA BOOSTER &lt;br class=&quot;spInline&quot;&gt;-ONE PIECE HEROINES EDITION vol.2- [EB-05]</option>
@@ -453,37 +451,70 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
                   <option value="569801" >Other Product Card</option>
                 </select>
               </div>
+
+              <div id="seriesModal" class="modalFilterCol js-modalFilterCol">
+                <div class="modalFilter"></div>
+                <button class="modalTopClose js-seriesTopClose" type="button">Close</button>
+                <div class="modalSelectBoxWrap">
+                  <section class="modalSelectBoxCol">
+                    <h3 class="modalSelectTit">Select Booster</h3>
+                    <div class="selectFilterCol">
+                      <h4 class="searchTit">Search by Keyword</h4>
+                      <div class="selectFilterInputCol">
+                        <input type="text" value="" data-filter-input="seriesKeyword" onkeyup="filterItem('seriesKeyword')" placeholder="Ex: Booster" class="selectFilterInput" id="freeword_seriesKeyword">
+                        <button type="button" class="clearBtn js-ClearSeries">✕</button>
+                      </div>
+                    </div>
+                    <div class="modalSelectListCol js-series-scroll-wrapper">
+                      <div class="modalSelectListBox js-series-scroll-content">
+                        <ul class="modalSelectList">
+                          <li class="selectBtnCol" data-filter-type="seriesKeyword">
+                            <a href="javascript:void(0);" data-tags="seriesKeyword" class="selectBtn" data-value="">No filter</a>
+                          </li>
+                        </ul>
+                        <div class="selectFilterTxtCol" data-filter-no-result="seriesKeyword" hidden>
+                          No Results<br>
+                          Try Different Keywords
+                        </div>
+                        <div class="scroll-bar">
+                          <div class="scroll-thumb js-series-scroll-thumb"></div>
+                        </div>
+                      </div>
+                    </div>
+                    <button class="modalSelectClose js-seriesSelectClose" type="button">Select and Close</button>
+                  </section>
+                </div>
+              </div>
+
+              <button type="button" class="formsetDropBtn isSp js-dropbtnSp"><span class="is1">Add Criteria</span><span class="is2">Close Additional Criteria</span></button>
             </div>
 
-            <a href="javascript:void(0);" class="commonBtn formsetDropBtn"><span>Add more</span></a>
-
-            <div class="formsetDropArea">
-              <div class="colorCol">
+            <div class="js-dropAreaSp">
+            <div class="formsetSecondArea">
+              <div class="checkbtnWrap">
                 <h3 class="searchTit">Color</h3>
-                <div class="checkbtnCol">
-                  <a href="javascript:void(0);" class="checkbtnAll checked checkBtn">ALL</a>
+                <div class="checkbtnCol isColor">
                   <input type="checkbox" name="colors[]" id="color_Red" value="Red" >
-                  <label class="checkBtn isColor_Red" for="color_Red">Red</label>
+                  <label class="checkBtn" for="color_Red">Red</label>
                   <input type="checkbox" name="colors[]" id="color_Green" value="Green" >
-                  <label class="checkBtn isColor_Green" for="color_Green">Green</label>
+                  <label class="checkBtn" for="color_Green">Green</label>
                   <input type="checkbox" name="colors[]" id="color_Blue" value="Blue" >
-                  <label class="checkBtn isColor_Blue" for="color_Blue">Blue</label>
+                  <label class="checkBtn" for="color_Blue">Blue</label>
                   <input type="checkbox" name="colors[]" id="color_Purple" value="Purple" >
-                  <label class="checkBtn isColor_Purple" for="color_Purple">Purple</label>
+                  <label class="checkBtn" for="color_Purple">Purple</label>
                   <input type="checkbox" name="colors[]" id="color_Black" value="Black" >
-                  <label class="checkBtn isColor_Black" for="color_Black">Black</label>
+                  <label class="checkBtn" for="color_Black">Black</label>
                   <input type="checkbox" name="colors[]" id="color_Yellow" value="Yellow" >
-                  <label class="checkBtn isColor_Yellow" for="color_Yellow">Yellow</label>
+                  <label class="checkBtn" for="color_Yellow">Yellow</label>
                   <input type="checkbox" name="colors[]" id="color_mix" value="mix" >
-                  <label class="checkBtn isColor_mix" for="color_mix">Multicolor</label>
+                  <label class="checkBtn" for="color_mix">Multicolor</label>
                   <div class="checkBtn disable"></div>
                 </div>
               </div>
 
-              <div class="typeCol">
+              <div class="checkbtnWrap">
                 <h3 class="searchTit">Card type</h3>
                 <div class="checkbtnCol">
-                  <a href="javascript:void(0);" class="checkbtnAll checked checkBtn">ALL</a>
                   <input type="checkbox" name="categories[]" id="category_Leader" value="Leader" >
                   <label class="checkBtn" for="category_Leader">Leader</label>
                   <input type="checkbox" name="categories[]" id="category_Character" value="Character" >
@@ -496,266 +527,213 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
                 </div>
               </div>
 
-              <div class="illustTypeCol">
-                <h3 class="searchTit">Illustration Type</h3>                <div class="checkbtnCol">
-                  <a href="javascript:void(0);" class="checkbtnAll checked checkBtn">ALL</a>
+              <div class="checkbtnWrap">
+                <h3 class="searchTit">Illustration Type</h3>
+                <div class="checkbtnCol">
                   <input type="checkbox" name="illustrations[]" id="illustration_Comic" value="Comic" >
-                  <label class="checkBtn isIllustration_Comic" for="illustration_Comic">Comic</label>
+                  <label class="checkBtn" for="illustration_Comic">Comic</label>
                   <input type="checkbox" name="illustrations[]" id="illustration_Animation" value="Animation" >
-                  <label class="checkBtn isIllustration_Animation" for="illustration_Animation">Animation</label>
+                  <label class="checkBtn" for="illustration_Animation">Animation</label>
                   <input type="checkbox" name="illustrations[]" id="illustration_Original Illustrations" value="Original Illustrations" >
-                  <label class="checkBtn isIllustration_Original Illustrations" for="illustration_Original Illustrations">Original Illustrations</label>
+                  <label class="checkBtn" for="illustration_Original Illustrations">Original Illustrations</label>
                   <input type="checkbox" name="illustrations[]" id="illustration_Other" value="Other" >
-                  <label class="checkBtn isIllustration_Other" for="illustration_Other">Other</label>
+                  <label class="checkBtn" for="illustration_Other">Other</label>
                   <div class="checkBtn disable"></div>
                 </div>
               </div>
               
-              <div class="blockCol">
-                <h3 class="searchTit">Block icon</h3>
+              <div class="checkbtnWrap">
+                <h3 class="searchTit">Rarity</h3>
                 <div class="checkbtnCol">
-                  <a href="javascript:void(0);" class="checkbtnAll checked checkBtn">ALL</a>
-                  <input type="checkbox" name="block_icon[]" id="block_icon_1" value="1" >
-                  <label class="checkBtn" for="block_icon_1">1</label>
-                  <input type="checkbox" name="block_icon[]" id="block_icon_2" value="2" >
-                  <label class="checkBtn" for="block_icon_2">2</label>
-                  <input type="checkbox" name="block_icon[]" id="block_icon_3" value="3" >
-                  <label class="checkBtn" for="block_icon_3">3</label>
-                  <input type="checkbox" name="block_icon[]" id="block_icon_4" value="4" >
-                  <label class="checkBtn" for="block_icon_4">4</label>
-                  <input type="checkbox" name="block_icon[]" id="block_icon_5" value="5" >
-                  <label class="checkBtn" for="block_icon_5">5</label>
-                  <input type="checkbox" name="block_icon[]" id="block_icon_X" value="X" >
-                  <label class="checkBtn" for="block_icon_X">X</label>
+                  <input type="checkbox" name="rarity[]" id="rarity_L" value="L" >
+                  <label class="checkBtn" for="rarity_L">L</label>
+                  <input type="checkbox" name="rarity[]" id="rarity_C" value="C" >
+                  <label class="checkBtn" for="rarity_C">C</label>
+                  <input type="checkbox" name="rarity[]" id="rarity_UC" value="UC" >
+                  <label class="checkBtn" for="rarity_UC">UC</label>
+                  <input type="checkbox" name="rarity[]" id="rarity_R" value="R" >
+                  <label class="checkBtn" for="rarity_R">R</label>
+                  <input type="checkbox" name="rarity[]" id="rarity_SR" value="SR" >
+                  <label class="checkBtn" for="rarity_SR">SR</label>
+                  <input type="checkbox" name="rarity[]" id="rarity_SEC" value="SEC" >
+                  <label class="checkBtn" for="rarity_SEC">SEC</label>
+                  <input type="checkbox" name="rarity[]" id="rarity_P" value="P" >
+                  <label class="checkBtn" for="rarity_P">P</label>
+                  <input type="checkbox" name="rarity[]" id="rarity_SP CARD" value="SP CARD" >
+                  <label class="checkBtn" for="rarity_SP CARD">SP CARD</label>
+                  <input type="checkbox" name="rarity[]" id="rarity_TR" value="TR" >
+                  <label class="checkBtn" for="rarity_TR">TR</label>
                   <div class="checkBtn disable"></div>
                 </div>
               </div>
 
+              <button type="button" class="formsetDropBtn isPc js-dropbtnPc"><span class="is1">Add Criteria</span><span class="is2">Close Additional Criteria</span></button>
             </div>
 
-            <div class="checkReprints">
-              <label>
-                                <input type="checkbox" name="reprintsFlag"  style="appearance: auto;" onchange="Post(this)">
-                <span class="checkReprintsText">Hide reprint cards</span>
-              </label>
-            </div>
+            <div class="js-dropAreaPc">
+            <div class="formsetThirdArea">
 
-            <div class="commonBtn submitBtn"><input type="submit" value="SEARCH"><span>SEARCH</span></div>
-          </form>
-        </div>
-    
-    
-        <div class="pageDetailCol">
-          <div>
-            <a href="javascript:void(0);" onclick="cardSerchReset();" class="reset">&#x00D7; Clear</a>
-            <div class="countCol">159 results</div>
-          </div>
-
-          <div class="spnavi" id="view">
-            <a href="javascript:void(0);" class="prevBtn">PREV</a>
-            <a href="javascript:void(0);" class="nextBtn">NEXT</a>
-          </div>
-
-          <div class="pagerCol">
-            <a href="javascript:void(0);" class="prevBtn">PREV</a>
-            <div class="pager"></div>
-            <a href="javascript:void(0);" class="nextBtn">NEXT</a>
-          </div>
-        </div>
-        
-        <div class="resultCol">
+              <div class="rangePulldownWrap">
+                <h3 class="searchTit">Cost</h3>
+                <div class="rangePulldownCol">
+                  <div class="rangePulldownBox">
+                    <button type="button" class="rangePulldownBtn js-rangePulldownBtn" data-tgt="cost_min"><span class="txtDefault">Minimum</span></button>
+                    <select name="cost[min]" id="cost_min" class="rangePulldown js-rangePulldown">
+                      <option value="">No filter</option>
+                      <option value="0" >0</option>
+                      <option value="1" >1</option>
+                      <option value="2" >2</option>
+                      <option value="3" >3</option>
+                      <option value="4" >4</option>
+                      <option value="5" >5</option>
+                      <option value="6" >6</option>
+                      <option value="7" >7</option>
+                      <option value="8" >8</option>
+                      <option value="9" >9</option>
+                      <option value="10" >10</option>
+                    </select>
+                    <div class="rangeSelectListCol js-rangeSelectListCol">
+                      <ul class="rangeSelectList js-rangeSelectList">
+                        <li class="rangeSelectBtn" data-value="">No filter</li>
+                      </ul>
+                    </div>
+                  </div>
+                  <span class="rangePulldownDash">–</span>
+                  <div class="rangePulldownBox">
+                    <button type="button" class="rangePulldownBtn js-rangePulldownBtn" data-tgt="cost_max"><span class="txtDefault">Maximum</span></button>
+                    <select name="cost[max]" id="cost_max" class="rangePulldown js-rangePulldown">
+                      <option value="">No filter</option>
+                      <option value="0" >0</option>
+                      <option value="1" >1</option>
+                      <option value="2" >2</option>
+                      <option value="3" >3</option>
+                      <option value="4" >4</option>
+                      <option value="5" >5</option>
+                      <option value="6" >6</option>
+                      <option value="7" >7</option>
+                      <option value="8" >8</option>
+                      <option value="9" >9</option>
+                      <option value="10" >10</option>
+                    </select>
+                    <div class="rangeSelectListCol js-rangeSelectListCol">
+                      <ul class="rangeSelectList js-rangeSelectList">
+                        <li class="rangeSelectBtn" data-value="">No filter</li>
+                      </ul>
+                    </div>
+                  </div>
                   
-          <a class="modalOpen" data-fancybox="group_1" data-src="#OP17-119_p2"><img class="lazy" src="/images/cardlist/dummy.gif" data-src="../images/cardlist/card/OP17-119_p2.png?261016" alt="Loki"></a>
+                  <div class="checkBtn disable"></div>
+                </div>
+              </div>
 
-                    
-          <dl class="modalCol" id="OP17-119_p2">
-            <dt>
-              <button class="scrollBtn">ボタン</button>
-              <div class="infoCol">
-                <span>OP17-119</span> | <span>SEC</span> | <span>CHARACTER</span>
+              <div class="rangePulldownWrap">
+                <h3 class="searchTit">Power</h3>
+                <div class="rangePulldownCol">
+                  <div class="rangePulldownBox">
+                    <button type="button" class="rangePulldownBtn js-rangePulldownBtn" data-tgt="power_min"><span class="txtDefault">Minimum</span></button>
+                    <select name="power[min]" id="power_min" class="rangePulldown js-rangePulldown">
+                      <option value="">No filter</option>
+                      <option value="0" >0</option>
+                      <option value="1000" >1000</option>
+                      <option value="2000" >2000</option>
+                      <option value="3000" >3000</option>
+                      <option value="4000" >4000</option>
+                      <option value="5000" >5000</option>
+                      <option value="6000" >6000</option>
+                      <option value="7000" >7000</option>
+                      <option value="8000" >8000</option>
+                      <option value="9000" >9000</option>
+                      <option value="10000" >10000</option>
+                      <option value="11000" >11000</option>
+                      <option value="12000" >12000</option>
+                      <option value="13000" >13000</option>
+                    </select>
+                    <div class="rangeSelectListCol js-rangeSelectListCol">
+                      <ul class="rangeSelectList js-rangeSelectList">
+                        <li class="rangeSelectBtn" data-value="">No filter</li>
+                      </ul>
+                    </div>
+                  </div>
+                  <span class="rangePulldownDash">–</span>
+                  <div class="rangePulldownBox">
+                    <button type="button" class="rangePulldownBtn js-rangePulldownBtn" data-tgt="power_max"><span class="txtDefault">Maximum</span></button>
+                    <select name="power[max]" id="power_max" class="rangePulldown js-rangePulldown">
+                      <option value="">No filter</option>
+                      <option value="0" >0</option>
+                      <option value="1000" >1000</option>
+                      <option value="2000" >2000</option>
+                      <option value="3000" >3000</option>
+                      <option value="4000" >4000</option>
+                      <option value="5000" >5000</option>
+                      <option value="6000" >6000</option>
+                      <option value="7000" >7000</option>
+                      <option value="8000" >8000</option>
+                      <option value="9000" >9000</option>
+                      <option value="10000" >10000</option>
+                      <option value="11000" >11000</option>
+                      <option value="12000" >12000</option>
+                      <option value="13000" >13000</option>
+                    </select>
+                    <div class="rangeSelectListCol js-rangeSelectListCol">
+                      <ul class="rangeSelectList js-rangeSelectList">
+                        <li class="rangeSelectBtn" data-value="">No filter</li>
+                      </ul>
+                    </div>
+                  </div>
+                  <div class="checkBtn disable"></div>
+                </div>
               </div>
-              <div class="cardName">Loki</div>
-            </dt>
-            <dd>
-              <div class="frontCol">
-                <img class="lazy" src="/images/cardlist/dummy.gif" data-src="../images/cardlist/card/OP17-119_p2.png?261016" alt="Loki">
-                <a href="javascript:void(0);" class="commonBtn textViewBtn"><span>TEXT VIEW</span></a>
+
+              <div class="checkbtnWrap">
+                <h3 class="searchTit">Counter</h3>
+                <div class="checkbtnCol">
+                  <input type="checkbox" name="counter[]" id="counter_Without" value="Without" >
+                  <label class="checkBtn" for="counter_Without">Without</label>
+                  <input type="checkbox" name="counter[]" id="counter_1000" value="1000" >
+                  <label class="checkBtn" for="counter_1000">1000</label>
+                  <input type="checkbox" name="counter[]" id="counter_2000" value="2000" >
+                  <label class="checkBtn" for="counter_2000">2000</label>
+                  <div class="checkBtn disable"></div>
+                </div>
               </div>
-              <div class="backCol">
-                <div class="col2">
-                  <div class="cost"><h3>Cost</h3>6</div>
-                  <div class="attribute">
-                    <h3>Attribute</h3>
-                    <img src="/images/cardlist/attribute/ico_type01.png?v" alt="Strike"><i>Strike</i>
+
+              <div class="checkbtnWrap">
+                <h3 class="searchTit">Attribute</h3>
+                <div class="checkbtnCol">
+                  <input type="checkbox" name="attribute[]" id="attribute_Strike" value="Strike" >
+                  <label class="checkBtn" for="attribute_Strike">Strike</label>
+                  <input type="checkbox" name="attribute[]" id="attribute_Special" value="Special" >
+                  <label class="checkBtn" for="attribute_Special">Special</label>
+                  <input type="checkbox" name="attribute[]" id="attribute_Ranged" value="Ranged" >
+                  <label class="checkBtn" for="attribute_Ranged">Ranged</label>
+                  <input type="checkbox" name="attribute[]" id="attribute_Wisdom" value="Wisdom" >
+                  <label class="checkBtn" for="attribute_Wisdom">Wisdom</label>
+                  <input type="checkbox" name="attribute[]" id="attribute_Slash" value="Slash" >
+                  <label class="checkBtn" for="attribute_Slash">Slash</label>
+                  <input type="checkbox" name="attribute[]" id="attribute_?" value="?" >
+                  <label class="checkBtn" for="attribute_?">?</label>
+                  <div class="checkBtn disable"></div>
+                </div>
+              </div>
+
+              <div class="searchFlexWrap">
+                <div class="radiobtnWrap" id="searchTrigger">
+                  <h3 class="searchTit">Trigger</h3>
+                  <div class="radiobtnCol">
+                    <label class="changeIcon"><input type="radio" name="trigger"  value="1">With </label>
+                    <label class="changeIcon"><input type="radio" name="trigger"  value="0">Without</label>
                   </div>
                 </div>
-                <div class="col2">
-                  <div class="power"><h3>Power</h3>8000</div>
-                  <div class="counter"><h3>Counter</h3>-</div>
-                </div>
-                <div class="col2">
-                <div class="color"><h3>Color</h3>Black</div>
-                <div class="block"><h3>Block<br class="spInline"> icon</h3>5</div>
-                </div>
-                <div class="feature"><h3>Type</h3>Giant/Elbaph</div>
-                <div class="text"><h3>Effect</h3>This Character gains +12 cost, and if it is your opponent's turn, this Character gains +3000 power.<br>[On Play] K.O. your opponent's Characters with a total cost of 4 or less.</div>
-                                <div class="getInfo"><h3>Card Set(s)</h3>BOOSTER PACK -THE DOMINANCE OF GOD- [OP-18]</div>                
-                <a href="javascript:void(0);" class="commonBtn cardViewBtn"><span>CARD VIEW</span></a>
-              </div>
-            </dd>
-          </dl>
-          
-                      
-                      
-          <a class="modalOpen" data-fancybox="group_1" data-src="#OP17-119_p3"><img class="lazy" src="/images/cardlist/dummy.gif" data-src="../images/cardlist/card/OP17-119_p3.png?261016" alt="Loki"></a>
 
-                    
-          <dl class="modalCol" id="OP17-119_p3">
-            <dt>
-              <button class="scrollBtn">ボタン</button>
-              <div class="infoCol">
-                <span>OP17-119</span> | <span>SEC</span> | <span>CHARACTER</span>
-              </div>
-              <div class="cardName">Loki</div>
-            </dt>
-            <dd>
-              <div class="frontCol">
-                <img class="lazy" src="/images/cardlist/dummy.gif" data-src="../images/cardlist/card/OP17-119_p3.png?261016" alt="Loki">
-                <a href="javascript:void(0);" class="commonBtn textViewBtn"><span>TEXT VIEW</span></a>
-              </div>
-              <div class="backCol">
-                <div class="col2">
-                  <div class="cost"><h3>Cost</h3>6</div>
-                  <div class="attribute">
-                    <h3>Attribute</h3>
-                    <img src="/images/cardlist/attribute/ico_type01.png?v" alt="Strike"><i>Strike</i>
-                  </div>
-                </div>
-                <div class="col2">
-                  <div class="power"><h3>Power</h3>8000</div>
-                  <div class="counter"><h3>Counter</h3>-</div>
-                </div>
-                <div class="col2">
-                <div class="color"><h3>Color</h3>Black</div>
-                <div class="block"><h3>Block<br class="spInline"> icon</h3>5</div>
-                </div>
-                <div class="feature"><h3>Type</h3>Giant/Elbaph</div>
-                <div class="text"><h3>Effect</h3>This Character gains +12 cost, and if it is your opponent's turn, this Character gains +3000 power.<br>[On Play] K.O. your opponent's Characters with a total cost of 4 or less.</div>
-                                <div class="getInfo"><h3>Card Set(s)</h3>BOOSTER PACK -THE DOMINANCE OF GOD- [OP-18]</div>                
-                <a href="javascript:void(0);" class="commonBtn cardViewBtn"><span>CARD VIEW</span></a>
-              </div>
-            </dd>
-          </dl>
-          
-                      
-                      
-          <a class="modalOpen" data-fancybox="group_1" data-src="#OP18-001"><img class="lazy" src="/images/cardlist/dummy.gif" data-src="../images/cardlist/card/OP18-001.png?261016" alt="Karoo"></a>
-
-                    
-          <dl class="modalCol" id="OP18-001">
-            <dt>
-              <button class="scrollBtn">ボタン</button>
-              <div class="infoCol">
-                <span>OP18-001</span> | <span>L</span> | <span>LEADER</span>
-              </div>
-              <div class="cardName">Karoo</div>
-            </dt>
-            <dd>
-              <div class="frontCol">
-                <img class="lazy" src="/images/cardlist/dummy.gif" data-src="../images/cardlist/card/OP18-001.png?261016" alt="Karoo">
-                <a href="javascript:void(0);" class="commonBtn textViewBtn"><span>TEXT VIEW</span></a>
-              </div>
-              <div class="backCol">
-                <div class="col2">
-                  <div class="cost"><h3>Life</h3>4</div>
-                  <div class="attribute">
-                    <h3>Attribute</h3>
-                    <img src="/images/cardlist/attribute/ico_type01.png?v" alt="Strike"><i>Strike</i>
-                  </div>
-                </div>
-                <div class="col2">
-                  <div class="power"><h3>Power</h3>5000</div>
-                  <div class="counter"><h3>Counter</h3>-</div>
-                </div>
-                <div class="col2">
-                <div class="color"><h3>Color</h3>Red/Blue</div>
-                <div class="block"><h3>Block<br class="spInline"> icon</h3>5</div>
-                </div>
-                <div class="feature"><h3>Type</h3>Animal/Alabasta</div>
-                <div class="text"><h3>Effect</h3>All of your Characters with both the {Animal} and {Alabasta} types gain [Rush] and +1000 power.<br>[Once Per Turn] When your {Alabasta} type Character is K.O.'d, draw 1 card.</div>
-                                <div class="getInfo"><h3>Card Set(s)</h3>BOOSTER PACK -THE DOMINANCE OF GOD- [OP-18]</div>                
-                <a href="javascript:void(0);" class="commonBtn cardViewBtn"><span>CARD VIEW</span></a>
-              </div>
-            </dd>
-          </dl>
-          
-                      
-                      
-          <a class="modalOpen" data-fancybox="group_1" data-src="#OP18-001_p1"><img class="lazy" src="/images/cardlist/dummy.gif" data-src="../images/cardlist/card/OP18-001_p1.png?261016" alt="Karoo"></a>
-
-                    
-          <dl class="modalCol" id="OP18-001_p1">
-            <dt>
-              <button class="scrollBtn">ボタン</button>
-              <div class="infoCol">
-                <span>OP18-001</span> | <span>L</span> | <span>LEADER</span>
-              </div>
-              <div class="cardName">Karoo</div>
-            </dt>
-            <dd>
-              <div class="frontCol">
-                <img class="lazy" src="/images/cardlist/dummy.gif" data-src="../images/cardlist/card/OP18-001_p1.png?261016" alt="Karoo">
-                <a href="javascript:void(0);" class="commonBtn textViewBtn"><span>TEXT VIEW</span></a>
-              </div>
-              <div class="backCol">
-                <div class="col2">
-                  <div class="cost"><h3>Life</h3>4</div>
-                  <div class="attribute">
-                    <h3>Attribute</h3>
-                    <img src="/images/cardlist/attribute/ico_type01.png?v" alt="Strike"><i>Strike</i>
-                  </div>
-                </div>
-                <div class="col2">
-                  <div class="power"><h3>Power</h3>5000</div>
-                  <div class="counter"><h3>Counter</h3>-</div>
-                </div>
-                <div class="col2">
-                <div class="color"><h3>Color</h3>Red/Blue</div>
-                <div class="block"><h3>Block<br class="spInline"> icon</h3>5</div>
-                </div>
-                <div class="feature"><h3>Type</h3>Animal/Alabasta</div>
-                <div class="text"><h3>Effect</h3>All of your Characters with both the {Animal} and {Alabasta} types gain [Rush] and +1000 power.<br>[Once Per Turn] When your {Alabasta} type Character is K.O.'d, draw 1 card.</div>
-                                <div class="getInfo"><h3>Card Set(s)</h3>BOOSTER PACK -THE DOMINANCE OF GOD- [OP-18]</div>                
-                <a href="javascript:void(0);" class="commonBtn cardViewBtn"><span>CARD VIEW</span></a>
-              </div>
-            </dd>
-          </dl>
-          
-                      
-                      
-          <a class="modalOpen" data-fancybox="group_1" data-src="#OP18-002"><img class="lazy" src="/images/cardlist/dummy.gif" data-src="../images/cardlist/card/OP18-002.png?261016" alt="Igaram"></a>
-
-                    
-          <dl class="modalCol" id="OP18-002">
-            <dt>
-              <button class="scrollBtn">ボタン</button>
-              <div class="infoCol">
-                <span>OP18-002</span> | <span>UC</span> | <span>CHARACTER</span>
-              </div>
-              <div class="cardName">Igaram</div>
-            </dt>
-            <dd>
-              <div class="frontCol">
-                <img class="lazy" src="/images/cardlist/dummy.gif" data-src="../images/cardlist/card/OP18-002.png?261016" alt="Igaram">
-                <a href="javascript:void(0);" class="commonBtn textViewBtn"><span>TEXT VIEW</span></a>
-              </div>
-              <div class="backCol">
-                <div class="col2">
-                  <div class="cost"><h3>Cost</h3>1</div>
-                  <div class="attribute">
-                    <h3>Attribute</h3>
-                    <img src="/images/cardlist/attribute/ico_type04.png?v" alt="Ranged"><i>Ranged</i>
-                  </div>
-                </div>
-                <div class="col2">
-                  <div class="power"
+                <div class="traitWrap" id="searchTrait">
+                  <h3 class="searchTit">Type</h3>
+                  <div id="traitModal" class="modalFilterCol">
+                    <div class="modalFilter"></div>
+                    <button class="modalTopClose js-traitTopClose" type="button">Close</button>
+                    <div class="modalSelectBoxWrap">
+                      <section class="modalSelectBoxCol">
+                        <h3 class="modalSelectTit">Select the Type</h3>
+                        <div class="selectFilterCol">
+                          <h4 class="searchTit">Search by Keyword</h4>
+                          <div class="selectFilterInputCol">
+                            <input type="text" value="" data-filter-input="feature" onkeyup="filterItem('feature')" placeholder="Ex: Pir
